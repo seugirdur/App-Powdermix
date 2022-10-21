@@ -1,33 +1,45 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { MaterialIcons} from '@expo/vector-icons'
+import { Button, Text, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+
 
 const { Screen, Navigator, Group } = createDrawerNavigator();
 
-import { ScreenA } from '../Screens/ScreenA';
-import { ScreenB } from '../Screens/ScreenB';
+import { Inicio } from '../Screens/Inicio';
+import { TabRoutes } from './tab.routes'
+import { Historico } from '../Screens/Historico';
+import { FAQ } from '../Screens/FAQ';
+
 
 
 export function DrawerRoutes() {
 
+    
+
+
     return (
-        <Navigator>
+        <Navigator
+                   >
             <Group>
                 <Screen
-                    name='screenA'
-                    component={ScreenA}
+                    name='Inicio'
+                    component={TabRoutes}
                     options={{
-                        drawerLabel: 'Cadastrar',
+                        headerShown:false,
+                        drawerLabel: 'Início',
                         drawerIcon: () => <MaterialIcons name="home" size={22} />
                     }}
     
-                />
+                /> 
             </Group>
             <Screen
-                name='screenB'
-                component={ScreenB}
+                name='FAQ'
+                component={FAQ}
                 options={{
-                    drawerLabel: 'Sair',
-                    drawerIcon: () => <MaterialIcons name="logout" size={22} />
+                    headerShown:false,
+                    drawerLabel: 'FAQ',
+                    drawerIcon: () => <MaterialCommunityIcons name="message-question" size={22} />
                 }}
             />
 

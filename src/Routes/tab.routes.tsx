@@ -2,10 +2,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 const { Screen, Navigator, Group } = createBottomTabNavigator();
 
-import { ScreenA } from '../Screens/ScreenA';
-import { ScreenB } from '../Screens/ScreenB';
-import { ScreenC } from '../Screens/ScreenC';
-import { ScreenD } from '../Screens/ScreenD';
+import { Inicio } from '../Screens/Inicio';
+import { Historico } from '../Screens/Historico';
+import { Pedidos } from '../Screens/Pedidos';
+import { Contato } from '../Screens/Contato';
+
+import { IniPro, IniHis } from './stack.routes';
 
 
 export function TabRoutes() {
@@ -19,8 +21,8 @@ export function TabRoutes() {
             }}>
             <Group>
                 <Screen
-                    name='screenA'
-                    component={ScreenA}
+                    name='Inicio'
+                    component={IniPro}
                     options={{
                         tabBarLabel: 'Início',
                         tabBarIcon: ({ color, size }) => (
@@ -35,8 +37,8 @@ export function TabRoutes() {
                 />
             </Group>
             <Screen
-                name='screenB'
-                component={ScreenB}
+                name='Historico'
+                component={Historico}
                 options={{
                     tabBarLabel: 'Histórico',
                     tabBarIcon: ({ color, size }) => (
@@ -50,8 +52,8 @@ export function TabRoutes() {
             />
 
             <Screen
-                name='screenC'
-                component={ScreenC}
+                name='Pedidos'
+                component={Pedidos}
                 options={{
                     tabBarLabel: 'Pedidos',
                     tabBarIcon: ({ color, size }) => (
@@ -66,8 +68,8 @@ export function TabRoutes() {
 
 
 <Screen
-                name='screenD'
-                component={ScreenD}
+                name='Contato'
+                component={Contato}
                 options={{
                     tabBarLabel: 'Contate-nos',
                     tabBarIcon: ({ color, size }) => (

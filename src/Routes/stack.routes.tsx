@@ -2,55 +2,66 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const { Screen, Navigator, Group } = createNativeStackNavigator();
 
-import { ScreenA } from '../Screens/ScreenA';
-import { ScreenB } from '../Screens/ScreenB';
-import { ScreenC } from '../Screens/ScreenC';
+import { Inicio } from '../Screens/Inicio';
+import { Historico } from '../Screens/Historico';
+import { Pedidos } from '../Screens/Pedidos';
+import { Contato } from '../Screens/Contato';
+import { Produto } from '../Screens/Produto';
 
+const screenOptionStyle = {
+    headerStyle: {
+      backgroundColor: "#9AC4F8",
+    },
+    headerTintColor: "white",
+    headerBackTitle: "Back",
+  };
 
-export function StackRoutes() {
+export function IniPro() {
 
     return (
         <Navigator>
             <Group>
                 <Screen
-                    name='screenA'
-                    component={ScreenA}
+                    name='Inicio'
+                    component={Inicio}
                     options={{
                         headerShown: false,
                     }}
                 />
             </Group>
+
             <Screen
-                name='screenB'
-                component={ScreenB}
+                name='Produto'
+                component={Produto}
                 options={{
                     title: 'Tela B',
-
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: 'navy'
-
                     },
                     headerTintColor: 'white',
-
                 }}
             />
+        </Navigator>
+    )
+}
+
+export function IniHis() {
+
+    return (
+        <Navigator>
             <Screen
-                name='screenC'
-                component={ScreenC}
+                name='Historico'
+                component={Historico}
                 options={{
-                    title: 'Tela C',
-
+                    title: 'Tela B',
                     headerTitleAlign: 'center',
                     headerStyle: {
                         backgroundColor: 'navy'
-
                     },
                     headerTintColor: 'white',
-
                 }}
             />
-
         </Navigator>
     )
 }

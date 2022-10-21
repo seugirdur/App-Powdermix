@@ -1,10 +1,14 @@
+declare module '*.png'
+
 export declare global {
     namespace ReactNavigation {
         interface RootParamList {
-            screenA: undefined;
-            screenB: {
-                name: string;
+            Inicio: undefined;
+            Pedidos: undefined;
+            Contato: undefined;
+            Historico: undefined;
+            Produto: undefined;
+            FAQ: undefined;
             };
         }
     }
-}
