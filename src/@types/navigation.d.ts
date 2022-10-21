@@ -1,6 +1,7 @@
-declare module '*.png'
+
 
 export declare global {
+    declare module '*.png';
     namespace ReactNavigation {
         interface RootParamList {
             Inicio: undefined;

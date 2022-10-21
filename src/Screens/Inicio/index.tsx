@@ -1,17 +1,59 @@
 import * as React from 'react'
-import { Button, Text, View } from 'react-native';
+import { FlatList} from 'react-native';
 import { useNavigation, DrawerActions } from '@react-navigation/native'
 import { FontAwesome5 } 
 from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
-import { Entypo } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons';
+import cheerio from 'cheerio'
 
 import { Feather } from '@expo/vector-icons'; 
 
 import * as S from './style'
 import logo from '../../assets/onlyname.png'
+import api from '../../../services/api';
+import { useState, useEffect } from 'react';
 
 export function Inicio( ) {
+const [title, setTitle]=useState([]);
+useEffect(() => {
+  async function getStoreData() {
+    const response = await api.get('').then(urlResponse => {
+      const $ = cheerio.load(urlResponse.data);
+
+      
+    $('li.article').each((i, element) => {
+      const link = $(element).find('a.overlay')
+      .attr('href');
+
+      const header = $(element)
+      .find('a')
+      .text()
+      .split("    \n")[0];
+
+      console.log(header);
+    })
+    })
+  }
+  getStoreData();
+})
+
+  // api.get('').then(urlResponse => {
+  //   const $ = cheerio.load(urlResponse.data);
+
+  //   $('li.article').each((i, element) => {
+  //     const link = $(element).find('a.overlay')
+  //     .attr('href');
+
+  //     const header = $(element)
+  //     .find('a')
+  //     .text()
+  //     .split("    \n")[0];
+
+  //     console.log(header);
+  //   })
+  // })
+
   const navigation = useNavigation();
 
 
@@ -62,8 +104,10 @@ function openDrawer() {
            <Entypo name="dot-single" size={24} color="white" />
            <Entypo name="dot-single" size={24} color="white" />
            </S.ThreeDots>
-
-      <S.Flatlist></S.Flatlist>
+           {/* <FlatList
+          
+         
+        /> */}
     </S.Container>
 
   );
