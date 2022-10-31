@@ -17,7 +17,9 @@ import api from '../../../services/api';
 import { useState, useEffect } from 'react';
 import { SearchBar } from 'react-native-screens';
 
+type Items = {
 
+}
 
 const produtos= [
     {
