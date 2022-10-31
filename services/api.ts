@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://arstechnica.com/gadgets/',
+  baseURL: 'http://192.168.1.105:3001',
 });
 
 export default api;

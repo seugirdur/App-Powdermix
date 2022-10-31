@@ -10,17 +10,28 @@ import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 import logo from '../../assets/onlyname.png';
 
-function openDrawer() {
-    const navigation = useNavigation();
-    navigation.dispatch(DrawerActions.openDrawer());
-  }
+
 
   
 type Props = {
     title: string;
 } & TouchableOpacityProps
 
-export function StatusBar({title}: Props ){
+export function StatusBar(){
+
+  const navigation = useNavigation();
+
+
+  function openScreen() {
+    navigation.navigate('Produto')
+  
+  }
+  
+  function openDrawer() {
+    navigation.dispatch(DrawerActions.openDrawer());
+  }
+  
+  return (
 
 
 <S.StatusBar>
@@ -40,4 +51,5 @@ source={logo}
 </S.SquareRound>
 
 </S.StatusBar>
+);
 }

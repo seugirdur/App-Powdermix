@@ -21,7 +21,7 @@ export function TabRoutes() {
             }}>
             <Group>
                 <Screen
-                    name='Inicio'
+                    name='IniPro'
                     component={IniPro}
                     options={{
                         tabBarLabel: 'Início',

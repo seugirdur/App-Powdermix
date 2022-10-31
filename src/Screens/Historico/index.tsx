@@ -19,10 +19,6 @@ type ParamsProps = {
 }
 
 
-function openDrawer() {
-  const navigation = useNavigation();
-  navigation.dispatch(DrawerActions.openDrawer());
-}
 
 export function Historico() {
 const navigation = useNavigation();
@@ -30,24 +26,8 @@ const route = useRoute();
   
   return (
     <S.Container>
-     
-<S.StatusBar>
+     <StatusBar/>
 
-<S.Hamburguer
-onPress={openDrawer}
->
-  <FontAwesome5 name="bars" size={24} color="#000"/>
-
-</S.Hamburguer>
-<S.Logo
-source={logo}
-></S.Logo>
-<S.SquareRound>
-
-<Feather name="shopping-cart" size={40} color="white" />
-</S.SquareRound>
-
-</S.StatusBar>
     </S.Container>
   );
 }

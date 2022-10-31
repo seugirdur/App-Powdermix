@@ -87,3 +87,21 @@ left:90%
 export const Button = styled.TouchableOpacity`
 width:200px;
 background-color:blue`
+
+export const Text = styled.Text`
+font-weight: bold;
+font-size: 25px;
+line-height: 31px;
+margin-top: 5px;
+text-transform: capitalize;
+color: #000;
+`;
+
+export const CardContainer = styled.View`
+margin-left: auto;
+margin-right: auto;
+width: 95%;
+top:140px;
+height:55%;
+justify-content:center;
+background-color:gray`
