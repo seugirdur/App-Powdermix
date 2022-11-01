@@ -1,22 +1,23 @@
 export default {
     colors: {
-        background: '#fff',
-        backgroundWater: '#58ABF6',
-        text_white: '#fff',
+        white: '#fff',
+        red: '#EB242B',
+        textWhite: '#fff',
 
         types: {
             water: '#4A90DA',
         },
 
-        light_text: 'rgba(23, 23, 27, 0.6)',
-        detail:'#747476',
+        text: 'rgba(23, 23, 27, 0.6)',
+        title: '#ED242B',
+        subtitle:'#7a7a7a',
 
-        backgroundCard: {
-            grass: '#8bbe8a',
-            fire:'#FFA756',
-            water:'#58ABF6',
-            poison:'#9F6E97',
-            normal:'#B5B9C4',
+        VerticalCard: {
+            red: '#EB242B',
+            background:'#f4f4f4',
+            darkRed:'#EC272B',
+            white:'#FFF',
+            black:'#000',
             bug:'#8BD674',
             flying:'#748FC9',
             electric:'#F2CB55',
@@ -34,5 +35,12 @@ export default {
             electric: '#f2cb55',
             ground: '#f78551',
         }
+    },
+    fonts: {
+        title:'Nunito_900Black',
+        subTitle:'Nunito_600SemiBold',
+        text:'Nunito_400Regular',
+        description:'Nunito_200ExtraLight'
     }
+
 }

@@ -4,10 +4,6 @@ import { useNavigation, DrawerActions } from '@react-navigation/native'
 
 import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import * as cheerio from 'cheerio';
-
-
-import { Feather } from '@expo/vector-icons';
 
 import { StatusBar } from '../../components/StatusBar';
 import { CardVertical } from '../../components/CardVertical';
@@ -16,6 +12,15 @@ import logo from '../../assets/onlyname.png'
 import api from '../../../services/api';
 import { useState, useEffect } from 'react';
 import { SearchBar } from 'react-native-screens';
+
+import AppLoading from 'expo-app-loading';
+
+import {
+    useFonts,
+    Nunito_400Regular,
+    Nunito_600SemiBold
+  } from '@expo-google-fonts/nunito';
+
 
 type Items = {
 
@@ -37,6 +42,16 @@ const produtos= [
   ]
 
 export function Inicio() {
+  
+  const [fontsLoaded] = useFonts({
+      Nunito_400Regular,
+      Nunito_600SemiBold
+  })
+  
+  if(!fontsLoaded){
+    <AppLoading/>
+  }
+
   const [title, setTitle] = useState<Items[]>([]);
   useEffect(() => {
     async function getStoreData() {
@@ -51,16 +66,30 @@ export function Inicio() {
 
 
       })
-
-      
-
-      
+  
     }
 
   
     getStoreData();
 
   }, [])
+
+  //   useEffect(() => {
+  //   async function prepare() {
+  //     await SplashScreen.preventAutoHideAsync();
+  //   }
+  //   prepare();
+  // }, []);
+
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (fontsLoaded) {
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [fontsLoaded]);
+
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
 
   const navigation = useNavigation();
 
@@ -72,6 +101,7 @@ export function Inicio() {
   function openDrawer() {
     navigation.dispatch(DrawerActions.openDrawer());
   }
+
 
   return (
     <S.Container>
@@ -113,13 +143,14 @@ export function Inicio() {
 
       <S.CardContainer>
 
-<FlatList
+   <FlatList
         data={title}
-        keyExtractor={item=>item[0].toString()}
-        renderItem={({item}) => <S.Text > lmao:{item[0]} </S.Text> }
-
-
+        keyExtractor={item=>item[0]}
+        renderItem={({item}) =>
+         <CardVertical/>
+       }
       />
+      
       </S.CardContainer>
     </S.Container>
 

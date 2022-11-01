@@ -37,6 +37,17 @@ align-items: center;
 border-radius: 15px;
 background-color:red`
 
+export const Texto = styled.Text`
+color: ${theme.colors.title};
+font-weight: bold;
+font-family: ${theme.fonts.description};
+font-size: 20px;
+line-height: 31px;
+margin-top: 5px;
+text-transform: capitalize;
+`;
+
+
 export const Carrinho = styled.Image`
 width:40px;
 background-color:red`
