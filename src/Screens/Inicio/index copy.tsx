@@ -50,6 +50,23 @@ useEffect(() => {
   // })
 })
 
+  //   useEffect(() => {
+  //   async function prepare() {
+  //     await SplashScreen.preventAutoHideAsync();
+  //   }
+  //   prepare();
+  // }, []);
+
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (fontsLoaded) {
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [fontsLoaded]);
+
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
+
   // api.get('').then(urlResponse => {
   //   const $ = cheerio.load(urlResponse.data);
 
@@ -122,13 +139,13 @@ function openDrawer() {
            </S.ThreeDots>
 
            {/* <CardVertical/> */}
-           <FlatList
+           {/* <FlatList
            data={result}
            keyExtractor={}
-           renderItem={}
+           renderItem={} */}
           
          
-        />
+        {/* /> */}
     </S.Container>
 
   );

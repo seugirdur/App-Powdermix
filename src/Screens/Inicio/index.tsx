@@ -1,9 +1,13 @@
 import * as React from 'react'
 import { FlatList, Text } from 'react-native';
-import { useNavigation, DrawerActions } from '@react-navigation/native'
+import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import { v4 } from 'uuid';
+import 'react-native-get-random-values';
+import AsyncStorage  from '@react-native-async-storage/async-storage';
+import Toast from 'react-native-toast-message';
 
 import { StatusBar } from '../../components/StatusBar';
 import { CardVertical } from '../../components/CardVertical';
@@ -19,31 +23,32 @@ import AppLoading from 'expo-app-loading';
 
 
 export type Sheets = {
-[0]: number,
-[1]: string,
-[2]: string,
-[3]: number,
-[4]: string
+  [0]: number,
+  [1]: string,
+  [2]: string,
+  [3]: number,
+  [4]: string
 }
 
-const produtos= [
-    {
-      id:"001",
-      desc:["mouse", '25.00']
-    },
-    {
-      id:"002",
-      desc:["teclado", '25.00']
-    },
-    {
-      id:"003",
-      desc:["Monitor", '25.00']
-    },
-  ]
-
 export function Inicio() {
+
   
- 
+
+  const [produtoNome, SetProdutoNome] = useState<string>();
+  const [produtoDesc, SetProdutoDesc] = useState<string>();
+  const [produtoPreco, SetProdutoPreco] = useState<number>();
+  const [produtoImg, SetProdutoImg] = useState<string>();
+
+  const id = v4();
+
+  const newProduct = {
+    id,
+    produtoNome,
+    produtoDesc,
+    produtoPreco,
+    produtoImg
+  }
+  
 
   const [title, setTitle] = useState<Sheets[]>([]);
   useEffect(() => {
@@ -52,37 +57,37 @@ export function Inicio() {
 
         // console.log(response.data);
         const { results } = response.data;
+        let arr = response.data;
+        let test: Sheets[] = [];
+        return arr.map(function(item: Sheets) {
+          test.push(item);
+          setTitle(response.data);  
+          // console.log(item)
+        })
 
-      
-        
-        setTitle(response.data);
+
+
+
+
+       
 
 
       })
-  
+     
     }
 
-  
+
     getStoreData();
 
   }, [])
 
-  //   useEffect(() => {
-  //   async function prepare() {
-  //     await SplashScreen.preventAutoHideAsync();
-  //   }
-  //   prepare();
-  // }, []);
 
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (fontsLoaded) {
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [fontsLoaded]);
+  
 
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
+  // console.log(newProduct);
+
+
+
 
   const navigation = useNavigation();
 
@@ -94,6 +99,8 @@ export function Inicio() {
   function openDrawer() {
     navigation.dispatch(DrawerActions.openDrawer());
   }
+
+
 
 
   return (
@@ -120,30 +127,23 @@ export function Inicio() {
         <Entypo name="dot-single" size={24} color="white" />
         <Entypo name="dot-single" size={24} color="white" />
 
-        
       </S.ThreeDots>
-
-      {/* <CardVertical/> */}
-      {/* <FlatList
-        data={title}
-        keyExtractor={item=>item[0].lmao}
-        renderItem={({item}) => <S.Text > lmao:{item[1]} </S.Text> }
-
-
-      /> */}
 
       <SearchBar></SearchBar>
 
       <S.CardContainer>
 
-   <FlatList
-        data={title}
-        keyExtractor={item=>item[0].toString()}
-        renderItem={({item}) =>
-         <CardVertical data={item} />
-       }
-      />
-      
+        <FlatList
+          data={title}
+          keyExtractor={item => item[0].toString()}
+          renderItem={({ item }) =>
+            <CardVertical
+             data={item}
+             
+             />
+          }
+        />
+
       </S.CardContainer>
     </S.Container>
 
