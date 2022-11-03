@@ -53,12 +53,12 @@ export function CardVertical({data,...rest} : any) {
         </S.ContainerVideo>
 
         <S.ContainerButton>
-            {/* <S.BuyButton
+            <S.BuyButton
             >
             <Feather name="plus" size={25} style={{left:-4}} color="white" />
             <Feather name="shopping-cart" size={30} style={{left:-4}} color="white" />
 
-            </S.BuyButton> */}
+            </S.BuyButton>
 
             <S.BuyButton
             onPress={showToast}/>
