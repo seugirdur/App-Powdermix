@@ -1,34 +1,57 @@
 import React from "react";
 import * as S from './style';
 import AppLoading from 'expo-app-loading';
-
-import {
-    useFonts,
-    Nunito_400Regular,
-    Nunito_600SemiBold
-  } from '@expo-google-fonts/nunito';
+import { Sheets } from "../../Screens/Inicio";
+import { TouchableOpacityProps } from 'react-native'
+import { Feather  } from '@expo/vector-icons';
+import theme from "../../global/styles/theme";
 
 
+type Props = {
+    data: Sheets
+} & TouchableOpacityProps
 
-export function CardVertical() {
-    const [fontsLoaded] = useFonts({
-        Nunito_400Regular,
-        Nunito_600SemiBold
-    })
-    
-    if(!fontsLoaded){
-      <AppLoading/>
-    }
+export function CardVertical({data,...rest} : any) {
+  
 
     return (
         
-        <S.CardVertical>
-            
+        <S.CardVertical type={data} {...rest}>
+
+            <S.ContainerImage>
         <S.ProdutoImage
-        source={{ uri: `https://powdermix.com.br/wp-content/uploads/2022/05/quem-somos-1024x684.jpg` }}
+        source={{ uri: data[4] }}
 
         />
-        <S.Titulo> Teste </S.Titulo>
+        </S.ContainerImage>
+
+        <S.ContainerText>
+        <S.Titulo> {data[1]} </S.Titulo>
+        <S.Desc> {data[2]} </S.Desc>
+        </S.ContainerText>
+
+        <S.ContainerVideo>
+
+            <S.Video
+                source={{ uri: data[4] }}            
+            />
+            <S.OverFlowVideo/>
+
+            <S.VideoIcon>
+            <Feather name="play" size={24} color="white" />
+            </S.VideoIcon>
+            
+        </S.ContainerVideo>
+
+        <S.ContainerButton>
+            <S.BuyButton>
+            <Feather name="plus" size={25} style={{left:-4}} color="white" />
+            <Feather name="shopping-cart" size={30} style={{left:-4}} color="white" />
+
+            </S.BuyButton>
+        </S.ContainerButton>
+
+        
 
         </S.CardVertical>
     )

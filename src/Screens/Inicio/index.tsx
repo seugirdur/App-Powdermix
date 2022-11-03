@@ -15,15 +15,15 @@ import { SearchBar } from 'react-native-screens';
 
 import AppLoading from 'expo-app-loading';
 
-import {
-    useFonts,
-    Nunito_400Regular,
-    Nunito_600SemiBold
-  } from '@expo-google-fonts/nunito';
 
 
-type Items = {
 
+export type Sheets = {
+[0]: number,
+[1]: string,
+[2]: string,
+[3]: number,
+[4]: string
 }
 
 const produtos= [
@@ -43,16 +43,9 @@ const produtos= [
 
 export function Inicio() {
   
-  const [fontsLoaded] = useFonts({
-      Nunito_400Regular,
-      Nunito_600SemiBold
-  })
-  
-  if(!fontsLoaded){
-    <AppLoading/>
-  }
+ 
 
-  const [title, setTitle] = useState<Items[]>([]);
+  const [title, setTitle] = useState<Sheets[]>([]);
   useEffect(() => {
     async function getStoreData() {
       const response = await api.get('/getRows').then(function (response) {
@@ -145,9 +138,9 @@ export function Inicio() {
 
    <FlatList
         data={title}
-        keyExtractor={item=>item[0]}
+        keyExtractor={item=>item[0].toString()}
         renderItem={({item}) =>
-         <CardVertical/>
+         <CardVertical data={item} />
        }
       />
       
