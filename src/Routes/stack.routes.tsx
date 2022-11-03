@@ -34,6 +34,8 @@ export function IniPro() {
                 name='Produto'
                 component={Produto}
                 options={{
+                    headerShown: false,
+
                     title: 'Tela B',
                     headerTitleAlign: 'center',
                     headerStyle: {

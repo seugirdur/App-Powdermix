@@ -3,6 +3,12 @@ export default {
         white: '#fff',
         red: '#EB242B',
         textWhite: '#fff',
+        textblack: '#000',
+        background:'#EEEEEE',
+        gray900:'#7a7a7a',
+        gray700:'#4e4e4e',
+        gray500:'#d1d1d1',
+        gray300:'#d9d9d9',
 
         types: {
             water: '#4A90DA',
@@ -18,10 +24,6 @@ export default {
             darkRed:'#EC272B',
             white:'#FFF',
             black:'#000',
-            bug:'#8BD674',
-            flying:'#748FC9',
-            electric:'#F2CB55',
-            ground:'#F78551',
         },
 
         boxType: {
@@ -38,6 +40,7 @@ export default {
     },
     fonts: {
         title:'Nunito_900Black',
+        minusTitle:'Nunito_700Bold',
         subTitle:'Nunito_600SemiBold',
         text:'Nunito_400Regular',
         description:'Nunito_200ExtraLight'

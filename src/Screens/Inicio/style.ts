@@ -115,4 +115,4 @@ width: 95%;
 top:140px;
 height:55%;
 justify-content:center;
-background-color:gray`
+background-color:${theme.colors.white}`

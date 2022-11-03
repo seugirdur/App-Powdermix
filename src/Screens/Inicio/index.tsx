@@ -64,30 +64,13 @@ export function Inicio() {
           setTitle(response.data);  
           // console.log(item)
         })
-
-
-
-
-
-       
-
-
-      })
-     
+      })    
     }
-
-
     getStoreData();
+  }, []);
 
-  }, [])
-
-
-  
 
   // console.log(newProduct);
-
-
-
 
   const navigation = useNavigation();
 
@@ -139,7 +122,8 @@ export function Inicio() {
           renderItem={({ item }) =>
             <CardVertical
              data={item}
-             
+             onPress={() => openScreen()}
+
              />
           }
         />

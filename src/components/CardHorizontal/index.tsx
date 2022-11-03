@@ -20,7 +20,7 @@ function lmaoCount(counter: number){
   console.log(counter)
 }
 
-export function CardVertical({data,...rest} : any) {
+export function CardHorizontal({data,...rest} : any) {
 
     const navigation = useNavigation();
 
@@ -40,14 +40,9 @@ export function CardVertical({data,...rest} : any) {
       async function lmaoALert(name: string){
         await Alert.alert(name)
       }
-
-     
-      
-
-
     return (
         
-        <S.CardVertical 
+        <S.CardHorizontal 
         type={data} {...rest}
         
         >
@@ -62,34 +57,16 @@ export function CardVertical({data,...rest} : any) {
         <S.ContainerText>
         <S.Titulo> {data[1]} </S.Titulo>
         <S.Desc> {data[2]} </S.Desc>
+        <S.Price>R${data[3]}</S.Price>
         </S.ContainerText>
-
-        <S.ContainerVideo>
-
-            <S.Video
-                source={{ uri: data[4] }}            
-            />
-            <S.OverFlowVideo/>
-
-            <S.VideoIcon>
-            <Feather name="play" size={24} color="white" />
-            </S.VideoIcon>
-            
-        </S.ContainerVideo>
-
         <S.ContainerButton>
             <S.BuyButton
             onPress={() => lmaoCount(counter++)}
             >
             <Feather name="plus" size={25} style={{left:-4}} color="white" />
             <Feather name="shopping-cart" size={30} style={{left:-4}} color="white" />
-
             </S.BuyButton>
-
         </S.ContainerButton>
-
-        
-
-        </S.CardVertical>
+        </S.CardHorizontal>
     )
 };

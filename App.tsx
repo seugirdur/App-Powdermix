@@ -7,7 +7,8 @@ import {
     Nunito_400Regular,
     Nunito_600SemiBold,
     Nunito_200ExtraLight,
-    Nunito_900Black
+    Nunito_900Black,
+    Nunito_700Bold
   } from '@expo-google-fonts/nunito';
 
 
@@ -19,7 +20,8 @@ export default function App() {
     Nunito_400Regular,
     Nunito_600SemiBold,
     Nunito_200ExtraLight,
-    Nunito_900Black
+    Nunito_900Black,
+    Nunito_700Bold
 })
 
 if(!fontsLoaded){

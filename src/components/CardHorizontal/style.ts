@@ -6,36 +6,39 @@ type Video = {
   type: string
 }
 
-export const CardVertical = styled.TouchableOpacity`
-width:95%;
-height:100px;
+export const CardHorizontal = styled.TouchableOpacity`
+width:100px;
+height:220px;
 justify-content: space-between;
-flex-direction: row;
-background-color:${theme.colors.VerticalCard.background};
+background-color:${theme.colors.gray500};
 margin:10px;
+border-radius:8px;
 `;
 
 
 
 export const ContainerImage = styled.View`
-height:100px;
-width:100px;
+height:90px;
+width:100%;
 justify-content:center;
 align-items: center;
+border-radius:8px;
 
 `;
 
 export const ProdutoImage = styled.Image`
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   justify-content:center;
+  border-radius:8px;
+
 `;
 
 
 
 export const ContainerText = styled.View`
-height:100px;
-width:120px;
+height:70px;
+width:100%;
 
 `;
 
@@ -43,11 +46,10 @@ export const Titulo = styled.Text`
 color: ${theme.colors.VerticalCard.darkRed};
 font-family:${theme.fonts.title};
 font-size: 15px;
-white-space: nowrap;
 height:40px;
-text-overflow: ellipsis;
-overflow: hidden;
 margin: 1px;
+text-align: left;
+margin-left:4px;
 
 `;
 
@@ -58,53 +60,34 @@ font-size: 10px;
 white-space: nowrap;
 overflow: hidden;
 text-overflow: ellipsis;
-height:55px;
+height:15px;
 `;
 
-
-
-export const ContainerVideo = styled.View`
-height:100px;
-width:100px;
-justify-content:center;
-align-items: center;
-border-radius:4px;
+export const Price = styled.Text`
+color: ${theme.colors.textblack};
+font-family:${theme.fonts.minusTitle};
+font-size: 10px;
+white-space: nowrap;
+overflow: hidden;
+text-align: center;
+text-decoration: underline;
+text-overflow: ellipsis;
+height:15px;
 `;
 
-export const Video = styled.Image<Video>`
-width: 80px;
-height: 40px;
-justify-content:center;
-border-radius:4px;
+export const ButtonCard = styled.TouchableOpacity`
+margin-top:4px;
+background-color:red;
+border-radius: 15px;
+
 
 `;
-
-
-export const OverFlowVideo = styled.View`
-  background-color: ${theme.colors.VerticalCard.black};
-  width: 80px;
-  height: 40px;
-  overflow: hidden;
-  opacity: 0.5;
-  border-radius:4px;
-
-  position:absolute;
-`;
-
-export const VideoIcon = styled.View`
-width: 80px;
-height: 40px;
-position:absolute;
-justify-content:center;
-align-items: center;
-`;
-
-
 export const ContainerButton = styled.View`
+margin-top:4px;
+
 height:100px;
 width:100px;
-justify-content:center;
-align-items: center;
+align-items:center;
 `;
 
 export const BuyButton = styled.TouchableOpacity`

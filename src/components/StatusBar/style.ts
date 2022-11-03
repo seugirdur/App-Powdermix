@@ -5,6 +5,8 @@ import theme from '../../global/styles/theme';
 export const Container = styled.View`
     flex:1
     background-color: #EEEEEE
+    position: absolute;
+
 `
 
 export const StatusBar = styled.View`
