@@ -60,8 +60,6 @@ export function CardVertical({data,...rest} : any) {
 
             </S.BuyButton>
 
-            <S.BuyButton
-            onPress={showToast}/>
         </S.ContainerButton>
 
         
