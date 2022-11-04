@@ -74,7 +74,7 @@ text-decoration: underline;
 
 export const Name = styled.View`
 width:100%
-height:56px;
+
 margin-top:16px;
 padding-left:16px;
 `;

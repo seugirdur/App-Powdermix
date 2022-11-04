@@ -16,12 +16,18 @@ import { CardVertical } from "../../components/CardVertical";
 import { CardHorizontal } from "../../components/CardHorizontal";
 import api from "../../../services/api";
 import { Sheets } from "../Inicio";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { v4 } from "uuid";
 
-
+type RouteParams = {
+  item: Sheets
+}
 
 export function Produto() {
+
+  const route = useRoute();
+  const { item } = route.params as RouteParams
+
 
   const [playing, setPlaying] = useState(false);
 
@@ -110,13 +116,13 @@ export function Produto() {
         </S.ThreeDots>
 
         <S.Prices>
-          <S.OriginalPrice>R$ XXX.00</S.OriginalPrice>
-          <S.PromocionalPrice>R$ XXX.00</S.PromocionalPrice>
+          <S.OriginalPrice>R$ {item[3]},00</S.OriginalPrice>
+          <S.PromocionalPrice>R$ {item[3]},00</S.PromocionalPrice>
         </S.Prices>
 
         <S.Name>
           <S.Title>Nome:</S.Title>
-          <S.BigName>Misturador e Triturador M4</S.BigName>
+          <S.BigName>{item[1]}</S.BigName>
         </S.Name>
 
         <S.ContainerButton>
@@ -132,10 +138,8 @@ export function Produto() {
         <S.Description>
           <S.TitleDesc>DESCRIÇÃO:</S.TitleDesc>
           <S.TextDesc>
-            Em pleno 2022, ano da liberdade. Acredite nos seus sonhos. Qual a chance pai? Se você joga Minecraft, obrigatóriamente precisa estar no shape. Tava pensando aqui, não sou bom em nada, ainda bem que eu treino. Mais um motivo pra você treinar. Se você joga Minecraft, obrigatóriamente precisa estar no shape.
-            {'\n'}Em pleno 2022, ano do amor. Quem nunca errou que atire a primeira pedra. Tem uma coroa na minha maldade, se nada der certo, vou ativar o modo, prostshape. Se eu soubesse da existência do pre treino na época da escola, eu seria o melhor aluno, parada bateu. Se você joga Minecraft, obrigatóriamente precisa estar no shape.
-            {'\n'}Em pleno 2022, ano de eleição. Uma vida sem shape é viver como um mero mortal. Só deixei o shape na tecla SAP, traduziu e se comunicou com eficácia. Quem nunca errou que atire a primeira pedra. Não precisei falar nada, o shape falou por mim. Na dúvida treine. Se você joga Minecraft, obrigatóriamente precisa estar no shape.
-            {'\n'}Em pleno 2022, ano de eleição. Parabéns, mas se o shape não estiver em dia, nada vale o parabéns. Uma vida sem shape é viver como um mero mortal. Pela sua foto do perfil eu reparei que você é nerd. Um shape vale mais que mil palavras. Vovô bugou o meu sistema com seu shape.</S.TextDesc>
+          {item[2]}
+            </S.TextDesc>
         </S.Description>
 
         <S.Video>

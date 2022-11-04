@@ -74,15 +74,19 @@ export function Inicio() {
 
   const navigation = useNavigation();
 
-  function openScreen() {
-    navigation.navigate('Produto')
+  function openScreen(item: any) {
+    navigation.navigate('Produto', {item})
 
   }
 
   function openDrawer() {
     navigation.dispatch(DrawerActions.openDrawer());
   }
-
+  function handleNavigation(pokemonId: number) {
+    navigate('About', {
+        pokemonId, 
+    })
+}
 
 
 
@@ -106,7 +110,7 @@ export function Inicio() {
       </S.Carrosel>
 
       <S.ThreeDots>
-        <Entypo name="dot-single" size={24} color="red" onPress={openScreen} />
+        <Entypo name="dot-single" size={24} color="red"   />
         <Entypo name="dot-single" size={24} color="white" />
         <Entypo name="dot-single" size={24} color="white" />
 
@@ -122,7 +126,8 @@ export function Inicio() {
           renderItem={({ item }) =>
             <CardVertical
              data={item}
-             onPress={() => openScreen()}
+             onPress={() => openScreen(item)}
+             
 
              />
           }
