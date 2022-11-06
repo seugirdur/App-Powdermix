@@ -8,7 +8,7 @@ export declare global {
             Pedidos: undefined;
             Contato: undefined;
             Historico: undefined;
-            Produto: undefined;
+            Produto: any;
             FAQ: undefined;
             };
         }

@@ -1,95 +1,109 @@
 import React from "react";
 import * as S from './style';
-import AppLoading from 'expo-app-loading';
 import { Sheets } from "../../Screens/Inicio";
-import { Alert, TouchableOpacityProps } from 'react-native'
-import { Feather  } from '@expo/vector-icons';
-import theme from "../../global/styles/theme";
+import { Feather } from '@expo/vector-icons';
 import Toast from 'react-native-toast-message';
-import { useNavigation, DrawerActions } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { Alert, TouchableOpacityProps } from 'react-native'
+import { IProductObject } from "../../business/models/interfaces/IProduct";
+import { v4 } from "uuid";
+import getRealm from "../../infrastructure/realm";
 
 
 type Props = {
-    data: Sheets
+  data: Sheets
 } & TouchableOpacityProps
 
 let counter = 1
-function lmaoCount(counter: number){
+function lmaoCount(counter: number) {
   counter++
   Alert.alert(counter.toString())
   console.log(counter)
 }
 
-export function CardVertical({data,...rest} : any) {
-
-    const navigation = useNavigation();
-
-    function openScreen() {
-        navigation.navigate('Produto')
-    
-      }
-
-    const showToast = () => {
-        Toast.show({
-          type: 'success',
-          text1: 'Hello',
-          text2: 'This is some something 👋'
-        });
-      }
-
-      async function lmaoALert(name: string){
-        await Alert.alert(name)
-      }
-
-     
-      
+export function CardVertical({ data, ...rest }: Props) {
 
 
-    return (
-        
-        <S.CardVertical 
-        type={data} {...rest}
-        
-        >
 
-            <S.ContainerImage>
+  // let firstProduct: IProductObject;
+
+  // const writeTasks = async () => {
+  //   const realm = await getRealm();
+
+  //   try {
+  //     realm.write(() => {
+  //       firstProduct = realm.create("Product",
+  //         {
+  //           _id: v4(),
+  //           productName: 'lmao',
+  //           description: 'lmao',
+  //           price: 3,
+  //           imgUrl: 'lmao'
+
+  //         });
+  //     });
+
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     realm.close();
+  //   }
+  // }
+
+
+  function lmaoALert(name: string) {
+    Alert.alert(name)
+  }
+
+
+
+
+
+  return (
+
+    <S.CardVertical
+      type={data} {...rest}
+
+    >
+
+      <S.ContainerImage>
         <S.ProdutoImage
-        source={{ uri: data[4] }}
+          source={{ uri: data[4] }}
 
         />
-        </S.ContainerImage>
+      </S.ContainerImage>
 
-        <S.ContainerText>
+      <S.ContainerText>
         <S.Titulo> {data[1]} </S.Titulo>
         <S.Desc> {data[2]} </S.Desc>
-        </S.ContainerText>
+      </S.ContainerText>
 
-        <S.ContainerVideo>
+      <S.ContainerVideo>
 
-            <S.Video
-                source={{ uri: data[4] }}            
-            />
-            <S.OverFlowVideo/>
+        <S.Video
+          source={{ uri: data[4] }}
+        />
+        <S.OverFlowVideo />
 
-            <S.VideoIcon>
-            <Feather name="play" size={24} color="white" />
-            </S.VideoIcon>
-            
-        </S.ContainerVideo>
+        <S.VideoIcon>
+          <Feather name="play" size={24} color="white" />
+        </S.VideoIcon>
 
-        <S.ContainerButton>
-            <S.BuyButton
-            onPress={() => lmaoCount(counter++)}
-            >
-            <Feather name="plus" size={25} style={{left:-4}} color="white" />
-            <Feather name="shopping-cart" size={30} style={{left:-4}} color="white" />
+      </S.ContainerVideo>
 
-            </S.BuyButton>
+      <S.ContainerButton>
+        <S.BuyButton
+          onPress={() => writeTasks}
+        >
+          <Feather name="plus" size={25} style={{ left: -4 }} color="white" />
+          <Feather name="shopping-cart" size={30} style={{ left: -4 }} color="white" />
 
-        </S.ContainerButton>
+        </S.BuyButton>
 
-        
+      </S.ContainerButton>
 
-        </S.CardVertical>
-    )
+
+
+    </S.CardVertical>
+  )
 };
