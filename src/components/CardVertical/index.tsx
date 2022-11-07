@@ -6,11 +6,24 @@ import { Sheets } from "../../Screens/Inicio";
 import Toast from 'react-native-toast-message';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, TouchableOpacityProps } from 'react-native'
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+// import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 type Props = {
   data: Sheets
 } & TouchableOpacityProps
+
+
+export type CartProps = {
+  id: string;
+  produtoNome: string;
+  produtoDesc: string;
+  produtoPreco: number;
+  produtoImg: string;
+}
+
+
+
 
 let counter = 1
 function lmaoCount(counter: number) {
@@ -18,6 +31,8 @@ function lmaoCount(counter: number) {
   Alert.alert(counter.toString())
   console.log(counter)
 }
+
+
 
 
 
@@ -33,10 +48,15 @@ export function CardVertical({ data, ...rest }: Props) {
     Alert.alert(name)
   }
 
+  
 
 
-  function handleStore() {
 
+  async function handleStore() {
+
+    try {
+      
+    
 
     const id = v4()
     const produtoNome = data[1]
@@ -52,8 +72,25 @@ export function CardVertical({ data, ...rest }: Props) {
       produtoImg
     }
 
+    const oldProducts = await AsyncStorage.getItem("@saveproducts:cart");
+    const previousData = oldProducts ? JSON.parse(oldProducts) : [];
 
-    console.log(theProduct)
+    const allProducts = [...previousData, theProduct]
+
+    await AsyncStorage.setItem("@saveproducts:cart", JSON.stringify(allProducts))
+    Toast.show({
+      type:'success',
+      text1:'Cadastrado com sucesso!'
+    })
+  } catch (error) {
+    console.log(error)      
+    Toast.show({
+      type:'error',
+      text1:'Não foi possível cadastrar'
+    })
+  }
+
+
   }
   return (
 

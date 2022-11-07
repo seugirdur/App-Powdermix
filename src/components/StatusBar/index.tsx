@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacityProps } from 'react-native';
 import * as S from './style'
 import { useNavigation, DrawerActions } from '@react-navigation/native'
@@ -9,15 +9,14 @@ import { Entypo } from '@expo/vector-icons';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
 import { Feather } from '@expo/vector-icons'; 
 import logo from '../../assets/onlyname.png';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CartProps } from '../CardVertical';
 
 
 
-  
-type Props = {
-    title: string;
-} & TouchableOpacityProps
 
 export function StatusBar(){
+  const [cart, setCart] = useState<CartProps[]>([]);
 
   const navigation = useNavigation();
 
@@ -29,6 +28,13 @@ export function StatusBar(){
   
   function openDrawer() {
     navigation.dispatch(DrawerActions.openDrawer());
+  }
+
+  async function handleSeeCart() {
+    const response = await AsyncStorage.getItem("@saveproducts:cart");
+    const data = response ? JSON.parse(response) : [];
+    console.log(data);
+    setCart(data);
   }
 
 
@@ -47,7 +53,9 @@ onPress={openDrawer}
 <S.Logo
 source={logo}
 ></S.Logo>
-<S.SquareRound>
+<S.SquareRound
+onPress={handleSeeCart}
+>
 
 <Feather name="shopping-cart" size={40} color="white" />
 </S.SquareRound>
