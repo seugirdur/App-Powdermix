@@ -26,20 +26,20 @@ export function Inicio() {
 
 
 
-  const [produtoNome, SetProdutoNome] = useState<string>();
-  const [produtoDesc, SetProdutoDesc] = useState<string>();
-  const [produtoPreco, SetProdutoPreco] = useState<number>();
-  const [produtoImg, SetProdutoImg] = useState<string>();
+  // const [produtoNome, SetProdutoNome] = useState<string>();
+  // const [produtoDesc, SetProdutoDesc] = useState<string>();
+  // const [produtoPreco, SetProdutoPreco] = useState<number>();
+  // const [produtoImg, SetProdutoImg] = useState<string>();
 
-  const id = v4();
+  // const id = v4();
 
-  const newProduct = {
-    id,
-    produtoNome,
-    produtoDesc,
-    produtoPreco,
-    produtoImg
-  }
+  // const newProduct = {
+  //   id,
+  //   produtoNome,
+  //   produtoDesc,
+  //   produtoPreco,
+  //   produtoImg
+  // }
 
 
   const [title, setTitle] = useState<Sheets[]>([]);

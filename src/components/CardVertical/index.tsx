@@ -1,13 +1,11 @@
-import React from "react";
+import { v4 } from "uuid";
+import React, { useState } from "react";
 import * as S from './style';
-import { Sheets } from "../../Screens/Inicio";
 import { Feather } from '@expo/vector-icons';
+import { Sheets } from "../../Screens/Inicio";
 import Toast from 'react-native-toast-message';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, TouchableOpacityProps } from 'react-native'
-import { IProductObject } from "../../business/models/interfaces/IProduct";
-import { v4 } from "uuid";
-import getRealm from "../../infrastructure/realm";
 
 
 type Props = {
@@ -21,34 +19,14 @@ function lmaoCount(counter: number) {
   console.log(counter)
 }
 
+
+
+
+
+
 export function CardVertical({ data, ...rest }: Props) {
 
 
-
-  // let firstProduct: IProductObject;
-
-  // const writeTasks = async () => {
-  //   const realm = await getRealm();
-
-  //   try {
-  //     realm.write(() => {
-  //       firstProduct = realm.create("Product",
-  //         {
-  //           _id: v4(),
-  //           productName: 'lmao',
-  //           description: 'lmao',
-  //           price: 3,
-  //           imgUrl: 'lmao'
-
-  //         });
-  //     });
-
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     realm.close();
-  //   }
-  // }
 
 
   function lmaoALert(name: string) {
@@ -57,9 +35,29 @@ export function CardVertical({ data, ...rest }: Props) {
 
 
 
+  function handleStore() {
 
 
+    const id = v4()
+    const produtoNome = data[1]
+    const produtoDesc = data[2]
+    const produtoPreco = data[3]
+    const produtoImg = data[4]
+
+    const theProduct = {
+      id,
+      produtoNome,
+      produtoDesc,
+      produtoPreco,
+      produtoImg
+    }
+
+
+    console.log(theProduct)
+  }
   return (
+
+
 
     <S.CardVertical
       type={data} {...rest}
@@ -93,7 +91,9 @@ export function CardVertical({ data, ...rest }: Props) {
 
       <S.ContainerButton>
         <S.BuyButton
-          onPress={() => writeTasks}
+          // onPress={() => lmaoCount(counter++)}
+          onPress={ handleStore }
+
         >
           <Feather name="plus" size={25} style={{ left: -4 }} color="white" />
           <Feather name="shopping-cart" size={30} style={{ left: -4 }} color="white" />
