@@ -1,7 +1,7 @@
 import React from 'react';
 import { TapGestureHandler, RotationGestureHandler } from 'react-native-gesture-handler';
 import AppLoading from 'expo-app-loading';
-
+import 'expo-dev-client';
 import {
     useFonts,
     Nunito_400Regular,

@@ -15,6 +15,7 @@ import YoutubePlayer from "react-native-youtube-iframe";
 import { CardHorizontal } from "../../components/CardHorizontal";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { QuantityBox } from "../../components/QuantityBox";
 
 type RouteParams = {
   item: Sheets
@@ -93,12 +94,14 @@ export function Produto() {
 
         <S.ContainerButton>
 
+          <QuantityBox/>
+
           <S.ButtonBuy>
             <S.TextButton>
               Adicionar ao carrinho
             </S.TextButton>
-            <Feather name="plus" size={25} style={{ left: 12 }} color="white" />
-            <Feather name="shopping-cart" size={30} style={{ left: 8 }} color="white" />
+            <Feather name="plus" size={25} style={{ right: 32 }} color="white" />
+            <Feather name="shopping-cart" size={30} style={{ right: 28 }} color="white" />
           </S.ButtonBuy>
         </S.ContainerButton>
         <S.Description>
