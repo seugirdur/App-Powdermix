@@ -53,8 +53,9 @@ export function Produto() {
 
   const navigation = useNavigation();
 
-  function openScreen() {
-    navigation.navigate('Produto')
+  function openScreen(item: Sheets) {
+    navigation.navigate('Produto', { item })
+
   }
 
   return (
@@ -83,8 +84,8 @@ export function Produto() {
         </S.ThreeDots>
 
         <S.Prices>
-          <S.OriginalPrice>R$ {productInfo[3]},00</S.OriginalPrice>
-          <S.PromocionalPrice>R$ {productInfo[3]},00</S.PromocionalPrice>
+          <S.OriginalPrice>R$ {productInfo[3]}</S.OriginalPrice>
+          <S.PromocionalPrice>R$ {productInfo[3]}</S.PromocionalPrice>
         </S.Prices>
 
         <S.Name>
@@ -130,8 +131,7 @@ export function Produto() {
        renderItem={({ item  } : { item: Sheets }) =>
          <CardHorizontal  
           data={item}
-          // onPress={() => openScreen()}
-
+          onPress={() => openScreen(item)}
           />
        }>
 
