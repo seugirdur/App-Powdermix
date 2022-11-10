@@ -8,7 +8,7 @@ import {
 import * as S from './style';
 import { Sheets } from "../Inicio";
 import api from "../../../services/api";
-import { StyleSheet, Alert } from "react-native";
+import { StyleSheet, Alert, Button } from "react-native";
 import { useState, useCallback, useRef } from "react";
 import { StatusBar } from "../../components/StatusBar";
 import YoutubePlayer from "react-native-youtube-iframe";
@@ -113,12 +113,13 @@ export function Produto() {
         </S.Description>
 
         <S.Video>
-          <YoutubePlayer
-            height={260}
-            play={playing}
-            videoId={"lvkyaRVKcZk"}
-            onChangeState={onStateChange}
-          />
+        <YoutubePlayer
+        height={300}
+        play={playing}
+        videoId={"iee2TATGMyI"}
+        onChangeState={onStateChange}
+      />
+      <Button title={playing ? "pause" : "play"} onPress={togglePlaying} />
 
         </S.Video>
         <S.Hyperlink>Confira o manual desse item clicando aqui! ↗</S.Hyperlink>

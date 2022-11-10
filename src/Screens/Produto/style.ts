@@ -3,8 +3,8 @@ import theme from '../../global/styles/theme';
 
 
 export const Container = styled.View`
-    flex:1
-    background-color: ${theme.colors.white}
+    flex:1;
+    background-color: ${theme.colors.white};
 `
 
 export const ScrollContainer = styled.ScrollView`
@@ -49,7 +49,7 @@ justify-content:center
 `
 
 export const Prices = styled.View`
-width:100%
+width:100%;
 height:42px;
 flex-direction: row;
 `;
@@ -58,14 +58,14 @@ export const OriginalPrice = styled.Text`
 position: relative;
 top: 20px;
 text-decoration: line-through;
-margin-left:20px
-color:${theme.colors.subtitle}
+margin-left:20px;
+color:${theme.colors.subtitle};
 font-family:${theme.fonts.text};
 
 `;
 
 export const PromocionalPrice = styled.Text`
-color: ${theme.colors.title}
+color: ${theme.colors.title};
 font-size:32px;
 margin-left:5px;
 font-family:${theme.fonts.minusTitle};
@@ -73,14 +73,14 @@ text-decoration: underline;
 `;
 
 export const Name = styled.View`
-width:100%
+width:100%;
 
 margin-top:16px;
 padding-left:16px;
 `;
 
 export const Title = styled.Text`
-color:${theme.colors.title}
+color:${theme.colors.title};
 font-family:${theme.fonts.minusTitle};
 
 `;
@@ -165,10 +165,10 @@ margin-left:16px;
 margin-right:40px;
 overflow-wrap: break-word;
 flex: 1;
-flexShrink: 1;
+flex-shrink: 1;
 justify-content: center;
 align-items: center;
-textAlign: center;
+text-align: center;
 width:20%;
 `;
 
@@ -178,7 +178,6 @@ width:100%;
 margin-top:12px;
 padding-left:12px;
 padding-right:12px;
-
 `;
 
 export const TitleDesc =  styled.Text`
