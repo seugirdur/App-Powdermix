@@ -10,7 +10,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 type Props = {
-  data: Sheets
+  data: Sheets 
 } & TouchableOpacityProps
 
 

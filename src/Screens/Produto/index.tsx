@@ -24,6 +24,9 @@ type RouteParams = {
   item: Sheets
 }
 
+let count =1;
+
+
 export function Produto() {
 
   const route = useRoute();
@@ -72,7 +75,7 @@ export function Produto() {
     const produtoDesc = productInfo[2]
     const produtoPreco = productInfo[3]
     const produtoImg = productInfo[4]
-    const qtd = 
+    
 
     const theProduct = {
       id,
@@ -80,7 +83,7 @@ export function Produto() {
       produtoDesc,
       produtoPreco,
       produtoImg,
-
+      counter
     }
 
     const oldProducts = await AsyncStorage.getItem("@saveproducts:cart");
@@ -103,6 +106,25 @@ export function Produto() {
 
 
   }
+
+  const [counter, setCounter] = useState<number>(1);
+
+  function plusQuantity(counting: number){
+   count++
+      setCounter(count);
+ 
+ }
+ 
+ function minusQuantity(counting: number){
+   if(count > 1) {
+     count--
+     setCounter(count)
+   } else {
+     setCounter(1)
+   }
+ 
+ }
+// console.log(counter)
 
   return (
 
@@ -141,7 +163,30 @@ export function Produto() {
 
         <S.ContainerButton>
 
-          <QuantityBox/>
+        <S.QuantityBox>
+        <S.QuantityRedBox>
+          <S.TitleQuantity>Qtd.</S.TitleQuantity>
+        </S.QuantityRedBox>
+        <S.QuantityWhiteBox>
+          <S.MinusQuantity
+          onPress={() => minusQuantity(count)}
+          >
+          <Feather name="minus" size={25}color="black"
+          />
+
+          </S.MinusQuantity>
+          <S.QuantityNumber>{counter}</S.QuantityNumber>
+          <S.PlusQuantity
+          onPress={
+            () => plusQuantity(count)
+           
+          }
+            >
+          <Feather name="plus" size={25}color="black"/>
+
+          </S.PlusQuantity>
+        </S.QuantityWhiteBox>
+      </S.QuantityBox>
 
           <S.ButtonBuy
           onPress={handleStore}
@@ -192,5 +237,4 @@ export function Produto() {
 
   );
 }
-
 

@@ -88,4 +88,44 @@ left:90%
 
 export const Button = styled.TouchableOpacity`
 width:200px;
-background-color:blue`
+background-color:blue`;
+
+
+
+export const ModalContainer = styled.Modal`
+`;
+
+export const OffClick = styled.TouchableOpacity`
+width: 100%;
+height:100%;
+background-color:'rgba(0,0,0,0.5)';
+align-items:center;
+justify-content:center;
+
+`
+
+export const TouchableSemCapa = styled.TouchableHighlight`
+background-color:blue;
+width: 80%;
+height:80%;
+border-radius:20px;
+
+`;
+
+export const CartContainer = styled.View`
+background-color:green;
+width: 100%;
+height:100%;
+border-radius:20px;
+
+`;
+
+
+export const Texttest = styled.Text`
+font-size: 20px;
+color:red;
+`;
+
+export const SendPost = styled.TouchableOpacity`
+
+`;

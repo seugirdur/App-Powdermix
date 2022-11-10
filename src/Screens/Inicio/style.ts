@@ -115,4 +115,28 @@ width: 95%;
 top:140px;
 height:55%;
 justify-content:center;
-background-color:${theme.colors.white}`
+background-color:${theme.colors.white};
+`;
+
+export const ModalContainer = styled.Modal`
+
+`;
+
+export const ModalView = styled.View`
+width: 100%;
+height:100%;
+justify-content:center;
+background-color:'rgba(0,0,0,0.5)';
+`;
+
+export const CartContainer = styled.View`
+background-color:green;
+width: 50%;
+height:50%;
+
+`;
+
+export const Texttest = styled.Text`
+font-size: 20px;
+color:red;
+`;

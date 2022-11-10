@@ -5,8 +5,10 @@ import {
     Entypo,
     Feather
   } from '@expo/vector-icons';
-import { Alert } from "react-native";
+import { Alert, TouchableHighlightProps } from "react-native";
 let count =1;
+
+
 
 export function QuantityBox() {
 
@@ -14,7 +16,8 @@ export function QuantityBox() {
 
  function plusQuantity(counting: number){
   count++
-     setCounter(count)
+     setCounter(count);
+
 }
 
 function minusQuantity(counting: number){
@@ -24,8 +27,9 @@ function minusQuantity(counting: number){
   } else {
     setCounter(1)
   }
+
 }
-console.log(counter)
+// console.log(counter)
 
     return (
         <S.QuantityBox>
@@ -42,7 +46,10 @@ console.log(counter)
           </S.MinusQuantity>
           <S.QuantityNumber>{counter}</S.QuantityNumber>
           <S.PlusQuantity
-          onPress={() => plusQuantity(count)}
+          onPress={
+            () => plusQuantity(count)
+           
+          }
             >
           <Feather name="plus" size={25}color="black"/>
 
