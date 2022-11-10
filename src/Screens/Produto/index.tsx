@@ -16,6 +16,9 @@ import { CardHorizontal } from "../../components/CardHorizontal";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { QuantityBox } from "../../components/QuantityBox";
+import Toast from "react-native-toast-message";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 type RouteParams = {
   item: Sheets
@@ -58,6 +61,49 @@ export function Produto() {
 
   }
 
+  async function handleStore() {
+
+    try {
+      
+    
+
+    const id = v4()
+    const produtoNome = productInfo[1]
+    const produtoDesc = productInfo[2]
+    const produtoPreco = productInfo[3]
+    const produtoImg = productInfo[4]
+    const qtd = counter
+
+    const theProduct = {
+      id,
+      produtoNome,
+      produtoDesc,
+      produtoPreco,
+      produtoImg,
+
+    }
+
+    const oldProducts = await AsyncStorage.getItem("@saveproducts:cart");
+    const previousData = oldProducts ? JSON.parse(oldProducts) : [];
+
+    const allProducts = [...previousData, theProduct]
+
+    await AsyncStorage.setItem("@saveproducts:cart", JSON.stringify(allProducts))
+    Toast.show({
+      type:'success',
+      text1:'Cadastrado com sucesso!'
+    })
+  } catch (error) {
+    console.log(error)      
+    Toast.show({
+      type:'error',
+      text1:'Não foi possível cadastrar'
+    })
+  }
+
+
+  }
+
   return (
 
     <S.Container>
@@ -97,7 +143,9 @@ export function Produto() {
 
           <QuantityBox/>
 
-          <S.ButtonBuy>
+          <S.ButtonBuy
+          onPress={handleStore}
+          >
             <S.TextButton>
               Adicionar ao carrinho
             </S.TextButton>
@@ -116,10 +164,9 @@ export function Produto() {
         <YoutubePlayer
         height={300}
         play={playing}
-        videoId={"iee2TATGMyI"}
+        videoId={productInfo[5]}
         onChangeState={onStateChange}
       />
-      <Button title={playing ? "pause" : "play"} onPress={togglePlaying} />
 
         </S.Video>
         <S.Hyperlink>Confira o manual desse item clicando aqui! ↗</S.Hyperlink>

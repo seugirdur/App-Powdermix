@@ -19,27 +19,13 @@ export type Sheets = {
   [1]: string,
   [2]: string,
   [3]: number,
-  [4]: string
+  [4]: string,
+  [5]: string
 }
 
 export function Inicio() {
 
 
-
-  // const [produtoNome, SetProdutoNome] = useState<string>();
-  // const [produtoDesc, SetProdutoDesc] = useState<string>();
-  // const [produtoPreco, SetProdutoPreco] = useState<number>();
-  // const [produtoImg, SetProdutoImg] = useState<string>();
-
-  // const id = v4();
-
-  // const newProduct = {
-  //   id,
-  //   produtoNome,
-  //   produtoDesc,
-  //   produtoPreco,
-  //   produtoImg
-  // }
 
 
   const [title, setTitle] = useState<Sheets[]>([]);
@@ -47,15 +33,6 @@ export function Inicio() {
     async function getStoreData() {
       await api.get('/getRows').then(function (response) {
         setTitle(response.data);
-
-        // console.log(response.data);
-        // const { results } = response.data;
-        // let arr = response.data;
-        // let test: Sheets[] = [];
-        // return arr.map(function(item: Sheets) {
-        //   test.push(item);
-        //   // console.log(item)
-        // })
 
       })
     }
