@@ -72,7 +72,7 @@ export function Produto() {
     const produtoDesc = productInfo[2]
     const produtoPreco = productInfo[3]
     const produtoImg = productInfo[4]
-    const qtd = counter
+    const qtd = 
 
     const theProduct = {
       id,
