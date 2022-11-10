@@ -9,6 +9,7 @@ export default {
         gray700:'#4e4e4e',
         gray500:'#d1d1d1',
         gray300:'#d9d9d9',
+        graypink:'#fdf5f5',
 
         types: {
             water: '#4A90DA',
@@ -18,7 +19,7 @@ export default {
         title: '#ED242B',
         subtitle:'#7a7a7a',
 
-        VerticalCard: {
+        Cards: {
             red: '#EB242B',
             background:'#f4f4f4',
             darkRed:'#EC272B',

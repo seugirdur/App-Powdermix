@@ -58,6 +58,11 @@ export function StatusBar() {
           <S.TouchableSemCapa>
               <S.CartContainer>
               <FlatList
+              ListHeaderComponent={
+                <>
+                  <S.TitleCart> Carrinho de Compras </S.TitleCart>
+                </>
+              }
           data={cart}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (

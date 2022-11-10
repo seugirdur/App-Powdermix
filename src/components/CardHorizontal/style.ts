@@ -43,7 +43,7 @@ width:100%;
 `;
 
 export const Titulo = styled.Text`
-color: ${theme.colors.VerticalCard.darkRed};
+color: ${theme.colors.Cards.darkRed};
 font-family:${theme.fonts.title};
 font-size: 15px;
 height:40px;

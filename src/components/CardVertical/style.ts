@@ -11,7 +11,7 @@ width:95%;
 height:100px;
 justify-content: space-between;
 flex-direction: row;
-background-color:${theme.colors.VerticalCard.background};
+background-color:${theme.colors.Cards.background};
 margin:10px;
 `;
 
@@ -40,7 +40,7 @@ width:120px;
 `;
 
 export const Titulo = styled.Text`
-color: ${theme.colors.VerticalCard.darkRed};
+color: ${theme.colors.Cards.darkRed};
 font-family:${theme.fonts.title};
 font-size: 15px;
 white-space: nowrap;
@@ -81,7 +81,7 @@ border-radius:4px;
 
 
 export const OverFlowVideo = styled.View`
-  background-color: ${theme.colors.VerticalCard.black};
+  background-color: ${theme.colors.Cards.black};
   width: 80px;
   height: 40px;
   overflow: hidden;

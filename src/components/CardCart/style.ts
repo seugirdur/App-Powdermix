@@ -2,74 +2,87 @@ import styled, { css } from 'styled-components/native';
 import theme from '../../global/styles/theme';
 
 
-type Video = {
-  type: string
-}
-
-export const CardCart = styled.TouchableOpacity`
+export const CardCartBorder = styled.TouchableOpacity`
 width:95%;
 height:100px;
+background-color:${theme.colors.gray500};
+margin:10px;
+align-items:center;
+justify-content:center;
+border-radius:4px;
+`;
+
+export const CardCart = styled.TouchableOpacity`
+width:99%;
+height:98%;
 justify-content: space-between;
 flex-direction: row;
-background-color:${theme.colors.VerticalCard.background};
-margin:10px;
+background-color:${theme.colors.Cards.background};
+align-items:center;
+padding-right:8px;
+padding-left:8px;
+border-radius:4px;
 `;
+
 
 export const ContainerImage = styled.View`
 height:80%;
-width:20%;
+width:25%;
 justify-content:center;
 align-items: center;
-background-color: ${theme.colors.VerticalCard.darkRed} ;
+background-color: ${theme.colors.Cards.darkRed} ;
 `;
 
 export const ProdutoImage = styled.Image`
-  width: 90px;
-  height: 90px;
-  justify-content:center;
+width: 100%;
+height: 100%;
+justify-content:center;
 `;
 
 export const ContainerText = styled.View`
-height:100px;
-width:120px;
+height:100%;
+width:25%;
+justify-content:center;
+background-color:blue;
+margin-left:2%;
+margin-right:2%;
 `;
 
-export const Titulo = styled.Text`
-color: ${theme.colors.VerticalCard.darkRed};
-font-family:${theme.fonts.title};
-font-size: 15px;
+export const Qtd = styled.Text`
+color: ${theme.colors.Cards.black};
+font-family:${theme.fonts.text};
+font-size: 12px;
 white-space: nowrap;
-height:40px;
 text-overflow: ellipsis;
 overflow: hidden;
 margin: 1px;
 `;
 
-export const Desc = styled.Text`
-color: ${theme.colors.subtitle};
-font-family:${theme.fonts.subTitle};
-font-size: 10px;
+export const Price = styled.Text`
+color: ${theme.colors.Cards.black};
+font-family:${theme.fonts.minusTitle};
+font-size: 12px;
 white-space: nowrap;
-overflow: hidden;
 text-overflow: ellipsis;
-height:55px;
+overflow: hidden;
+margin: 1px;
+background-color:pink;
+font-align:center;
 `;
 
-export const ContainerButton = styled.View`
-height:100px;
-width:100px;
+export const Titulo = styled.Text`
+color: ${theme.colors.Cards.darkRed};
+font-family:${theme.fonts.title};
+font-size: 11px;
+height:50%;
+margin: 1px;
+`;
+
+
+export const ContainerTextPrice = styled.View`
+height:100%;
+width:25%;
 justify-content:center;
-align-items: center;
-`;
-
-export const BuyButton = styled.TouchableOpacity`
-height:50px;
-flex-direction:row;
-width:70px;
-justify-content: center;
-align-items: center;
-border-radius: 15px;
-background-color:red
 `;
 
 

@@ -7,6 +7,7 @@ import Toast from 'react-native-toast-message';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, TouchableOpacityProps } from 'react-native'
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { QuantityBox } from "../QuantityBox";
 // import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 type Props = {
@@ -37,6 +38,8 @@ export function CardCart({ product, ...rest }: Props) {
 
   return (
 
+    <S.CardCartBorder>
+
     <S.CardCart
       type={product} {...rest}
 
@@ -50,17 +53,18 @@ export function CardCart({ product, ...rest }: Props) {
       </S.ContainerImage>
 
       <S.ContainerText>
+        <S.Qtd>1x unidade</S.Qtd>
         <S.Titulo> {product.produtoNome} </S.Titulo>
-        <S.Desc> {product.produtoDesc} </S.Desc>
       </S.ContainerText>
 
-      <S.ContainerButton>
-        
-
-      </S.ContainerButton>
+        <QuantityBox/>
+      <S.ContainerTextPrice>
+      <S.Price> R$ {product.produtoPreco} </S.Price>
+      </S.ContainerTextPrice>
 
 
 
     </S.CardCart>
+    </S.CardCartBorder>
   )
 };

@@ -101,8 +101,15 @@ height:100%;
 background-color:'rgba(0,0,0,0.5)';
 align-items:center;
 justify-content:center;
-
 `
+
+export const TitleCart = styled.Text`
+color: ${theme.colors.Cards.darkRed};
+font-family:${theme.fonts.title};
+font-size:24px;
+text-align:center;
+margin:16px;
+`;
 
 export const TouchableSemCapa = styled.TouchableHighlight`
 background-color:blue;
@@ -113,7 +120,7 @@ border-radius:20px;
 `;
 
 export const CartContainer = styled.View`
-background-color:green;
+background-color:${theme.colors.graypink};
 width: 100%;
 height:100%;
 border-radius:20px;

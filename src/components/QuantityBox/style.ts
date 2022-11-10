@@ -8,7 +8,7 @@ width: 25%;
 height:80px;
 border-radius: 15px;
 background-color:white;
-margin-right: 15px;
+
 `;
 
 export const QuantityRedBox = styled.View`
