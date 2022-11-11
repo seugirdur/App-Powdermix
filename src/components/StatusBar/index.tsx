@@ -67,11 +67,34 @@ export function StatusBar() {
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => <CardCart product={item} />}
               />
-
-              
             </S.CartContainer>
           </S.TouchableSemCapa>
         </S.OffClick>
+        <S.TouchablePost>
+          <S.PostContainer>
+          <S.LogoContainer>
+          <S.LogoImage source={logo}></S.LogoImage>
+          </S.LogoContainer>
+
+          <S.ValueContainer>
+            <S.TextValue>
+              VALOR TOTAL:
+            </S.TextValue>
+            <S.ValueCalc>
+              R$ XXXX,XX
+            </S.ValueCalc>
+          </S.ValueContainer>
+
+          <S.Row>
+            <S.RowInternal/>
+          </S.Row>
+            <S.ButtonPostContainer>
+              <S.SendPost>
+                <S.PostText> Pedir Orçamento </S.PostText>
+              </S.SendPost>
+            </S.ButtonPostContainer>
+          </S.PostContainer>
+        </S.TouchablePost>
       </S.ModalContainer>
 
       <S.Hamburguer onPress={openDrawer}>

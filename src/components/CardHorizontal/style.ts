@@ -10,8 +10,8 @@ export const CardHorizontal = styled.TouchableOpacity`
 width:100px;
 height:220px;
 justify-content: space-between;
-background-color:${theme.colors.gray500};
-margin:10px;
+background-color:${theme.colors.gray300};
+margin-left:12px;
 border-radius:8px;
 `;
 

@@ -49,7 +49,7 @@ export function Inicio() {
       <S.Carrosel>
         <S.Image
           source={{
-            uri: `https://powdermix.com.br/wp-content/uploads/2022/05/quem-somos-1024x684.jpg`,
+            uri: `https://instagram.fssz1-1.fna.fbcdn.net/v/t51.2885-15/175524349_1688765334658222_2432354789023444120_n.jpg?stp=dst-jpg_e35&_nc_ht=instagram.fssz1-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=L6cMoG-cJ28AX_L99Ch&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=MjU1NTM3ODA2NDYyMjk3MjU1MA%3D%3D.2-ccb7-5&oh=00_AfDDQx6KlYrXsgargQ6eHpSffN5TA3PE-p0dMZDn5jPKAQ&oe=6373D981&_nc_sid=30a2ef`,
           }}
         />
         <S.ButtonLeft>
