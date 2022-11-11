@@ -20,8 +20,7 @@ export function DrawerRoutes() {
 
 
     return (
-        <Navigator
-                   >
+        <Navigator>
             <Group>
                 <Screen
                     name='Inicio'
@@ -32,8 +31,7 @@ export function DrawerRoutes() {
                         drawerLabel: 'Início',
                         drawerIcon: () => <MaterialIcons name="home" size={22} />
                     }}
-    
-                /> 
+                />
             </Group>
             <Screen
                 name='FAQ'

@@ -32,6 +32,8 @@ export function StatusBar() {
     navigation.dispatch(DrawerActions.openDrawer());
   }
 
+  let isLoading = true;
+
   async function handleSeeCart() {
     const response = await AsyncStorage.getItem("@saveproducts:cart");
     const data = response ? JSON.parse(response) : [];
@@ -63,6 +65,7 @@ export function StatusBar() {
                     <S.TitleCart> Carrinho de Compras </S.TitleCart>
                   </>
                 }
+                refreshing={isLoading}
                 data={cart}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => <CardCart product={item} />}

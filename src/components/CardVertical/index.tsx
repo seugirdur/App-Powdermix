@@ -39,14 +39,14 @@ export function CardVertical({ data, ...rest }: Props) {
       const produtoNome = data[1];
       const produtoDesc = data[2];
       const produtoPreco = data[3];
-      const produtoImg = data[4];
+      const produtoImg1 = data[4];
 
       const theProduct = {
         id,
         produtoNome,
         produtoDesc,
         produtoPreco,
-        produtoImg,
+        produtoImg1,
       };
 
       const oldProducts = await AsyncStorage.getItem("@saveproducts:cart");

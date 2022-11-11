@@ -74,7 +74,9 @@ export function Produto() {
     const produtoNome = productInfo[1]
     const produtoDesc = productInfo[2]
     const produtoPreco = productInfo[3]
-    const produtoImg = productInfo[4]
+    const produtoImg1 = productInfo[4]
+    const produtoImg2 = productInfo[5]
+    const produtoImg3 = productInfo[6]
     
 
     const theProduct = {
@@ -82,7 +84,7 @@ export function Produto() {
       produtoNome,
       produtoDesc,
       produtoPreco,
-      produtoImg,
+      produtoImg1,
       counter
     }
 
@@ -211,7 +213,7 @@ export function Produto() {
         <YoutubePlayer
         height={300}
         play={playing}
-        videoId={productInfo[5]}
+        videoId={productInfo[7]}
         onChangeState={onStateChange}
       />
 

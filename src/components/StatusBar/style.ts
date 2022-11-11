@@ -133,8 +133,8 @@ export const ButtonPostContainer = styled.View`
   height: 30%;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.colors.red};;
-  top:30%;
+  background-color: ${theme.colors.red};
+  top:25%;
 `;
 
 export const SendPost = styled.TouchableOpacity`
@@ -150,6 +150,7 @@ export const PostText = styled.Text`
   font-family: ${theme.fonts.subTitle};
   color: ${theme.colors.red};
   font-size: 20px;
+  text-transform: uppercase;
 `;
 
 export const ModalPost = styled.Modal``;

@@ -21,6 +21,8 @@ export type Sheets = {
   [3]: number;
   [4]: string;
   [5]: string;
+  [6]: string;
+  [7]: string;
 };
 
 export function Inicio() {
