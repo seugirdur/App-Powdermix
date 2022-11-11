@@ -124,6 +124,8 @@ export function Produto() {
    }
  
  }
+
+ 
 // console.log(counter)
 
   return (

@@ -10,6 +10,7 @@ import { Inicio } from '../Screens/Inicio';
 import { TabRoutes } from './tab.routes'
 import { Historico } from '../Screens/Historico';
 import { FAQ } from '../Screens/FAQ';
+import theme from '../global/styles/theme';
 
 
 
@@ -27,6 +28,7 @@ export function DrawerRoutes() {
                     component={TabRoutes}
                     options={{
                         headerShown:false,
+                        drawerActiveTintColor:`${theme.colors.red}`,
                         drawerLabel: 'Início',
                         drawerIcon: () => <MaterialIcons name="home" size={22} />
                     }}
