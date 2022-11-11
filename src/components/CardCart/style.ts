@@ -43,7 +43,6 @@ export const ContainerText = styled.View`
 height:100%;
 width:25%;
 justify-content:center;
-background-color:blue;
 margin-left:2%;
 margin-right:2%;
 `;
@@ -66,7 +65,6 @@ white-space: nowrap;
 text-overflow: ellipsis;
 overflow: hidden;
 margin: 1px;
-background-color:pink;
 font-align:center;
 `;
 
@@ -85,5 +83,16 @@ width:25%;
 justify-content:center;
 `;
 
+export const CircleClose = styled.TouchableOpacity`
+width:10%;
+height:25%;
+background-color:${theme.colors.gray300};
+position: absolute;
+top:4%;
+right:2%;
+border-radius:20px;
+justify-content: center;
+align-items:center;
+`;
 
 

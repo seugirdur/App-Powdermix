@@ -1,14 +1,19 @@
 import { v4 } from "uuid";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import * as S from './style';
-import { Feather } from '@expo/vector-icons';
+import { Feather, FontAwesome, EvilIcons } from '@expo/vector-icons';
 import { Sheets } from "../../Screens/Inicio";
 import Toast from 'react-native-toast-message';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Alert, TouchableOpacityProps } from 'react-native'
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage, { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { QuantityBox } from "../QuantityBox";
+import theme from "../../global/styles/theme";
+
 // import { Toast } from "react-native-toast-message/lib/src/Toast";
+
+const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
+
 
 type Props = {
   product: CartProps
@@ -23,6 +28,7 @@ export type CartProps = {
   produtoImg: string;
 }
 
+
 let counter = 1
 function lmaoCount(counter: number) {
   counter++
@@ -30,18 +36,48 @@ function lmaoCount(counter: number) {
   console.log(counter)
 }
 
+
 export function CardCart({ product, ...rest }: Props) {
 
   function lmaoALert(name: string) {
     Alert.alert(name)
   }
 
+  
+const navigation = useNavigation();
+
+function openScreen() {
+  navigation.navigate("Inicio");
+}
+
+const [cart, setCart] = useState<CartProps[]>([]);
+
+
+async function handleRemove(id: string) {
+  const response = await getItem();
+  const previousData = response ? JSON.parse(response) : [];
+
+  const data = previousData.filter((item: CartProps) => item.id !== id);
+  setItem(JSON.stringify(data));
+  setCart(data);
+}
+
+async function handleFetchData() {
+  const response = await getItem();
+  const data = response ? JSON.parse(response) : [];
+  setCart(data);
+}
+
+useFocusEffect(useCallback(() => {
+  handleFetchData();
+}, []));
+
   return (
 
     <S.CardCartBorder>
 
     <S.CardCart
-      type={product} {...rest}
+      type={cart} {...rest}
 
     >
 
@@ -61,6 +97,12 @@ export function CardCart({ product, ...rest }: Props) {
       <S.ContainerTextPrice>
       <S.Price> R$ {product.produtoPreco} </S.Price>
       </S.ContainerTextPrice>
+
+      <S.CircleClose 
+      onPress={() => handleRemove(product.id)}
+      >
+      <EvilIcons name="close" size={24} color={theme.colors.gray700} />
+      </S.CircleClose>
 
 
 

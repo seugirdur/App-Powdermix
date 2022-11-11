@@ -56,23 +56,24 @@ export function StatusBar() {
           }}
         >
           <S.TouchableSemCapa>
-              <S.CartContainer>
+            <S.CartContainer>
               <FlatList
-              ListHeaderComponent={
-                <>
-                  <S.TitleCart> Carrinho de Compras </S.TitleCart>
-                </>
-              }
-          data={cart}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <CardCart product={item}/>
-          )}
-        />
-              </S.CartContainer>
+                ListHeaderComponent={
+                  <>
+                    <S.TitleCart> Carrinho de Compras </S.TitleCart>
+                  </>
+                }
+                data={cart}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => <CardCart product={item} />}
+              />
+
+              
+            </S.CartContainer>
           </S.TouchableSemCapa>
         </S.OffClick>
       </S.ModalContainer>
+
       <S.Hamburguer onPress={openDrawer}>
         <FontAwesome5 name="bars" size={24} color="#000" />
       </S.Hamburguer>

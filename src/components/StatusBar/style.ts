@@ -134,5 +134,9 @@ color:red;
 `;
 
 export const SendPost = styled.TouchableOpacity`
-
+background-color:${theme.colors.red};
+width:80%;
+height:30%;
 `;
+
+
