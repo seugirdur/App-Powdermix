@@ -18,7 +18,7 @@ export type CartProps = {
   produtoNome: string;
   produtoDesc: string;
   produtoPreco: number;
-  produtoImg: string;
+  produtoImg1: string;
 };
 
 let counter = 1;
