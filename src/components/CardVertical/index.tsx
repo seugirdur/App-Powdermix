@@ -6,12 +6,15 @@ import { Sheets } from "../../Screens/Inicio";
 import Toast from "react-native-toast-message";
 import { useNavigation } from "@react-navigation/native";
 import { Alert, TouchableOpacityProps } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage, { useAsyncStorage } from "@react-native-async-storage/async-storage";
 // import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 type Props = {
   data: Sheets;
 } & TouchableOpacityProps;
+
+const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
+
 
 export type CartProps = {
   id: string;
@@ -19,6 +22,7 @@ export type CartProps = {
   produtoDesc: string;
   produtoPreco: number;
   produtoImg1: string;
+  counter: number
 };
 
 let counter = 1;
@@ -47,9 +51,10 @@ export function CardVertical({ data, ...rest }: Props) {
         produtoDesc,
         produtoPreco,
         produtoImg1,
+        counter
       };
 
-      const oldProducts = await AsyncStorage.getItem("@saveproducts:cart");
+      const oldProducts = await getItem();
       const previousData = oldProducts ? JSON.parse(oldProducts) : [];
 
       const allProducts = [...previousData, theProduct];

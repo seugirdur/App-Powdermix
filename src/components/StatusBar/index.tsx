@@ -112,7 +112,10 @@ async function handleRemove(id: string) {
                           <S.Titulo> {item.produtoNome} </S.Titulo>
                         </S.ContainerText>
 
-                        <QuantityBox />
+                        <QuantityBox
+
+                        quantity={item.counter}
+                         />
                         <S.ContainerTextPrice>
                           <S.Price> R$ {item.produtoPreco} </S.Price>
                         </S.ContainerTextPrice>

@@ -17,7 +17,10 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { QuantityBox } from "../../components/QuantityBox";
 import Toast from "react-native-toast-message";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage, { useAsyncStorage } from "@react-native-async-storage/async-storage";
+
+const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
+
 
 
 type RouteParams = {
@@ -88,7 +91,7 @@ export function Produto() {
       counter
     }
 
-    const oldProducts = await AsyncStorage.getItem("@saveproducts:cart");
+    const oldProducts = await getItem();
     const previousData = oldProducts ? JSON.parse(oldProducts) : [];
 
     const allProducts = [...previousData, theProduct]
@@ -128,7 +131,6 @@ export function Produto() {
  }
 
  
-// console.log(counter)
 
   return (
 
@@ -181,10 +183,9 @@ export function Produto() {
           </S.MinusQuantity>
           <S.QuantityNumber>{counter}</S.QuantityNumber>
           <S.PlusQuantity
-          onPress={
-            () => plusQuantity(count)
-           
-          }
+            onPress={
+              () => plusQuantity(count)
+            }
             >
           <Feather name="plus" size={25}color="black"/>
 

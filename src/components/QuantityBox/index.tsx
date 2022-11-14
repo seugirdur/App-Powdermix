@@ -5,25 +5,36 @@ import {
     Entypo,
     Feather
   } from '@expo/vector-icons';
-import { Alert, TouchableHighlightProps } from "react-native";
-let count =1;
+import { Alert, TouchableHighlightProps, TouchableOpacityProps } from "react-native";
 
 
 
-export function QuantityBox() {
 
-    const [counter, setCounter] = useState<number>(1);
+let count = 1;
+
+type QuantityProps = {
+  quantity: number;
+} & TouchableOpacityProps;
+
+
+
+
+export function QuantityBox({quantity} : QuantityProps ) {
+
+  
+  
+    const [counter, setCounter] = useState<number>(quantity);
 
  function plusQuantity(counting: number){
-  count++
-     setCounter(count);
+  counting++
+     setCounter(counting);
 
 }
 
 function minusQuantity(counting: number){
-  if(count > 1) {
-    count--
-    setCounter(count)
+  if(counting > 1) {
+    counting--
+    setCounter(counting)
   } else {
     setCounter(1)
   }
@@ -38,7 +49,9 @@ function minusQuantity(counting: number){
         </S.QuantityRedBox>
         <S.QuantityWhiteBox>
           <S.MinusQuantity
-          onPress={() => minusQuantity(count)}
+          onPress={
+            () => minusQuantity(counter)
+          }
           >
           <Feather name="minus" size={25}color="black"
           />
@@ -47,7 +60,7 @@ function minusQuantity(counting: number){
           <S.QuantityNumber>{counter}</S.QuantityNumber>
           <S.PlusQuantity
           onPress={
-            () => plusQuantity(count)
+            () => plusQuantity(counter)
            
           }
             >
