@@ -12,6 +12,7 @@ import {
 
 
 import { Routes } from './src/Routes'
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 export default function App() {
 
@@ -29,5 +30,6 @@ if(!fontsLoaded){
 
   return (
     <Routes/>
+    
   );
 }

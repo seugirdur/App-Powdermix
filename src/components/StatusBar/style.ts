@@ -255,8 +255,9 @@ justify-content:center;
 
 export const ContainerText = styled.View`
 height:100%;
-width:25%;
+width:45%;
 justify-content:center;
+
 margin-left:2%;
 margin-right:2%;
 `;
@@ -264,7 +265,7 @@ margin-right:2%;
 export const Qtd = styled.Text`
 color: ${theme.colors.Cards.black};
 font-family:${theme.fonts.text};
-font-size: 12px;
+font-size: 16px;
 white-space: nowrap;
 text-overflow: ellipsis;
 overflow: hidden;
@@ -274,19 +275,20 @@ margin: 1px;
 export const Price = styled.Text`
 color: ${theme.colors.Cards.black};
 font-family:${theme.fonts.minusTitle};
-font-size: 12px;
+font-size: 14px;
 white-space: nowrap;
 text-overflow: ellipsis;
 overflow: hidden;
 margin: 1px;
+right:4px;
 font-align:center;
 `;
 
 export const Titulo = styled.Text`
 color: ${theme.colors.Cards.darkRed};
 font-family:${theme.fonts.title};
-font-size: 11px;
-height:50%;
+font-size: 14px;
+height:70%;
 margin: 1px;
 `;
 

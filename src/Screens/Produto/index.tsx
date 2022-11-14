@@ -10,6 +10,7 @@ import { Alert } from "react-native";
 import api from "../../../services/api";
 import React, { useEffect } from "react";
 import { useState, useCallback } from "react";
+import Toast from 'react-native-toast-message';
 import { StatusBar } from "../../components/StatusBar";
 import YoutubePlayer from "react-native-youtube-iframe";
 import { CardHorizontal } from "../../components/CardHorizontal";
@@ -80,6 +81,14 @@ export function Produto() {
       const allProducts = [...previousData, theProduct]
 
       await setItem(JSON.stringify(allProducts))
+
+      
+        Toast.show({
+          type: 'success',
+          text1: 'Item adicionado!',
+          text2: 'Cheque o seu carrinho ou adicione mais produtos!'
+        });
+      
     
     } catch (error) {
       console.log(error)      

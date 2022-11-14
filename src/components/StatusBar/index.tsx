@@ -11,9 +11,12 @@ import { useNavigation, DrawerActions } from "@react-navigation/native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
 
-export const formatNumber = (price: number, qtd: number) => {
+export const formatNumber = (price: number, qtd?: number) => {
 
-  let fullPrice = price * qtd;
+  let fullPrice;
+
+  qtd ? fullPrice = price * qtd : fullPrice = price
+  
   let priceWithDot = fullPrice.toFixed(2)
 
 let str = priceWithDot.toString()
@@ -24,11 +27,17 @@ return "R$ " + replaced1
 
 
 
+
 export function StatusBar() {
   const navigation = useNavigation();
   const [cart, setCart] = useState<CartProps[]>([]);
   const [isModalVisible, setModalVisible] = useState(false);
   const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
+
+
+
+  const [fullPrice, setFullPrice] = useState<number>();
+  const [fullPriceShow, setFullPriceShow] = useState<string>();
 
   function openDrawer() {
     navigation.dispatch(DrawerActions.openDrawer());
@@ -41,6 +50,7 @@ export function StatusBar() {
     const response = await getItem();
     const data = response ? JSON.parse(response) : [];
     setCart([...data]);
+    sumThePrice();
     // console.log(cart);
     if (!isModalVisible) {
       setModalVisible(true);
@@ -58,34 +68,63 @@ export function StatusBar() {
     handleSeeCart();
   }
 
-  
+  async function sumThePrice() {
+    const response = await getItem();
+    const previousData = response ? JSON.parse(response) : [];
+    // const price = previousData.filter((item: CartProps) => )
+
+    let ans= 0;
+
+    // const lmao = previousData.map((item: CartProps) => item.produtoPreco > 1);
+    var sum = previousData.map((item: CartProps) => {
+      ans+= item.produtoPreco * item.counter
+      // console.log(ans)
+    });
+
+    let formatedAnswer = formatNumber(ans)
+
+    setFullPriceShow(formatedAnswer);
+    setFullPrice(ans);
+
+
+  }
+
 
   
-  async function plusQuantity(counting: number, id: string){
-    counting++
-      // setCounter(counting);
+  
+//   async function plusQuantity(counting: number, id: string){
+//     counting++
+//       // setCounter(counting);
 
 
-      const response = await getItem();
-      const previousData = response ? JSON.parse(response) : [];
-      const data = previousData.filter((item: CartProps) => item.id == id);
-      const completeData = JSON.stringify(data);
-      setItem(completeData);
-      handleSeeCart();
+//       const response = await getItem();
+//       const previousData = response ? JSON.parse(response) : [];
+//       const data = previousData.filter((item: CartProps) => item.id == id);
+//       const completeData = JSON.stringify(data);
+      
+//       const lmao = previousData.map((item: CartProps) => item.produtoPreco )
+      
+//       setItem(completeData);
+//       handleSeeCart();
+
+//       // const array1 = [1, 4, 9, 16];
+
+//       // // pass a function to map
+//       // const map1 = array1.map(x => x * 2);
+      
+//       // expected output: Array [2, 8, 18, 32]
 
 
-
-
- }
+//  }
  
- function minusQuantity(counting: number){
-   if(counting > 1) {
-    counting--
-     setCounter(counting)
-   } else {
-     setCounter(1)
-   }
- }
+//  function minusQuantity(counting: number){
+//    if(counting > 1) {
+//     counting--
+//      setCounter(counting)
+//    } else {
+//      setCounter(1)
+//    }
+//  }
 
   return (
     <S.StatusBar>
@@ -166,7 +205,12 @@ export function StatusBar() {
 
             <S.ValueContainer>
               <S.TextValue>VALOR TOTAL:</S.TextValue>
-              <S.ValueCalc>R$ XXXX,XX</S.ValueCalc>
+                <S.ValueCalc>
+
+                  {fullPriceShow}
+                  
+                  
+                  </S.ValueCalc>
             </S.ValueContainer>
 
             <S.Row>
