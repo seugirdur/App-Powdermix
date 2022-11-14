@@ -1,69 +1,91 @@
-import {
-  FlatList,
-  ScrollView,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
 import * as S from "./style";
-import React, { useEffect, useState } from "react";
-import { Entypo } from "@expo/vector-icons";
-import { CardVertical, CartProps } from "../CardVertical";
-import { Feather, EvilIcons } from "@expo/vector-icons";
-import logo from "../../assets/onlyname.png";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
-import { Toast } from "react-native-toast-message/lib/src/Toast";
-import {useAsyncStorage} from "@react-native-async-storage/async-storage";
-import { useNavigation, DrawerActions } from "@react-navigation/native";
-// import { CardCart } from "../CardCart";
-import theme from "../../global/styles/theme";
+import { FlatList } from "react-native";
+import React, { useState } from "react";
+import { CartProps } from "../CardVertical";
 import { QuantityBox } from "../QuantityBox";
+import logo from "../../assets/onlyname.png";
+import theme from "../../global/styles/theme";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { Feather, EvilIcons } from "@expo/vector-icons";
+import { useNavigation, DrawerActions } from "@react-navigation/native";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
 
-const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
+export const formatNumber = (price: number, qtd: number) => {
+
+  let fullPrice = price * qtd;
+  let priceWithDot = fullPrice.toFixed(2)
+
+let str = priceWithDot.toString()
+const replaced1 = str.replace('.', ',');
+
+return "R$ " + replaced1
+}
+
+
 
 export function StatusBar() {
-  const [cart, setCart] = useState<CartProps[]>([]);
-
   const navigation = useNavigation();
-
-  function openScreen() {
-    navigation.navigate("Produto");
-  }
+  const [cart, setCart] = useState<CartProps[]>([]);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
 
   function openDrawer() {
     navigation.dispatch(DrawerActions.openDrawer());
   }
 
-  let isLoading = true;
-
+  
 
 
   async function handleSeeCart() {
     const response = await getItem();
     const data = response ? JSON.parse(response) : [];
     setCart([...data]);
-    console.log(cart);
+    // console.log(cart);
     if (!isModalVisible) {
       setModalVisible(true);
     }
   }
 
+  const [counter, setCounter] = useState<number>();
+
+  async function handleRemove(id: string) {
+    const response = await getItem();
+    const previousData = response ? JSON.parse(response) : [];
+    const data = previousData.filter((item: CartProps) => item.id !== id);
+    const completeData = JSON.stringify(data);
+    setItem(completeData);
+    handleSeeCart();
+  }
+
   
-async function handleRemove(id: string) {
-  const response = await getItem();
-  const previousData = response ? JSON.parse(response) : [];
 
-  const data = previousData.filter((item: CartProps) => item.id !== id);
-  const lmao = JSON.stringify(data);
-  setItem(lmao);
-  handleSeeCart()
-}
+  
+  async function plusQuantity(counting: number, id: string){
+    counting++
+      // setCounter(counting);
 
 
-  const [isModalVisible, setModalVisible] = useState(false);
+      const response = await getItem();
+      const previousData = response ? JSON.parse(response) : [];
+      const data = previousData.filter((item: CartProps) => item.id == id);
+      const completeData = JSON.stringify(data);
+      setItem(completeData);
+      handleSeeCart();
+
+
+
+
+ }
+ 
+ function minusQuantity(counting: number){
+   if(counting > 1) {
+    counting--
+     setCounter(counting)
+   } else {
+     setCounter(1)
+   }
+ }
 
   return (
     <S.StatusBar>
@@ -86,54 +108,52 @@ async function handleRemove(id: string) {
                     <S.TitleCart> Carrinho de Compras </S.TitleCart>
                   </>
                 }
-                refreshing={isLoading}
                 extraData={cart}
                 data={cart}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => {
-
                   return (
                     <S.CardCartBorder>
-
-                      <S.CardCart
-                        type={cart}
-
-                      >
-
+                      <S.CardCart type={cart}>
                         <S.ContainerImage>
-                          <S.ProdutoImage
-                            source={{ uri: item.produtoImg1 }}
-
-                          />
+                          <S.ProdutoImage source={{ uri: item.produtoImg1 }} />
                         </S.ContainerImage>
 
                         <S.ContainerText>
-                          <S.Qtd>1x unidade</S.Qtd>
+                          <S.Qtd>{item.counter}x { item.counter > 1 ? "unidades": "unidade" }</S.Qtd>
                           <S.Titulo> {item.produtoNome} </S.Titulo>
                         </S.ContainerText>
 
-                        <QuantityBox
 
-                        quantity={item.counter}
-                         />
+
+                       
+
+
                         <S.ContainerTextPrice>
-                          <S.Price> R$ {item.produtoPreco} </S.Price>
+                          <S.Price>
+                            
+                            {formatNumber(item.produtoPreco, item.counter )}
+                            
+                            
+                 
+                             
+                             
+                             
+                             
+                             </S.Price>
                         </S.ContainerTextPrice>
 
-                        <S.CircleClose
-                          onPress={() => handleRemove(item.id)}
-                        >
-                          <EvilIcons name="close" size={24} color={theme.colors.gray700} />
+                        <S.CircleClose onPress={() => handleRemove(item.id)}>
+                          <EvilIcons
+                            name="close"
+                            size={24}
+                            color={theme.colors.gray700}
+                          />
                         </S.CircleClose>
-
-
-
                       </S.CardCart>
                     </S.CardCartBorder>
-                  )
-
-                }
-              }
+                  );
+                }}
               />
             </S.CartContainer>
           </S.TouchableSemCapa>
@@ -145,12 +165,8 @@ async function handleRemove(id: string) {
             </S.LogoContainer>
 
             <S.ValueContainer>
-              <S.TextValue>
-                VALOR TOTAL:
-              </S.TextValue>
-              <S.ValueCalc>
-                R$ XXXX,XX
-              </S.ValueCalc>
+              <S.TextValue>VALOR TOTAL:</S.TextValue>
+              <S.ValueCalc>R$ XXXX,XX</S.ValueCalc>
             </S.ValueContainer>
 
             <S.Row>

@@ -1,5 +1,4 @@
 import { v4 } from "uuid";
-import React, { useEffect } from "react";
 import {
   MaterialIcons,
   Entypo,
@@ -7,47 +6,35 @@ import {
 } from '@expo/vector-icons';
 import * as S from './style';
 import { Sheets } from "../Inicio";
+import { Alert } from "react-native";
 import api from "../../../services/api";
-import { StyleSheet, Alert, Button } from "react-native";
-import { useState, useCallback, useRef } from "react";
+import React, { useEffect } from "react";
+import { useState, useCallback } from "react";
 import { StatusBar } from "../../components/StatusBar";
 import YoutubePlayer from "react-native-youtube-iframe";
 import { CardHorizontal } from "../../components/CardHorizontal";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
-import { QuantityBox } from "../../components/QuantityBox";
-import Toast from "react-native-toast-message";
-import AsyncStorage, { useAsyncStorage } from "@react-native-async-storage/async-storage";
-
-const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
-
-
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
 type RouteParams = {
   item: Sheets
 }
 
-let count =1;
-
-
 export function Produto() {
+  
+  const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
+  const [playing, setPlaying] = useState(false);
+  const [counter, setCounter] = useState<number>(1);
 
   const route = useRoute();
   const { item } = route.params as RouteParams
-
   const productInfo = item;
 
-  const [playing, setPlaying] = useState(false);
-
-  const onStateChange = useCallback((state: any) => {
+  const onStateChange = useCallback((state: string) => {
     if (state === "ended") {
       setPlaying(false);
       Alert.alert("video has finished playing!");
     }
-  }, []);
-
-  const togglePlaying = useCallback(() => {
-    setPlaying((prev) => !prev);
   }, []);
 
   const [title, setTitle] = useState<Sheets[]>([]);
@@ -64,73 +51,66 @@ export function Produto() {
 
   function openScreen(item: Sheets) {
     navigation.navigate('Produto', { item })
-
   }
+
+  const produtoNome = productInfo[1]
+  const produtoDesc = productInfo[2]
+  const produtoPreco = productInfo[3]
+  const produtoImg1 = productInfo[4]
+  const produtoImg2 = productInfo[5]
+  const produtoImg3 = productInfo[6]
+  const produtoVideo = productInfo[7]
 
   async function handleStore() {
-
     try {
-      
-    
+      const id = v4()
 
-    const id = v4()
-    const produtoNome = productInfo[1]
-    const produtoDesc = productInfo[2]
-    const produtoPreco = productInfo[3]
-    const produtoImg1 = productInfo[4]
-    const produtoImg2 = productInfo[5]
-    const produtoImg3 = productInfo[6]
-    
+      const theProduct = {
+        id,
+        produtoNome,
+        produtoDesc,
+        produtoPreco,
+        produtoImg1,
+        counter
+      }
 
-    const theProduct = {
-      id,
-      produtoNome,
-      produtoDesc,
-      produtoPreco,
-      produtoImg1,
-      counter
+      const oldProducts = await getItem();
+      const previousData = oldProducts ? JSON.parse(oldProducts) : [];
+
+      const allProducts = [...previousData, theProduct]
+
+      await setItem(JSON.stringify(allProducts))
+    
+    } catch (error) {
+      console.log(error)      
     }
-
-    const oldProducts = await getItem();
-    const previousData = oldProducts ? JSON.parse(oldProducts) : [];
-
-    const allProducts = [...previousData, theProduct]
-
-    await AsyncStorage.setItem("@saveproducts:cart", JSON.stringify(allProducts))
-    Toast.show({
-      type:'success',
-      text1:'Cadastrado com sucesso!'
-    })
-  } catch (error) {
-    console.log(error)      
-    Toast.show({
-      type:'error',
-      text1:'Não foi possível cadastrar'
-    })
   }
 
 
-  }
+  const formatNumber = (price: number) => {
 
-  const [counter, setCounter] = useState<number>(1);
+    let priceWithDot = price.toFixed(2)
+  
+  let str = priceWithDot.toString()
+  const replaced1 = str.replace('.', ',');
+  
+  return "R$ " + replaced1
+  }
+  
 
   function plusQuantity(counting: number){
-   count++
-      setCounter(count);
- 
+    counting++
+      setCounter(counting);
  }
  
  function minusQuantity(counting: number){
-   if(count > 1) {
-     count--
-     setCounter(count)
+   if(counting > 1) {
+    counting--
+     setCounter(counting)
    } else {
      setCounter(1)
    }
- 
  }
-
- 
 
   return (
 
@@ -141,7 +121,7 @@ export function Produto() {
 
         <S.Carrosel>
           <S.Image
-            source={{ uri: `${productInfo[4]}` }}
+            source={{ uri: `${produtoImg1}` }}
           ></S.Image>
           <S.ButtonLeft>
             <MaterialIcons name="arrow-back-ios" size={24} color="red" />
@@ -158,13 +138,17 @@ export function Produto() {
         </S.ThreeDots>
 
         <S.Prices>
-          <S.OriginalPrice>R$ {productInfo[3]}</S.OriginalPrice>
-          <S.PromocionalPrice>R$ {productInfo[3]}</S.PromocionalPrice>
+          <S.OriginalPrice>
+            {formatNumber(produtoPreco)}
+            </S.OriginalPrice>
+          <S.PromocionalPrice>
+            {formatNumber(produtoPreco)}
+            </S.PromocionalPrice>
         </S.Prices>
 
         <S.Name>
           <S.Title>Nome:</S.Title>
-          <S.BigName>{productInfo[1]}</S.BigName>
+          <S.BigName>{produtoNome}</S.BigName>
         </S.Name>
 
         <S.ContainerButton>
@@ -175,7 +159,7 @@ export function Produto() {
         </S.QuantityRedBox>
         <S.QuantityWhiteBox>
           <S.MinusQuantity
-          onPress={() => minusQuantity(count)}
+          onPress={() => minusQuantity(counter)}
           >
           <Feather name="minus" size={25}color="black"
           />
@@ -184,7 +168,7 @@ export function Produto() {
           <S.QuantityNumber>{counter}</S.QuantityNumber>
           <S.PlusQuantity
             onPress={
-              () => plusQuantity(count)
+              () => plusQuantity(counter)
             }
             >
           <Feather name="plus" size={25}color="black"/>
@@ -206,7 +190,7 @@ export function Produto() {
         <S.Description>
           <S.TitleDesc>DESCRIÇÃO:</S.TitleDesc>
           <S.TextDesc>
-          {productInfo[2]}
+          {produtoDesc}
             </S.TextDesc>
         </S.Description>
 
@@ -214,7 +198,7 @@ export function Produto() {
         <YoutubePlayer
         height={300}
         play={playing}
-        videoId={productInfo[7]}
+        videoId={produtoVideo}
         onChangeState={onStateChange}
       />
 
