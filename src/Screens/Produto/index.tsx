@@ -7,7 +7,7 @@ import {
 import * as S from './style';
 import { Sheets } from "../Inicio";
 import { Alert } from "react-native";
-import api from "../../../services/api";
+import {api} from "../../../services/api";
 import React, { useEffect } from "react";
 import { useState, useCallback } from "react";
 import Toast from 'react-native-toast-message';

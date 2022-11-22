@@ -44,6 +44,12 @@ export function StatusBar() {
   }
 
   
+  function openScreen() {
+    navigation.navigate("Enviar");
+    //está fazendo o botão perder a animation, mas serve para abrir o cart no return
+    setModalVisible(false);
+
+  }
 
 
   async function handleSeeCart() {
@@ -67,6 +73,7 @@ export function StatusBar() {
     setItem(completeData);
     handleSeeCart();
   }
+
 
   async function sumThePrice() {
     const response = await getItem();
@@ -218,7 +225,9 @@ export function StatusBar() {
             </S.Row>
             <S.ButtonPostContainer>
               <S.SendPost>
-                <S.PostText> Pedir Orçamento </S.PostText>
+                <S.PostText
+                onPress={openScreen}
+                > Pedir Orçamento </S.PostText>
               </S.SendPost>
             </S.ButtonPostContainer>
           </S.PostContainer>

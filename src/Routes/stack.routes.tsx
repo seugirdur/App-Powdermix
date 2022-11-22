@@ -7,6 +7,8 @@ import { Historico } from '../Screens/Historico';
 import { Pedidos } from '../Screens/Pedidos';
 import { Contato } from '../Screens/Contato';
 import { Produto } from '../Screens/Produto';
+import { Formulario } from '../Screens/Formulario';
+import { Enviar } from '../Screens/Enviar';
 
 const screenOptionStyle = {
     headerStyle: {
@@ -44,6 +46,37 @@ export function IniPro() {
                     headerTintColor: 'white',
                 }}
             />
+
+            <Screen
+                name='Formulario'
+                component={Formulario}
+                options={{
+                    headerShown: false,
+
+                    title: 'Tela C',
+                    headerTitleAlign: 'center',
+                    headerStyle: {
+                        backgroundColor: 'navy'
+                    },
+                    headerTintColor: 'white',
+                }}
+            />
+
+            <Screen
+                name='Enviar'
+                component={Enviar}
+                options={{
+                    headerShown: false,
+
+                    title: 'Tela D',
+                    headerTitleAlign: 'center',
+                    headerStyle: {
+                        backgroundColor: 'navy'
+                    },
+                    headerTintColor: 'white',
+                }}
+            />
+
         </Navigator>
     )
 }
@@ -66,4 +99,6 @@ export function IniHis() {
             />
         </Navigator>
     )
+
+    
 }

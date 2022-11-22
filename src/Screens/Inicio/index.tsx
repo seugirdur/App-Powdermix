@@ -2,7 +2,7 @@ import { v4 } from "uuid";
 import * as S from "./style";
 import * as React from "react";
 import "react-native-get-random-values";
-import api from "../../../services/api";
+import {api} from "../../../services/api";
 import { Entypo } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 import { FlatList, Modal } from "react-native";

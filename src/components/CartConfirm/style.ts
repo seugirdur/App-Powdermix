@@ -1,12 +1,15 @@
 import styled from "styled-components/native";
 import theme from "../../global/styles/theme";
 
-export const Container = styled.View`
-    flex:1
-    background-color: #EEEEEE
-    position: absolute;
 
-`;
+
+
+export const Container = styled.View`
+height: 40%;
+    background-color: yellow;
+    padding: 24px;
+`
+
 
 export const StatusBar = styled.View`
   width: 100%;
@@ -312,4 +315,3 @@ border-radius:20px;
 justify-content: center;
 align-items:center;
 `;
-

@@ -9,6 +9,8 @@ export declare global {
             Contato: undefined;
             Historico: undefined;
             Produto: any;
+            Formulario: undefined;
+            Enviar: undefined;
             FAQ: undefined;
             };
         }
