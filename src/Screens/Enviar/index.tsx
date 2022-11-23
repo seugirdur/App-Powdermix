@@ -10,9 +10,6 @@ import * as S from './style'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
-// const getInfo = const { getItem } = useAsyncStorage("@saveinfo:personalinfo");
-
-
 
 export function Enviar() {
     const [cart, setCart] = useState<CartProps[]>([]);
@@ -34,23 +31,42 @@ export function Enviar() {
         setEmail(personalInfo.email)
         setCep(personalInfo.cep)
         setSmartphone(personalInfo.smartphone)
-        console.log(personalInfo)
+        // console.log(personalInfo)
 
-        const cartItems = getCart ? JSON.parse(getCart) : [];
+        const cartItems: CartProps[] = getCart ? JSON.parse(getCart) : [];
         
+        let produtos="";
+
+        for(let i = 0; i < cartItems.length; i++) {
+          produtos += "Produto: " + cartItems[i].produtoNome + ", \n"
+          + "Preço: " + cartItems[i].produtoPreco + ", \n"
+          + "Quantidade: " + cartItems[i].counter + ", \n"
+
+        }
+        const myBrazilianDate = new Date().toLocaleDateString("pt-BR", {timeZone: "America/Sao_Paulo"})
+
+      //   function dataAtualFormatada(){
+      //     var data = new Date(),
+      //         dia  = data.getDate().toString().padStart(2, '0'),
+      //         mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+      //         ano  = data.getFullYear();
+      //     return dia+"/"+mes+"/"+ano;
+      // }
+      // const date = new Date().toLocaleTimeString();
+
 
         await api2.post("", {
           name:personalInfo.name,
-
-          desc:personalInfo.name + "\n"
-          + personalInfo.cpf + "\n"
-          + personalInfo.email + "\n"
-          + personalInfo.cep + "\n"
-          + personalInfo.smartphone + "\n"
-          + getCart + "\n",
+          desc:"Nome: " + personalInfo.name + "\n"
+          + "CPF/CNPJ: " + personalInfo.cpf + "\n"
+          + "Email: " + personalInfo.email + "\n"
+          + "CEP: " + personalInfo.cep + "\n"
+          + "Telefone/Celular: " + personalInfo.smartphone + "\n" + "\n"
+          + "Pedido: \n"+ produtos + "\n\n"
+          + "Hora do Pedido: \n"+ myBrazilianDate
+          + "\n",
         //   + personalInfo.name + "\n"
         //   + personalInfo.name + "\n",
-
           idList:"637ca9c85c09a903cffd99eb"
       })
 

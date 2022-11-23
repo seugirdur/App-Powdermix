@@ -4,12 +4,12 @@
     "slug": "rn-navigation-v6",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logoicon.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/SplashScreen_expo.png",
+      "image": "./assets/splash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#fdf5f5"
+      "backgroundColor": "#eb242c"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,8 +22,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logoonlyadaptative.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#EB242C"
       },
       "package": "com.seugirdur.rnnavigationv6"
     },

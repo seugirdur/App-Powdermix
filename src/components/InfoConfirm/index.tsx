@@ -34,7 +34,7 @@ function openScreen() {
         setEmail(personalInfo.email)
         setCep(personalInfo.cep)
         setSmartphone(personalInfo.smartphone)
-        console.log(personalInfo)
+        // console.log(personalInfo)
       }
    
 
@@ -59,7 +59,9 @@ function openScreen() {
 
 
 <S.ContainerButton>
-            <S.AtualizarInfo>
+            <S.AtualizarInfo
+            onPress={openScreen}
+            >
 <S.TextAtualizarinfo>
     Atualizar Info
 </S.TextAtualizarinfo>
