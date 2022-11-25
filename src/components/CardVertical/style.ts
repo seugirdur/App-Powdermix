@@ -18,34 +18,35 @@ margin:10px;
 
 
 export const ContainerImage = styled.View`
-height:100px;
-width:100px;
+height:100%;
+width:27%;
 justify-content:center;
 align-items: center;
 
 `;
 
 export const ProdutoImage = styled.Image`
-  width: 90px;
-  height: 90px;
+  width: 100%;
+  height: 90%;
   justify-content:center;
 `;
 
 
 
 export const ContainerText = styled.View`
-height:100px;
-width:120px;
+height:90%;
+width:40%;
+/* background: blue; */
 
 `;
 
 export const Titulo = styled.Text`
 color: ${theme.colors.Cards.darkRed};
 font-family:${theme.fonts.title};
-font-size: 15px;
+/* font-size: 15px; */
 white-space: nowrap;
-height:40px;
 text-overflow: ellipsis;
+/* background: yellow; */
 overflow: hidden;
 margin: 1px;
 
@@ -55,10 +56,12 @@ export const Desc = styled.Text`
 color: ${theme.colors.subtitle};
 font-family:${theme.fonts.subTitle};
 font-size: 10px;
+/* background: pink; */
+flex: 1;
 white-space: nowrap;
-overflow: hidden;
+/* overflow: hidden; */
 text-overflow: ellipsis;
-height:55px;
+height:100%;
 `;
 
 

@@ -60,18 +60,18 @@ export function CardVertical({ data, ...rest }: Props) {
       </S.ContainerImage>
 
       <S.ContainerText>
-        <S.Titulo> {produtoNome} </S.Titulo>
-        <S.Desc> {produtoDesc} </S.Desc>
+        <S.Titulo>{produtoNome}</S.Titulo>
+        <S.Desc>{produtoDesc}</S.Desc>
       </S.ContainerText>
 
-      <S.ContainerVideo>
+      {/* <S.ContainerVideo>
         <S.Video source={{ uri: produtoImg1 }} />
         <S.OverFlowVideo />
 
         <S.VideoIcon>
           <Feather name="play" size={24} color="white" />
         </S.VideoIcon>
-      </S.ContainerVideo>
+      </S.ContainerVideo> */}
 
       <S.ContainerButton>
         <S.BuyButton

@@ -1,7 +1,7 @@
 export default {
     colors: {
         white: '#fff',
-        red: '#EB242B',
+        red: '#EB242C',
         textWhite: '#fff',
         textblack: '#000',
         background:'#EEEEEE',
@@ -10,19 +10,21 @@ export default {
         gray500:'#d1d1d1',
         gray300:'#d9d9d9',
         graypink:'#fdf5f5',
+        cinzapowdermixescuro:'#545557',
+        cinzapowdermixclaro:'#c1bdbe',
 
         types: {
             water: '#4A90DA',
         },
 
         text: 'rgba(23, 23, 27, 0.6)',
-        title: '#ED242B',
+        title: '#ED242C',
         subtitle:'#7a7a7a',
 
         Cards: {
-            red: '#EB242B',
+            red: '#EB242C',
             background:'#f4f4f4',
-            darkRed:'#EC272B',
+            darkRed:'#EC272C',
             white:'#FFF',
             black:'#000',
         },

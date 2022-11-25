@@ -4,7 +4,7 @@ import  Toast  from "react-native-toast-message";
 import { api2 } from "../../../services/api";
 import { CartProps } from "../../components/CardVertical";
 import { CartConfirm } from "../../components/CartConfirm";
-import { HeaderEnviar } from "../../components/HeaderEnviar";
+import { HeaderEnviarCart } from "../../components/HeaderEnviarCart";
 import { InfoConfirm } from "../../components/InfoConfirm";
 import * as S from './style'
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -86,6 +86,7 @@ export function Enviar() {
         <>
         <InfoConfirm/>
         <CartConfirm/>
+        <S.TextWarning>* entraremos em contato via whatsapp após o pedido, para combinar o frete</S.TextWarning>
         <S.ButtonEnviar
         onPress={postTrello}
         >

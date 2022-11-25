@@ -56,7 +56,7 @@ export function Inicio() {
         />
         <S.ButtonLeft>
           <MaterialIcons name="arrow-back-ios" size={24} color="red" />
-        </S.ButtonLeft>
+        </S.ButtonLeft> 
         <S.ButtonRight>
           <MaterialIcons name="arrow-forward-ios" size={24} color="red" />
         </S.ButtonRight>

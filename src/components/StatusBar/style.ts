@@ -218,7 +218,7 @@ background-color: ${theme.colors.white};
 `;
 
 
-export const CardCartBorder = styled.TouchableOpacity`
+export const CardCartBorder = styled.TouchableHighlight`
 width:95%;
 height:100px;
 background-color:${theme.colors.gray500};
@@ -228,12 +228,12 @@ justify-content:center;
 border-radius:4px;
 `;
 
-export const CardCart = styled.TouchableOpacity`
+export const CardCart = styled.View`
 width:99%;
 height:98%;
 justify-content: space-between;
 flex-direction: row;
-background-color:${theme.colors.Cards.background};
+background-color:${theme.colors.Cards.white};
 align-items:center;
 padding-right:8px;
 padding-left:8px;
@@ -258,17 +258,18 @@ justify-content:center;
 export const ContainerText = styled.View`
 height:100%;
 width:45%;
-justify-content:center;
-
+/* justify-content:center; */
+margin-top:6%;
 margin-left:2%;
 margin-right:2%;
 `;
 
 export const Qtd = styled.Text`
-color: ${theme.colors.Cards.black};
-font-family:${theme.fonts.text};
-font-size: 16px;
+color: ${theme.colors.cinzapowdermixescuro};
+font-family:${theme.fonts.subTitle};
+font-size: 14px;
 white-space: nowrap;
+/* background: blue; */
 text-overflow: ellipsis;
 overflow: hidden;
 margin: 1px;
@@ -290,8 +291,9 @@ export const Titulo = styled.Text`
 color: ${theme.colors.Cards.darkRed};
 font-family:${theme.fonts.title};
 font-size: 14px;
-height:70%;
+height:44%;
 margin: 1px;
+/* background: yellow; */
 `;
 
 
@@ -302,9 +304,9 @@ justify-content:center;
 `;
 
 export const CircleClose = styled.TouchableOpacity`
-width:10%;
-height:25%;
-background-color:${theme.colors.gray300};
+width:24px;
+height:24px;
+background-color:${theme.colors.red};
 position: absolute;
 top:4%;
 right:2%;

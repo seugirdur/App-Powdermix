@@ -7,14 +7,12 @@ interface Props {
 }
 
 
-export function HeaderEnviar({title}: Props) {
+export function HeaderEnviarInfo({title}: Props) {
 
   return (
 
     <S.Container>
-      <S.Title>
-      {title}
-      </S.Title>
+      <S.Title>{title}</S.Title>
 
       <S.Subtitle>
         

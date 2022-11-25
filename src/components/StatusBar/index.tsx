@@ -156,18 +156,20 @@ export function StatusBar() {
                 }
                 extraData={cart}
                 data={cart}
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => {
                   return (
                     <S.CardCartBorder>
                       <S.CardCart type={cart}>
                         <S.ContainerImage>
-                          <S.ProdutoImage source={{ uri: item.produtoImg1 }} />
+                          <S.ProdutoImage source={{uri:item.produtoImg1}} />
                         </S.ContainerImage>
 
                         <S.ContainerText>
+                          <S.Titulo>{item.produtoNome}</S.Titulo>
                           <S.Qtd>{item.counter}x { item.counter > 1 ? "unidades": "unidade" }</S.Qtd>
-                          <S.Titulo> {item.produtoNome} </S.Titulo>
                         </S.ContainerText>
 
 
@@ -192,8 +194,8 @@ export function StatusBar() {
                         <S.CircleClose onPress={() => handleRemove(item.id)}>
                           <EvilIcons
                             name="close"
-                            size={24}
-                            color={theme.colors.gray700}
+                            size={20}
+                            color={theme.colors.white}
                           />
                         </S.CircleClose>
                       </S.CardCart>
@@ -212,22 +214,20 @@ export function StatusBar() {
 
             <S.ValueContainer>
               <S.TextValue>VALOR TOTAL:</S.TextValue>
-                <S.ValueCalc>
-
-                  {fullPriceShow}
-                  
-                  
-                  </S.ValueCalc>
+                <S.ValueCalc>{fullPriceShow}</S.ValueCalc>
             </S.ValueContainer>
 
             <S.Row>
               <S.RowInternal />
             </S.Row>
-            <S.ButtonPostContainer>
-              <S.SendPost>
+            <S.ButtonPostContainer
+            >
+              <S.SendPost
+                          onPress={openScreen}
+                          >
                 <S.PostText
-                onPress={openScreen}
-                > Pedir Orçamento </S.PostText>
+                
+                >Pedir Orçamento</S.PostText>
               </S.SendPost>
             </S.ButtonPostContainer>
           </S.PostContainer>

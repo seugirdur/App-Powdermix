@@ -3,15 +3,15 @@ import theme from '../../global/styles/theme';
 
 export const Container = styled.View`
   width: 100%;
-  margin-top: 16px;
+  
 `;
 
 export const Title = styled.Text`
-  font-size: 40px;
-  color: #47474D;
-  font-family:${theme.fonts.minusTitle};
-
-  margin-top: 30px;
+  font-size: 16px;
+  color: ${theme.colors.red};
+  font-family:${theme.fonts.title};
+  text-transform:uppercase;
+  margin-top: 16px;
 `;
 
 export const Subtitle = styled.Text`

@@ -24,27 +24,29 @@ type RouteParams = {
 export function Produto() {
   
   const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
-  const [playing, setPlaying] = useState(false);
+  // const [playing, setPlaying] = useState(false);
   const [counter, setCounter] = useState<number>(1);
 
   const route = useRoute();
   const { item } = route.params as RouteParams
   const productInfo = item;
 
-  const onStateChange = useCallback((state: string) => {
-    if (state === "ended") {
-      setPlaying(false);
-      Alert.alert("video has finished playing!");
-    }
-  }, []);
+  // const onStateChange = useCallback((state: string) => {
+  //   if (state === "ended") {
+  //     setPlaying(false);
+  //     Alert.alert("video has finished playing!");
+  //   }
+  // }, []);
 
   const [title, setTitle] = useState<Sheets[]>([]);
   useEffect(() => {
     async function getStoreData() {
       await api.get('/getRows').then(function (response) {
         setTitle(response.data); 
+        console.log("1");
       })    
     }
+    console.log("2");
     getStoreData();
   }, []);
 
@@ -52,6 +54,7 @@ export function Produto() {
 
   function openScreen(item: Sheets) {
     navigation.navigate('Produto', { item })
+    console.log("3");
   }
 
   const produtoNome = productInfo[1]
@@ -64,6 +67,7 @@ export function Produto() {
 
   async function handleStore() {
     try {
+      console.log("4");
       const id = v4()
 
       const theProduct = {
@@ -97,6 +101,7 @@ export function Produto() {
 
 
   const formatNumber = (price: number) => {
+    console.log("5");
 
     let priceWithDot = price.toFixed(2)
   
@@ -108,11 +113,13 @@ export function Produto() {
   
 
   function plusQuantity(counting: number){
+    console.log("6");
     counting++
       setCounter(counting);
  }
  
  function minusQuantity(counting: number){
+  console.log("7");
    if(counting > 1) {
     counting--
      setCounter(counting)
@@ -206,9 +213,9 @@ export function Produto() {
         <S.Video>
         <YoutubePlayer
         height={300}
-        play={playing}
         videoId={produtoVideo}
-        onChangeState={onStateChange}
+        webViewStyle={ {opacity:0.99} }
+
       />
 
         </S.Video>
