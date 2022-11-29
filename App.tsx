@@ -52,7 +52,7 @@ export default function App() {
   }, [appIsReady]);
 
   if (!appIsReady) {
-    return null;
+    <AppLoading/>
   }
 
   onLayoutRootView();
@@ -76,9 +76,6 @@ export default function App() {
 //   }
 
 
-// if(!fontsLoaded){
-//   <AppLoading/>
-// }
 
 // if (!IsReady) {
 //   return (

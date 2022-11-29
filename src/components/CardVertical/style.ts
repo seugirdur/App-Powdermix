@@ -12,7 +12,10 @@ height:100px;
 justify-content: space-between;
 flex-direction: row;
 background-color:${theme.colors.Cards.background};
-margin:10px;
+margin-left:10px;
+margin-right:10px;
+margin-bottom:15px;
+
 `;
 
 

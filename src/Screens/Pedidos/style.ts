@@ -248,9 +248,9 @@ padding: 12px;
 `;
 
 export const Total = styled.View`
-background:red;
+background:${theme.colors.red};
 border-radius:16px;
-width:80%;
+width:95%;
 /* top:100px; */
 /* height:55%; */
 margin-left:12px;

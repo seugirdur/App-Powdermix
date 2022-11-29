@@ -59,9 +59,10 @@ flex-direction: row;
 justify-content:center
 `
 
-export const Flatlist = styled.TouchableOpacity`
+export const FlatlistA = styled.TouchableOpacity`
 position:relative;
 left:90%;
+/* top:-16px; */
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -81,8 +82,9 @@ export const CardContainer = styled.View`
 margin-left: auto;
 margin-right: auto;
 width: 95%;
-top:140px;
-height:55%;
+top:120px;
+height:50%;
+margin-bottom:80px;
 justify-content:center;
 background-color:${theme.colors.white};
 `;

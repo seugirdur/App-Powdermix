@@ -19,11 +19,11 @@ width: 100%;
 margin-top:4px;
 height:300px;
 justify-content:center;
-/* background-color:red */
+background-color:red
 `
 
 export const Image = styled.Image`
-height:100%;
+height:300px;
 width: 100%;
 margin-left: auto;
 margin-right: auto;

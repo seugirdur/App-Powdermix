@@ -20,6 +20,7 @@ flex-direction: row;
 
 export const ContainerFlat = styled.View`
 top:140px;
+margin-bottom:200px;
 `;
 
 export const TitleHistoric = styled.Text`
