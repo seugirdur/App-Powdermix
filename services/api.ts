@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const api = axios.create({
   baseURL: 'https://powdermixserver.fly.dev',
-  // baseURL: 'http://192.168.0.191:3001,
+  // baseURL: 'http://192.168.1.101:8080',
 });
 
 export const api2 = axios.create({

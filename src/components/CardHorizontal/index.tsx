@@ -19,11 +19,15 @@ let counter = 1;
 
 export function CardHorizontal({ data, ...rest }: any) {
 
+  let imagesArr = data[4].split(',');
+
   const id = v4();
   const produtoNome = data[1];
   const produtoDesc = data[2];
   const produtoPreco = data[3];
-  const produtoImg1 = data[4];
+  const produtoImg1 = imagesArr[0];
+
+  
 
   async function handleStore() {
     try {
@@ -56,7 +60,7 @@ export function CardHorizontal({ data, ...rest }: any) {
   return (
     <S.CardHorizontal type={data} {...rest}>
       <S.ContainerImage>
-        <S.ProdutoImage source={{ uri: data[4] }} />
+        <S.ProdutoImage source={{ uri: produtoImg1 }} />
       </S.ContainerImage>
 
       <S.ContainerText>

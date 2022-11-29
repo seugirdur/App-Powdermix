@@ -6,7 +6,7 @@ import {
 } from '@expo/vector-icons';
 import * as S from './style';
 import { Sheets } from "../Inicio";
-import { Alert } from "react-native";
+import { FlatList, Modal, ScrollView, Dimensions, View, Image, StyleSheet } from "react-native";
 import {api} from "../../../services/api";
 import React, { useEffect } from "react";
 import { useState, useCallback } from "react";
@@ -16,12 +16,25 @@ import YoutubePlayer from "react-native-youtube-iframe";
 import { CardHorizontal } from "../../components/CardHorizontal";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import { Slider } from "../../components/Slider";
 
 type RouteParams = {
   item: Sheets
 }
 
+const { width } = Dimensions.get("window");
+const height = (width * 100) / 60;
+
 export function Produto() {
+
+  const [active, setActive] = useState(0);
+  
+  const change = ({nativeEvent}: any) => {
+      const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width);
+      if(slide !== active) {
+        setActive(slide);
+      }
+    }
   
   const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
   // const [playing, setPlaying] = useState(false);
@@ -41,7 +54,7 @@ export function Produto() {
   const [title, setTitle] = useState<Sheets[]>([]);
   useEffect(() => {
     async function getStoreData() {
-      await api.get('/getRows').then(function (response) {
+      await api.get('/getProdutos').then(function (response) {
         setTitle(response.data); 
         console.log("1");
       })    
@@ -61,10 +74,12 @@ export function Produto() {
   const produtoNome = productInfo[1]
   const produtoDesc = productInfo[2]
   const produtoPreco = productInfo[3]
-  const produtoImg1 = productInfo[4]
-  const produtoImg2 = productInfo[5]
-  const produtoImg3 = productInfo[6]
-  const produtoVideo = productInfo[7]
+  const imagesArr = productInfo[4].split(',');
+  const imagemsolo = imagesArr[0];
+
+
+  const produtoImg1 = imagemsolo;
+  const produtoVideo = productInfo[5]
 
   async function handleStore() {
     try {
@@ -79,6 +94,8 @@ export function Produto() {
         produtoImg1,
         counter
       }
+
+      console.log(theProduct.produtoPreco);
 
       const oldProducts = await getItem();
       const previousData = oldProducts ? JSON.parse(oldProducts) : [];
@@ -136,23 +153,36 @@ export function Produto() {
 
       <S.ScrollContainer>
 
-        <S.Carrosel>
-          <S.Image
-            source={{ uri: `${produtoImg1}` }}
-          ></S.Image>
-          <S.ButtonLeft>
-            <MaterialIcons name="arrow-back-ios" size={24} color="red" />
-          </S.ButtonLeft>
-          <S.ButtonRight>
-            <MaterialIcons name="arrow-forward-ios" size={24} color="red" />
-          </S.ButtonRight>
+      <S.Carrosel>
+          <View style={{width, height}}>
+          <ScrollView 
+          pagingEnabled 
+          horizontal 
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          onScroll={change}
+          style={{width, height}}>
+            {imagesArr.map((image, index) => (
+              <Image
+                key={index}
+                source={{
+                  uri: image
+                }}
+                style={{width, height, resizeMode:"contain"}}
+              />
+            ))}
+          </ScrollView>
+          </View>
+        
         </S.Carrosel>
 
         <S.ThreeDots>
-          <Entypo name="dot-single" size={24} color="red" />
-          <Entypo name="dot-single" size={24} color="white" />
-          <Entypo name="dot-single" size={24} color="white" />
+          {imagesArr.map((i, k) => (
+            
+          <Entypo key={k} style={k==active ? style.pagginActiveIcon : style.pagginIcon} name="dot-single" size={24} color="white" />
+          ))}
         </S.ThreeDots>
+
 
         <S.Prices>
           <S.OriginalPrice>
@@ -244,3 +274,8 @@ export function Produto() {
   );
 }
 
+const style = StyleSheet.create({
+  pagginIcon:  {color: 'white'},
+  pagginActiveIcon:  {color: 'red'},
+
+})

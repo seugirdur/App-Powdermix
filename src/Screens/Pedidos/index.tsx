@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Button, FlatList, Text, View } from "react-native";
+import { Button, FlatList, Linking, Text, View } from "react-native";
 import {
   useRoute,
   DrawerActions,
@@ -12,21 +12,20 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Fontisto, Entypo } from "@expo/vector-icons";
 
 import { Feather } from "@expo/vector-icons";
+import * as MailComposer from "expo-mail-composer";
 
 import * as S from "./style";
 import logo from "../../assets/onlyname.png";
-import AsyncStorage, { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import AsyncStorage, {
+  useAsyncStorage,
+} from "@react-native-async-storage/async-storage";
 import { SalesProps } from "../Enviar";
 import { CartProps } from "../../components/CardVertical";
+import { EmailProps } from "../../components/FormEmail";
 //yarn add @types/react -D
 // import { styles } from './styles';
 
 const { getItem, setItem } = useAsyncStorage("@savesales:sale");
-
-
-
-
-
 
 export function Pedidos() {
   const [pedidos, setPedidos] = useState<SalesProps[]>([]);
@@ -41,39 +40,81 @@ export function Pedidos() {
 
   const navigation = useNavigation();
 
-
-function openScreen() {
-  // navigation.goBack();
-  navigation.navigate('Enviar')
-
-}
+  function openScreen() {
+    // navigation.goBack();
+    navigation.navigate("Enviar");
+  }
 
   // const navigation = useNavigation();
   // const route = useRoute();
 
   // useEffect(() => {
-    
+
   // }, []);
 
   const HandleRedoCheckout = async (redoCartItems: CartProps[]) => {
     console.log(redoCartItems);
-    
+
     const redoString = JSON.stringify(redoCartItems);
-    
+
     await AsyncStorage.setItem("@saveproducts:cart", redoString);
     // console.log(redoString);
-  
+
     openScreen();
-  
-  
-  
-  }
+  };
 
+  const SendEmail = (venda: SalesProps) => {
 
-  useFocusEffect(useCallback(() => {
-    loadPedidos();
-    // console.log("lmao")
-}, []));
+    let produtos = "";
+
+    let precoTotal = 0;
+
+  
+
+    for (let i = 0; i < venda.cartItems.length; i++) {
+      produtos +=
+        "Produto: " +
+        venda.cartItems[i].produtoNome +
+        ", \n" +
+        "Preço: R$" +
+        (Math.round(venda.cartItems[i].produtoPreco * 100) / 100).toFixed(2) +
+        ", \n" +
+        "Quantidade: " +
+        venda.cartItems[i].counter +
+        ", \n";
+
+      precoTotal += venda.cartItems[i].produtoPreco * venda.cartItems[i].counter;
+    }
+    // function addHours(date: Date, hours: number) {
+    //   date.setHours(date.getHours() + hours);
+    //   const makeitworkgoddamn = date.toUTCString();
+
+    //   return makeitworkgoddamn;
+    // }
+    // // Date(Date.UTC()
+    // const someDate = new Date();
+    // // .toLocaleTimeString("pt-BR", {timeZone: "America/Sao_Paulo"})
+    // // .getTimezoneOffset()
+
+    // const dataCompleta = addHours(someDate, -3);
+
+    MailComposer.composeAsync({
+      subject: "Pedido dia - " + venda.dataCompleta,
+      body: "Nome - " + venda.personalInfo.name + '\n' +
+            "CPF/CNPJ - " + venda.personalInfo.cpf + '\n' +
+            "CEP - " + venda.personalInfo.cep + '\n' +
+            "Celular/Telefone - " + venda.personalInfo.smartphone + '\n' +
+            produtos + '\n',
+      recipients: ["contato@powdermix.com.br"],
+    });
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      loadPedidos();
+      // console.log("lmao")
+    }, [])
+  );
 
   return (
     <S.Container>
@@ -96,14 +137,20 @@ function openScreen() {
             renderItem={({ item }) => {
               return (
                 <S.FlatlistContainer>
-                   <S.CardHistoric>
+                  <S.CardHistoric>
                     <S.TopRow>
                       <S.TitleRow>
                         <S.TitleCard>Compra - </S.TitleCard>
                         <S.DateTitle>{item.dataCompra}</S.DateTitle>
                       </S.TitleRow>
                       <S.IconRow>
-                        <S.CircleZap>
+                        <S.CircleZap
+                          onPress={() =>
+                            Linking.openURL(
+                              "https://api.whatsapp.com/send?phone=5511991745936&text=Pedido+referente+a+"+item.dataCompleta.replace(" ","+")+"+do+"+item.personalInfo.name.replace(" ","+")
+                            )
+                          }
+                        >
                           <Fontisto
                             name="whatsapp"
                             size={24}
@@ -112,7 +159,11 @@ function openScreen() {
                           />
                         </S.CircleZap>
 
-                        <S.CircleMail>
+                        <S.CircleMail
+                        onPress={() => {
+                          SendEmail(item);
+                        }}
+                        >
                           <Fontisto
                             name="email"
                             size={24}
@@ -129,7 +180,6 @@ function openScreen() {
                       <S.PrecoLabel>Preço{"\n"}Final:</S.PrecoLabel>
                     </S.TableTitle>
 
-                  
                     <FlatList
                       data={item.cartItems}
                       renderItem={(item2) => (
@@ -168,8 +218,8 @@ function openScreen() {
                       )}
                     />
 
-                     <S.ContainerTotal>
-                     <S.Total>
+                    <S.ContainerTotal>
+                      <S.Total>
                         <S.TotalwithLine>
                           <S.TotalLabelContainer>
                             <S.TotalLabel>TOTAL:</S.TotalLabel>
@@ -194,11 +244,13 @@ function openScreen() {
                       </S.Total>
 
                       <S.RefazerContainer
-                      onPress={() => {HandleRedoCheckout(item.cartItems)}}
+                        onPress={() => {
+                          HandleRedoCheckout(item.cartItems);
+                        }}
                       >
                         <S.Refazer>REFAZER PEDIDO</S.Refazer>
                       </S.RefazerContainer>
-                    </S.ContainerTotal> 
+                    </S.ContainerTotal>
                   </S.CardHistoric>
                 </S.FlatlistContainer>
               );

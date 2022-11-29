@@ -105,7 +105,7 @@ flex-direction:row;
 justify-content:flex-end;
 `;
 
-export const CircleZap = styled.View`
+export const CircleZap = styled.TouchableOpacity`
 width:36px;
 height:36px;
 background:red;
@@ -115,7 +115,7 @@ border-radius:20px;
 margin-right:4px;
 `;
 
-export const CircleMail = styled.View`
+export const CircleMail = styled.TouchableOpacity`
 width:36px;
 height:36px;
 background:red;

@@ -19,7 +19,8 @@ width: 100%;
 margin-top:4px;
 height:300px;
 justify-content:center;
-background-color:red`
+/* background-color:red */
+`
 
 export const Image = styled.Image`
 height:100%;

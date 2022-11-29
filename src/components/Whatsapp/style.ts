@@ -4,7 +4,8 @@ import theme from "../../global/styles/theme";
 
 export const Container = styled.View`
 flex:1;
-margin-top:20px;
+margin-top:24px;
+margin-bottom:30px;
 width:100%;
 /* height:400px; */
 background: ${theme.colors.red};
@@ -15,7 +16,7 @@ padding:30px;
 
 export const ContainerPostZap = styled.View`
 width:100%;
-background:pink;
+/* background:pink; */
 margin-top:16px;
 align-items:center;
 justify-content:center;

@@ -3,10 +3,8 @@ import theme from '../../global/styles/theme';
 
 
 export const Container = styled.View`
-    flex:1;
-    background-color: '#EEEEEE';
-    justify-content:center;
-    align-items:center;
+    flex:1
+    background-color: #EEEEEE
 `
 
 export const StatusBar = styled.View`
@@ -17,44 +15,6 @@ position:absolute;
 justify-content: space-between;
 flex-direction: row;
 `;
-
-export const ContainerFlat = styled.View`
-top:140px;
-`;
-
-export const TitleHistoric = styled.Text`
-font-family:${theme.fonts.title};
-color:${theme.colors.red};
-font-size:24px;
-text-align:center;
-text-transform:uppercase;
-margin:10px;
-
-`;
-
-export const FlatContainer = styled.View``
-
-export const FaqTitleContainer = styled.View`
-align-items:center;
-margin:12px;
-`;
-
-export const FaqTitle = styled.Text`
-font-family:${theme.fonts.subTitle};
-font-size:20px;
-`
-
-export const FaqDescricaoContainer = styled.View`
-padding:12px;
-`
-
-export const FaqDescricao = styled.Text`
-font-family:${theme.fonts.subTitle};
-`
-
-
-
-
 
 export const Hamburguer = styled.TouchableOpacity`
 
@@ -76,6 +36,17 @@ justify-content: center;
 align-items: center;
 border-radius: 15px;
 background-color:red`
+
+export const Texto = styled.Text`
+color: ${theme.colors.title};
+font-weight: bold;
+font-family: ${theme.fonts.description};
+font-size: 20px;
+line-height: 31px;
+margin-top: 5px;
+text-transform: capitalize;
+`;
+
 
 export const Carrinho = styled.Image`
 width:40px;
@@ -127,3 +98,45 @@ left:90%
 export const Button = styled.TouchableOpacity`
 width:200px;
 background-color:blue`
+
+export const Text = styled.Text`
+font-weight: bold;
+font-size: 25px;
+line-height: 31px;
+margin-top: 5px;
+text-transform: capitalize;
+color: #000;
+`;
+
+export const CardContainer = styled.View`
+margin-left: auto;
+margin-right: auto;
+width: 95%;
+top:140px;
+height:55%;
+justify-content:center;
+background-color:${theme.colors.white};
+`;
+
+export const ModalContainer = styled.Modal`
+
+`;
+
+export const ModalView = styled.View`
+width: 100%;
+height:100%;
+justify-content:center;
+background-color:'rgba(0,0,0,0.5)';
+`;
+
+export const CartContainer = styled.View`
+background-color:green;
+width: 50%;
+height:50%;
+
+`;
+
+export const Texttest = styled.Text`
+font-size: 20px;
+color:red;
+`;

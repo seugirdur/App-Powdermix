@@ -1,48 +1,51 @@
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { MaterialIcons} from '@expo/vector-icons'
-import { Button, Text, View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Button, Text, View } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { Screen, Navigator, Group } = createDrawerNavigator();
 
-import { Inicio } from '../Screens/Inicio';
-import { TabRoutes } from './tab.routes'
-import { Historico } from '../Screens/Historico';
-import { FAQ } from '../Screens/FAQ';
-import theme from '../global/styles/theme';
-
-
+import { Inicio } from "../Screens/Inicio";
+import { TabRoutes } from "./tab.routes";
+import { Historico } from "../Screens/Historico";
+import { FAQ } from "../Screens/FAQ";
+import theme from "../global/styles/theme";
+import { CustomDrawer } from "../components/CustomDrawer";
 
 export function DrawerRoutes() {
+  return (
+    <Navigator
+    drawerContent={CustomDrawer}
 
-    
+    >
+      <Group
 
+      >
+        <Screen
 
-    return (
-        <Navigator>
-            <Group>
-                <Screen
-                    name='Inicio'
-                    component={TabRoutes}
-                    options={{
-                        headerShown:false,
-                        drawerActiveTintColor:`${theme.colors.red}`,
-                        drawerLabel: 'Início',
-                        drawerIcon: () => <MaterialIcons name="home" size={22} />
-                    }}
-                />
-            </Group>
-            <Screen
-                name='FAQ'
-                component={FAQ}
-                options={{
-                    headerShown:false,
-                    drawerLabel: 'FAQ',
-                    drawerIcon: () => <MaterialCommunityIcons name="message-question" size={22} />
-                }}
-            />
+          name="Inicio"
+          component={TabRoutes}
+          options={{
+            headerShown: false,
+            drawerActiveTintColor: `${theme.colors.red}`,
+            drawerLabel: "Início",
+            drawerIcon: () => <MaterialIcons name="home" size={22} />,
+          }}
+        />
+      </Group>
+      <Screen
+        name="FAQ"
+        component={FAQ}
+        options={{
+          headerShown: false,
+          drawerActiveTintColor: `${theme.colors.red}`,
 
-        </Navigator>
-    )
+          drawerLabel: "FAQ",
+          drawerIcon: () => (
+            <MaterialCommunityIcons name="message-question" size={22} />
+          ),
+        }}
+      />
+    </Navigator>
+  );
 }

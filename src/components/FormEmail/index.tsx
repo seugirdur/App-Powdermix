@@ -124,7 +124,7 @@ export function FormEmail() {
         // style={{textAlignVertical:'top'}}
         error={errors.desc}
         multiline={true}
-        numberOfLines={12}
+        numberOfLines={8}
       />
       
 

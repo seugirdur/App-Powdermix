@@ -2,10 +2,10 @@ import { v4 } from "uuid";
 import * as S from "./style";
 import * as React from "react";
 import "react-native-get-random-values";
-import {api} from "../../../services/api";
+import { api } from "../../../services/api";
 import { Entypo } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
-import { FlatList, Modal } from "react-native";
+import { FlatList, Modal, ScrollView, Dimensions, View, Image, StyleSheet } from "react-native";
 import { SearchBar } from "react-native-screens";
 import { MaterialIcons } from "@expo/vector-icons";
 import { ModalCart } from "../../components/ModalCart";
@@ -13,6 +13,11 @@ import { StatusBar } from "../../components/StatusBar";
 import { useNavigation } from "@react-navigation/native";
 import { CardVertical } from "../../components/CardVertical";
 import { IProductObject } from "../../business/models/interfaces/IProduct";
+import { LoadingPage } from "../../components/LoadingPage";
+import { Slider } from "../../components/Slider";
+
+const { width } = Dimensions.get("window");
+const height = (width * 100) / 160;
 
 export type Sheets = {
   [0]: number;
@@ -21,20 +26,59 @@ export type Sheets = {
   [3]: number;
   [4]: string;
   [5]: string;
-  [6]: string;
-  [7]: string;
 };
 
 export function Inicio() {
+  
+      const [active, setActive] = useState(0);
+  
+      const change = ({nativeEvent}: any) => {
+          const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width);
+          if(slide !== active) {
+            setActive(slide);
+          }
+        }
+
   const [title, setTitle] = useState<Sheets[]>([]);
+  const [showLoading, setShowLoading] = useState(false);
+  const [imgArr, setImgArr] = useState([]);
   useEffect(() => {
     async function getStoreData() {
-      await api.get("/getRows").then(function (response) {
+      setShowLoading(true);
+      await api.get("/getProdutos").then(function (response) {
         setTitle(response.data);
+        // console.log(response.data[0][4]);
+
+
+
+       
+        setShowLoading(false);
       });
+
+      await api.get("/getSlider").then( (response) => {
+        console.log(response.data[0][0]);
+        let imagestogether = response.data[0][0];
+        let imagesArr = imagestogether.split(',');
+        console.log(imagesArr);
+        setImgArr(imagesArr);
+      })
+        // console.log(response.data[0][4]);
+
+
     }
+
+
+
     getStoreData();
   }, []);
+
+  
+
+  const images = [
+    "https://powdermix.com.br/wp-content/uploads/2022/05/misturador-m4-1.jpg",
+    "https://powdermix.com.br/wp-content/uploads/2022/05/misturador-triturador-y-powdermix.png",
+    "https://powdermix.com.br/wp-content/uploads/2022/05/misturador-triturador-m2-vertical.jpg",
+  ];
 
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -45,40 +89,68 @@ export function Inicio() {
   }
 
   return (
-    <S.Container>
-      <StatusBar />
+    <>
+      <S.Container>
+        <StatusBar />
 
-      <S.Carrosel>
-        <S.Image
-          source={{
-            uri: `https://instagram.fssz1-1.fna.fbcdn.net/v/t51.2885-15/175524349_1688765334658222_2432354789023444120_n.jpg?stp=dst-jpg_e35&_nc_ht=instagram.fssz1-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=L6cMoG-cJ28AX_L99Ch&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=MjU1NTM3ODA2NDYyMjk3MjU1MA%3D%3D.2-ccb7-5&oh=00_AfDDQx6KlYrXsgargQ6eHpSffN5TA3PE-p0dMZDn5jPKAQ&oe=6373D981&_nc_sid=30a2ef`,
-          }}
-        />
-        <S.ButtonLeft>
-          <MaterialIcons name="arrow-back-ios" size={24} color="red" />
-        </S.ButtonLeft> 
-        <S.ButtonRight>
-          <MaterialIcons name="arrow-forward-ios" size={24} color="red" />
-        </S.ButtonRight>
-      </S.Carrosel>
+        {/* <Slider images={imgArr}/> */}
 
-      <S.ThreeDots>
-        <Entypo name="dot-single" size={24} color="red" />
-        <Entypo name="dot-single" size={24} color="white" />
-        <Entypo name="dot-single" size={24} color="white" />
-      </S.ThreeDots>
+        <S.Carrosel>
+          <View style={{width, height}}>
+          <ScrollView 
+          pagingEnabled 
+          horizontal 
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          onScroll={change}
+          style={{width, height}}
+          >
+            {imgArr.map((image, index) => (
+              <Image
+                key={index}
+                source={{
+                  uri: image
+                }}
+                style={{width, height, resizeMode:"contain"}}
+              />
+            ))}
+          </ScrollView>
+          </View>
+        
+        </S.Carrosel>
 
-      <SearchBar></SearchBar>
+        <S.ThreeDots>
+          {imgArr.map((i, k) => (
+            
+          <Entypo key={k} style={k==active ? style.pagginActiveIcon : style.pagginIcon} name="dot-single" size={24} color="white" />
+          ))}
+        </S.ThreeDots>
 
-      <S.CardContainer>
-        <FlatList
-          data={title}
-          keyExtractor={(item) => item[0].toString()}
-          renderItem={({ item }) => (
-            <CardVertical data={item} onPress={() => openScreen(item)} />
-          )}
-        />
-      </S.CardContainer>
-    </S.Container>
+        {/* <SearchBar></SearchBar> */}
+
+        <S.CardContainer>
+          <FlatList
+            data={title}
+            ListHeaderComponent={
+              <>
+                <S.TitleHistoric>Produtos</S.TitleHistoric>
+              </>
+              }
+
+            keyExtractor={(item) => item[0].toString()}
+            renderItem={({ item }) => (
+              <CardVertical data={item} onPress={() => openScreen(item)} />
+            )}
+          />
+        </S.CardContainer>
+      </S.Container>
+      {showLoading ? <LoadingPage /> : null}
+    </>
   );
 }
+
+const style = StyleSheet.create({
+  pagginIcon:  {color: 'white'},
+  pagginActiveIcon:  {color: 'red'},
+
+})

@@ -23,7 +23,7 @@ border-radius:25px;
 border: 1px solid ${theme.colors.cinzapowdermixclaro};
 position:absolute;
 width:100%;
-height:90%;
+height:85%;
 padding-bottom:24px;
 /* align-items:center; */
 justify-content:center;
