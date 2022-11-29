@@ -52,7 +52,7 @@ export default function App() {
   }, [appIsReady]);
 
   if (!appIsReady) {
-    <AppLoading/>
+   return null;
   }
 
   onLayoutRootView();
