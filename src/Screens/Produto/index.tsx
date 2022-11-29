@@ -53,8 +53,9 @@ export function Produto() {
   const navigation = useNavigation();
 
   function openScreen(item: Sheets) {
-    navigation.navigate('Produto', { item })
-    console.log("3");
+    navigation.goBack();
+    navigation.navigate('Produto', { item });
+    // console.log("3");
   }
 
   const produtoNome = productInfo[1]

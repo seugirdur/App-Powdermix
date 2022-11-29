@@ -1,89 +1,39 @@
-import styled from 'styled-components/native'
-import theme from '../../global/styles/theme';
+import styled from "styled-components/native";
+import theme from "../../global/styles/theme";
 
 
-export const Container = styled.View`
-    flex:1
-    background-color: #EEEEEE
-`
 
-export const StatusBar = styled.View`
-width:100%;
-top:35px;
-height:56px;
-position:absolute;
-justify-content: space-between;
-flex-direction: row;
+export const Container = styled.ScrollView`
+    flex: 1;
+    background-color: #F4F5F6;
+    padding: 24px;
+
+
 `;
 
-export const Hamburguer = styled.TouchableOpacity`
+export const FormsContainer = styled.View``;
 
-justify-content:center;
-left:32px;
-`
+export const NomeText = styled.Text``;
 
-export const Logo = styled.Image`
-justify-content: center;
-width:200px;
-height:55px;
-margin-left:64px;
-`
-
-export const SquareRound = styled.TouchableOpacity`
-width:80px;
-right:-10px;
-justify-content: center;
-align-items: center;
-border-radius: 15px;
-background-color:red`
-
-export const Carrinho = styled.Image`
-width:40px;
-background-color:red`
-
-export const Carrosel = styled.View`
-margin-left: auto;
-margin-right: auto;
-width: 95%;
-top:140px;
-height:200px;
-justify-content:center;
-background-color:red`
-
-export const Image = styled.Image`
-height:200px;
-width: 100%;
-margin-left: auto;
-margin-right: auto;
-`
-
-export const ButtonLeft = styled.TouchableOpacity`
-position:absolute;
-align-items:center;
-left:5%;
-justify-content:center;
-`
+export const NomeInput = styled.TextInput``;
 
 
-export const ButtonRight = styled.TouchableOpacity`
-position:absolute;
-left:90%
-`
 
-export const ThreeDots = styled.TouchableOpacity`
-width:100%;
-height:40px;
-position:relative;
-top:150px;
-flex-direction: row;
-justify-content:center
-`
+export const CNPJText = styled.Text``;
+export const CNPJInput = styled.TextInput``;
 
-export const Flatlist = styled.TouchableOpacity`
-position:relative;
-left:90%
-`
+export const CEPText = styled.Text``;
+export const CEPInput = styled.TextInput``;
 
-export const Button = styled.TouchableOpacity`
-width:200px;
-background-color:blue`
+export const TelText = styled.Text``;
+export const TelInput = styled.TextInput``;
+
+export const EmailText = styled.Text``;
+export const EmailInput = styled.TextInput``;
+
+export const Or = styled.Text`
+font-family:${theme.fonts.title};
+color: ${theme.colors.red};
+font-size:20px;
+text-align:center;
+`;

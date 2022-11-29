@@ -3,15 +3,15 @@ import React from "react";
 import * as S from "./style";
 import { Feather } from "@expo/vector-icons";
 import { Sheets } from "../../Screens/Inicio";
+import Toast from 'react-native-toast-message';
 import { TouchableOpacityProps } from "react-native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
-type Props = {
+export type Props = {
   data: Sheets;
 } & TouchableOpacityProps;
 
 const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
-
 
 export type CartProps = {
   id: string;
@@ -19,18 +19,17 @@ export type CartProps = {
   produtoDesc: string;
   produtoPreco: number;
   produtoImg1: string;
-  counter: number
+  counter: number;
 };
 
 let counter = 1;
 
 export function CardVertical({ data, ...rest }: Props) {
-
   const id = v4();
-      const produtoNome = data[1];
-      const produtoDesc = data[2];
-      const produtoPreco = data[3];
-      const produtoImg1 = data[4];
+  const produtoNome = data[1];
+  const produtoDesc = data[2];
+  const produtoPreco = data[3];
+  const produtoImg1 = data[4];
 
   async function handleStore() {
     try {
@@ -40,7 +39,7 @@ export function CardVertical({ data, ...rest }: Props) {
         produtoDesc,
         produtoPreco,
         produtoImg1,
-        counter
+        counter,
       };
 
       const oldProducts = await getItem();
@@ -48,6 +47,12 @@ export function CardVertical({ data, ...rest }: Props) {
       const allProducts = [...previousData, theProduct];
       await setItem(JSON.stringify(allProducts));
       
+      Toast.show({
+        type: 'success',
+        text1: 'Item adicionado!',
+        text2: 'Cheque o seu carrinho ou adicione mais produtos!'
+      });
+
     } catch (error) {
       console.log(error);
     }
@@ -74,9 +79,7 @@ export function CardVertical({ data, ...rest }: Props) {
       </S.ContainerVideo> */}
 
       <S.ContainerButton>
-        <S.BuyButton
-          onPress={handleStore}
-        >
+        <S.BuyButton onPress={handleStore}>
           <Feather name="plus" size={25} style={{ left: -4 }} color="white" />
           <Feather
             name="shopping-cart"

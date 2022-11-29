@@ -1,39 +1,30 @@
-import React from 'react';
-import { Button, Text, View } from 'react-native';
-import { useRoute, DrawerActions, useNavigation } from '@react-navigation/native'
-import { StatusBar } from '../../components/StatusBar';
-import { FontAwesome5 } 
-from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons'; 
-import { Entypo } from '@expo/vector-icons'; 
-//yarn add @types/react -D
-// import { styles } from './styles';
-import * as S from './style'
-import logo from '../../assets/onlyname.png'
-import { Feather } from '@expo/vector-icons'; 
-
-
-type ParamsProps = {
-  name: string;
-}
-
-function openDrawer() {
-  const navigation = useNavigation();
-  navigation.dispatch(DrawerActions.openDrawer());
-}
-
+import { useNavigation, useRoute } from "@react-navigation/native";
+import React from "react";
+import * as S from "./style";
+import { Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback } from 'react-native';
+import { Form } from '../../components/Form';
+import { HeaderContato } from "../../components/HeaderContato";
+import { FormEmail } from "../../components/FormEmail";
+import { Whatsapp } from "../../components/Whatsapp";
 export function Contato() {
-const navigation = useNavigation();
-const route = useRoute();
-  
-  return (
+    const navigation = useNavigation();
+    const route = useRoute();
 
-
-
+    return (
 
         <S.Container>
-         
-         <StatusBar/>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <KeyboardAvoidingView behavior="height" enabled>
+          <>
+            <HeaderContato />
+            <FormEmail />
+            <S.Or>OU</S.Or>
+            <Whatsapp/>
+          </>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
+
         </S.Container>
-      );
-    }
+
+    )
+}

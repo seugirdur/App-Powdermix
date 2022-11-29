@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { TapGestureHandler, RotationGestureHandler } from 'react-native-gesture-handler';
 import AppLoading from 'expo-app-loading';
 import {
@@ -9,10 +9,12 @@ import {
     Nunito_900Black,
     Nunito_700Bold
   } from '@expo-google-fonts/nunito';
-
+  import * as SplashScreen from 'expo-splash-screen';
 
 import { Routes } from './src/Routes'
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
 
@@ -23,6 +25,11 @@ export default function App() {
     Nunito_900Black,
     Nunito_700Bold
 })
+
+  if (fontsLoaded) {
+    SplashScreen.hideAsync();
+  }
+
 
 if(!fontsLoaded){
   <AppLoading/>

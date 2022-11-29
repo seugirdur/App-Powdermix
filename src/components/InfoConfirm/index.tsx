@@ -4,7 +4,7 @@ import * as S from "./style";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { CartProps } from "../CardVertical";
 import { Button } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 const { getItem } = useAsyncStorage("@saveinfo:personalinfo");
 
@@ -33,7 +33,10 @@ export function InfoConfirm() {
     // console.log(personalInfo)
   }
 
-  seeInfo();
+  useFocusEffect(() => {
+    seeInfo();
+  });
+
 
   return (
     <S.Container>

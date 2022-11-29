@@ -10,7 +10,7 @@ import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-type FormData = {
+export type InfoProps = {
   name: string;
   cpf:string,
   email: string;
@@ -31,7 +31,7 @@ const schema = yup.object({
 });
 
 export function Form() {
-  const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
+  const { control, handleSubmit, formState: { errors } } = useForm<InfoProps>({
     resolver: yupResolver(schema)
   });
 
@@ -43,13 +43,14 @@ export function Form() {
 
 
   function openScreen() {
+    navigation.goBack();
     navigation.navigate('Enviar')
 
   }
 
 
 
-  async function handleFormInfo(personalInfo: FormData) {
+  async function handleFormInfo(personalInfo: InfoProps) {
     try {
       // const id = v4();
 

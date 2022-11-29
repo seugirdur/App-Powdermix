@@ -365,6 +365,7 @@ width:33%;
 export const ProductName = styled.Text`
 /* background:yellow */
 font-size:12px;
+font-family:${theme.fonts.text};
 `;
 
 
@@ -378,6 +379,7 @@ justify-content:center;
 `
 export const Quantity = styled.Text`
 /* background:yellow */
+font-family:${theme.fonts.text};
 `;
 
 export const PrecoContainer = styled.View`
@@ -388,6 +390,7 @@ justify-content:center;
 `
 export const Preco = styled.Text`
 /* background:yellow */
+font-family:${theme.fonts.text};
 font-size:12px;
 `;
 

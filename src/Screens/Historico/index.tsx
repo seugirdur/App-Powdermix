@@ -1,33 +1,102 @@
-import React from 'react';
-import { Button, Text, View } from 'react-native';
-import { useRoute, DrawerActions, useNavigation } from '@react-navigation/native'
-import { StatusBar } from '../../components/StatusBar';
-import { FontAwesome5 } 
-from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons'; 
-import { Entypo } from '@expo/vector-icons'; 
+import React, { useCallback, useEffect, useState } from "react";
+import { Button, FlatList, Text, View } from "react-native";
+import {
+  useRoute,
+  DrawerActions,
+  useNavigation,
+  useFocusEffect,
+} from "@react-navigation/native";
+import { StatusBar } from "../../components/StatusBar";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 
-import { Feather } from '@expo/vector-icons'; 
+import { Feather } from "@expo/vector-icons";
 
-import * as S from './style'
-import logo from '../../assets/onlyname.png'
+import * as S from "./style";
+import logo from "../../assets/onlyname.png";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import { SalesProps } from "../Enviar";
+import { LoadingPage } from "../../components/LoadingPage";
 //yarn add @types/react -D
 // import { styles } from './styles';
 
-type ParamsProps = {
-  name: string;
-}
-
-
+const { getItem, setItem } = useAsyncStorage("@savesales:sale");
 
 export function Historico() {
-const navigation = useNavigation();
-const route = useRoute();
+  const [historic, setHistoric] = useState<SalesProps[]>([]);
   
-  return (
-    <S.Container>
-     <StatusBar/>
 
+  const loadHistoric = async () => {
+    const getHistoric = await getItem();
+
+    const Historic: SalesProps[] = getHistoric ? JSON.parse(getHistoric) : [];
+
+    setHistoric(Historic);
+  };
+
+  // const navigation = useNavigation();
+  // const route = useRoute();
+
+  // useFocusEffect(() => {
+  //   loadHistoric();
+  //   console.log("lmao")
+  // })
+  useFocusEffect(
+    useCallback(() => {
+      loadHistoric();
+      // console.log("lmao")
+    }, [])
+  );
+
+  return (
+    <>
+    <S.Container>
+      <StatusBar />
+
+      <S.ContentContainer>
+        <FlatList
+          ListHeaderComponent={
+            <>
+              <S.TitleHistoric>Histórico</S.TitleHistoric>
+            </>
+          }
+          //  extraData={}
+          data={historic}
+          extraData={historic}
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => {
+            return (
+              <S.FlatlistContainer>
+                <S.CardHistoric>
+                  <S.TitleRow>
+                    <S.TitleCard>Compra - </S.TitleCard>
+                    <S.DateTitle>{item.dataCompra}</S.DateTitle>
+                  </S.TitleRow>
+                  <S.ValueRow>
+                    <S.ValueLabel>Valor: </S.ValueLabel>
+                    <S.ValueValue>
+                      R${(Math.round(item.precoTotal * 100) / 100).toFixed(2)}
+                    </S.ValueValue>
+                  </S.ValueRow>
+                  <S.HourRow>
+                    <S.HourLabel>Horário: </S.HourLabel>
+                    <S.HourValue>
+                      {item.dataCompleta.substring(
+                        17,
+                        item.dataCompleta.length - 4
+                      )}
+                    </S.HourValue>
+                  </S.HourRow>
+                </S.CardHistoric>
+              </S.FlatlistContainer>
+            );
+          }}
+        />
+      </S.ContentContainer>
     </S.Container>
+    </>
   );
 }

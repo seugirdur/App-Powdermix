@@ -1,14 +1,15 @@
 import * as S from "./style";
-import { FlatList } from "react-native";
+import { Alert, FlatList } from "react-native";
 import React, { useState } from "react";
 import { CartProps } from "../CardVertical";
 import { QuantityBox } from "../QuantityBox";
-import logo from "../../assets/onlyname.png";
+import logo from "../../assets/Logo_PowderMix_Colorido_no_symbol.png";
 import theme from "../../global/styles/theme";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Feather, EvilIcons } from "@expo/vector-icons";
 import { useNavigation, DrawerActions } from "@react-navigation/native";
-import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import AsyncStorage, { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 
 export const formatNumber = (price: number, qtd?: number) => {
@@ -44,10 +45,33 @@ export function StatusBar() {
   }
 
   
-  function openScreen() {
-    navigation.navigate("Enviar");
-    //está fazendo o botão perder a animation, mas serve para abrir o cart no return
-    setModalVisible(false);
+  async function openScreen() {
+
+
+
+    const getCart = await getItem();
+    const data = getCart ? JSON.parse(getCart) : [];
+
+    if(fullPriceShow!="R$ 0,00") {
+      // console.log(fullPriceShow)
+      const getInfo = await AsyncStorage.getItem("@saveinfo:personalinfo");
+      getInfo ? navigation.navigate("Enviar") : navigation.navigate("Formulario");
+      setModalVisible(false);
+
+    } else {
+     
+      Alert.alert(
+        "Preencha o carrinho",
+        "Para continuar, adicione primeiro algum dos nossos itens!",
+ 
+      )
+     
+
+
+    }
+
+
+    
 
   }
 
@@ -97,41 +121,6 @@ export function StatusBar() {
   }
 
 
-  
-  
-//   async function plusQuantity(counting: number, id: string){
-//     counting++
-//       // setCounter(counting);
-
-
-//       const response = await getItem();
-//       const previousData = response ? JSON.parse(response) : [];
-//       const data = previousData.filter((item: CartProps) => item.id == id);
-//       const completeData = JSON.stringify(data);
-      
-//       const lmao = previousData.map((item: CartProps) => item.produtoPreco )
-      
-//       setItem(completeData);
-//       handleSeeCart();
-
-//       // const array1 = [1, 4, 9, 16];
-
-//       // // pass a function to map
-//       // const map1 = array1.map(x => x * 2);
-      
-//       // expected output: Array [2, 8, 18, 32]
-
-
-//  }
- 
-//  function minusQuantity(counting: number){
-//    if(counting > 1) {
-//     counting--
-//      setCounter(counting)
-//    } else {
-//      setCounter(1)
-//    }
-//  }
 
   return (
     <S.StatusBar>

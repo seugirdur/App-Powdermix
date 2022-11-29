@@ -8,6 +8,7 @@ export const Container = styled.TouchableOpacity`
   justify-content: center;
   background-color: ${theme.colors.red};
   margin-bottom: 24px;
+  margin-top: 24px;
 `;
 
 export const Title = styled.Text`

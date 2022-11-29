@@ -16,74 +16,109 @@ justify-content: space-between;
 flex-direction: row;
 `;
 
-export const Hamburguer = styled.TouchableOpacity`
-
-justify-content:center;
-left:32px;
-`
-
-export const Logo = styled.Image`
-justify-content: center;
-width:200px;
-height:55px;
-margin-left:64px;
-`
-
-export const SquareRound = styled.TouchableOpacity`
-width:80px;
-right:-10px;
-justify-content: center;
-align-items: center;
-border-radius: 15px;
-background-color:red`
-
-export const Carrinho = styled.Image`
-width:40px;
-background-color:red`
-
-export const Carrosel = styled.View`
-margin-left: auto;
-margin-right: auto;
-width: 95%;
-top:140px;
-height:200px;
-justify-content:center;
-background-color:red`
-
-export const Image = styled.Image`
-height:200px;
-width: 100%;
-margin-left: auto;
-margin-right: auto;
-`
-
-export const ButtonLeft = styled.TouchableOpacity`
+export const ContentContainer = styled.View`
+/* background:pink; */
+/* border-color: red green blue pink;margin-top:50px; */
+border-radius:25px;
+border: 1px solid ${theme.colors.cinzapowdermixclaro};
 position:absolute;
-align-items:center;
-left:5%;
-justify-content:center;
-`
-
-
-export const ButtonRight = styled.TouchableOpacity`
-position:absolute;
-left:90%
-`
-
-export const ThreeDots = styled.TouchableOpacity`
 width:100%;
-height:40px;
-position:relative;
-top:150px;
-flex-direction: row;
-justify-content:center
-`
+height:90%;
+padding-bottom:24px;
+/* align-items:center; */
+justify-content:center;
+bottom:-16px;
+`;
 
-export const Flatlist = styled.TouchableOpacity`
-position:relative;
-left:90%
-`
+export const FlatlistContainer = styled.View`
+/* background:yellow; */
+justify-content:center;
+align-items:center;
 
-export const Button = styled.TouchableOpacity`
-width:200px;
-background-color:blue`
+width:100%;
+`;
+
+export const TitleHistoric = styled.Text`
+font-family:${theme.fonts.title};
+color:${theme.colors.red};
+font-size:24px;
+text-align:center;
+text-transform:uppercase;
+margin:10px;
+
+`;
+
+
+export const CardHistoric = styled.View`
+background:white;
+width:85%;
+padding:10px;
+padding-left:16px;
+/* height:100px; */
+margin:10px;
+`;
+
+export const TitleRow = styled.View`
+/* background:green; */
+margin:4px;
+flex-direction:row;
+`;
+
+export const TitleCard = styled.Text`
+font-family:${theme.fonts.minusTitle};
+text-transform: uppercase;
+color:${theme.colors.red};
+font-size:16px;
+
+`;
+
+export const DateTitle = styled.Text`
+font-family:${theme.fonts.minusTitle};
+text-transform: uppercase;
+color:${theme.colors.red};
+
+font-size:16px;
+
+`;
+
+export const ValueRow = styled.View`
+/* background:purple; */
+flex-direction:row;
+margin:4px;
+
+`;
+ 
+export const ValueLabel = styled.Text`
+font-family:${theme.fonts.subTitle};
+text-transform: uppercase;
+font-size:12px;
+
+`;
+
+export const ValueValue = styled.Text`
+font-family:${theme.fonts.subTitle};
+text-transform: uppercase;
+font-size:12px;
+
+`;
+
+export const HourRow = styled.View`
+/* background:orange; */
+margin:4px;
+
+flex-direction:row;
+`;
+
+export const HourLabel = styled.Text`
+font-family:${theme.fonts.subTitle};
+text-transform: uppercase;
+font-size:12px;
+
+`;
+
+export const HourValue = styled.Text`
+font-family:${theme.fonts.subTitle};
+text-transform: uppercase;
+font-size:12px;
+
+`;

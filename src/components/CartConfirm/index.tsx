@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FlatList, Text } from "react-native";
 import theme from "../../global/styles/theme";
 import { HeaderEnviarCart } from "../HeaderEnviarCart";
@@ -16,9 +16,8 @@ export function CartConfirm() {
   const [isModalVisible, setModalVisible] = useState(false);
   const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
 
-  const seeCart = async function seeCart() {
+  const seeCart = useCallback(async () => {
     const response = await getItem();
-    // sumEverything();
     const data = response ? JSON.parse(response) : [];
     // const lmao = data;
     // console.log(lmao)
@@ -26,27 +25,24 @@ export function CartConfirm() {
     //   console.log(element.produtoPreco * element.counter);
     // });
     setCart([...data]);
-    // data.forEach(element => {
-    //   pricefinal += element.produtoPreco * element.counter;
-    //   console.log(pricefinal);
+    return [...data];
+  }, []);
 
-    // });
-    // setPrice(pricefinal);
-  }
-
-
-  function sumEverything() {
+  const sumEverything = useCallback(async () => {
     let precofinal = 0;
-    
-    // console.log(precofinal)
-    console.log(price)
-  }
+    const myarray = await seeCart();
+    myarray.forEach((element) => {
+      precofinal += element.produtoPreco * element.counter;
+      // console.log(precofinal);
+    });
+    setPrice(precofinal);
+  }, []);
 
   useEffect(() => {
     seeCart();
-  }, [cart])
-  
-  
+    sumEverything();
+  }, []);
+
   // sumEverything();
   return (
     <S.Container>
@@ -107,7 +103,10 @@ export function CartConfirm() {
                 </S.QuantityContainer>
                 <S.PrecoContainer>
                   <S.Preco>
-                    R${(Math.round(item.produtoPreco * item.counter * 100) / 100).toFixed(2)}
+                    R$
+                    {(
+                      Math.round(item.produtoPreco * item.counter * 100) / 100
+                    ).toFixed(2)}
                   </S.Preco>
                 </S.PrecoContainer>
               </S.ContainerCartList>
@@ -119,7 +118,9 @@ export function CartConfirm() {
       <S.FinalPriceContainer>
         <S.FinalPriceTitle>SUBTOTAL:</S.FinalPriceTitle>
         <S.ContainerValues>
-          <S.FinalPriceValue></S.FinalPriceValue>
+          <S.FinalPriceValue>
+            R${(Math.round(price * 100) / 100).toFixed(2)}
+          </S.FinalPriceValue>
           <S.FinalPriceFrete>+ FRETE*</S.FinalPriceFrete>
         </S.ContainerValues>
       </S.FinalPriceContainer>

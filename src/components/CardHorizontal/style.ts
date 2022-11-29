@@ -10,7 +10,7 @@ export const CardHorizontal = styled.TouchableOpacity`
 width:100px;
 height:220px;
 justify-content: space-between;
-background-color:${theme.colors.gray300};
+background-color:${theme.colors.white};
 margin-left:12px;
 border-radius:8px;
 `;
@@ -57,10 +57,12 @@ export const Desc = styled.Text`
 color: ${theme.colors.subtitle};
 font-family:${theme.fonts.subTitle};
 font-size: 10px;
+/* background: pink; */
+flex: 1;
 white-space: nowrap;
-overflow: hidden;
+/* overflow: hidden; */
 text-overflow: ellipsis;
-height:15px;
+height:100%;
 `;
 
 export const Price = styled.Text`
