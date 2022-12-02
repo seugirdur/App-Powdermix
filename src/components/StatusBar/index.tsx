@@ -1,6 +1,6 @@
 import * as S from "./style";
 import { Alert, FlatList } from "react-native";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { CartProps } from "../CardVertical";
 import { QuantityBox } from "../QuantityBox";
 import logo from "../../assets/Logo_PowderMix_Colorido_no_symbol.png";
@@ -35,7 +35,7 @@ export function StatusBar() {
   const [isModalVisible, setModalVisible] = useState(false);
   const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
 
-
+  console.log("im brother re render")
 
   const [fullPrice, setFullPrice] = useState<number>();
   const [fullPriceShow, setFullPriceShow] = useState<string>();
@@ -76,7 +76,7 @@ export function StatusBar() {
   }
 
 
-  async function handleSeeCart() {
+  const handleSeeCart = async() => {
     const response = await getItem();
     const data = response ? JSON.parse(response) : [];
     setCart([...data]);
@@ -229,7 +229,11 @@ export function StatusBar() {
       <S.Logo source={logo}></S.Logo>
       <S.SquareRound onPress={handleSeeCart}>
         <Feather name="shopping-cart" size={40} color="white" />
+      <S.RoundCount>
+        <S.CarCount>{cart.length}</S.CarCount>
+      </S.RoundCount>
       </S.SquareRound>
+      
     </S.StatusBar>
   );
 }

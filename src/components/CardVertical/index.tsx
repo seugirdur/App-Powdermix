@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import * as S from "./style";
 import { Feather } from "@expo/vector-icons";
 import { Sheets } from "../../Screens/Inicio";
@@ -28,6 +28,8 @@ let counter = 1;
 
 export function CardVertical({ data, ...rest }: Props) {
 
+
+
   let imagesArr = data[4].split(',');
 
   const id = v4();
@@ -36,9 +38,11 @@ export function CardVertical({ data, ...rest }: Props) {
   const produtoPreco = data[3];
   const produtoImg1 = imagesArr[0];
 
+  const [update, setUpdate] = useState(false);
 
 
-  async function handleStore() {
+  const handleStore = useCallback(async () => {
+  // async function handleStore() {
     try {
       const theProduct = {
         id,
@@ -48,6 +52,9 @@ export function CardVertical({ data, ...rest }: Props) {
         produtoImg1,
         counter,
       };
+
+
+      setUpdate(true);
 
       const oldProducts = await getItem();
       const previousData = oldProducts ? JSON.parse(oldProducts) : [];
@@ -63,7 +70,7 @@ export function CardVertical({ data, ...rest }: Props) {
     } catch (error) {
       console.log(error);
     }
-  }
+  }, [])
 
   return (
     <S.CardVertical type={data} {...rest}>

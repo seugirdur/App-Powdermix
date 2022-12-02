@@ -43,6 +43,23 @@ export const Carrinho = styled.Image`
   background-color: red;
 `;
 
+export const RoundCount = styled.View`
+width:30px;
+height:30px;
+border-radius:15px;
+position: absolute;
+top:-6px;
+left:-6px;
+justify-content:center;
+align-items:center;
+background-color:brown;
+`;
+
+export const CarCount = styled.Text`
+color:white;
+font-family:${theme.fonts.title};
+`;
+
 export const Carrosel = styled.View`
   margin-left: auto;
   margin-right: auto;

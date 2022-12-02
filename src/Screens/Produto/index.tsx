@@ -6,7 +6,7 @@ import {
 } from '@expo/vector-icons';
 import * as S from './style';
 import { Sheets } from "../Inicio";
-import { FlatList, Modal, ScrollView, Dimensions, View, Image, StyleSheet } from "react-native";
+import { FlatList, Modal, ScrollView, Dimensions, View, Image, StyleSheet, Alert } from "react-native";
 import {api} from "../../../services/api";
 import React, { useEffect } from "react";
 import { useState, useCallback } from "react";
@@ -17,6 +17,7 @@ import { CardHorizontal } from "../../components/CardHorizontal";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { Slider } from "../../components/Slider";
+import { Linking } from 'react-native';
 
 type RouteParams = {
   item: Sheets
@@ -56,10 +57,10 @@ export function Produto() {
     async function getStoreData() {
       await api.get('/getProdutos').then(function (response) {
         setTitle(response.data); 
-        console.log("1");
+        // console.log("1");
       })    
     }
-    console.log("2");
+    // console.log("2");
     getStoreData();
   }, []);
 
@@ -76,6 +77,7 @@ export function Produto() {
   const produtoPreco = productInfo[3]
   const imagesArr = productInfo[4].split(',');
   const imagemsolo = imagesArr[0];
+  const linkManual = productInfo[6];
 
 
   const produtoImg1 = imagemsolo;
@@ -83,7 +85,7 @@ export function Produto() {
 
   async function handleStore() {
     try {
-      console.log("4");
+      // console.log("4");
       const id = v4()
 
       const theProduct = {
@@ -95,7 +97,7 @@ export function Produto() {
         counter
       }
 
-      console.log(theProduct.produtoPreco);
+      // console.log(theProduct.produtoPreco);
 
       const oldProducts = await getItem();
       const previousData = oldProducts ? JSON.parse(oldProducts) : [];
@@ -119,7 +121,7 @@ export function Produto() {
 
 
   const formatNumber = (price: number) => {
-    console.log("5");
+    // console.log("5");
 
     let priceWithDot = price.toFixed(2)
   
@@ -131,19 +133,27 @@ export function Produto() {
   
 
   function plusQuantity(counting: number){
-    console.log("6");
+    // console.log("6");
     counting++
       setCounter(counting);
  }
  
  function minusQuantity(counting: number){
-  console.log("7");
+  // console.log("7");
    if(counting > 1) {
     counting--
      setCounter(counting)
    } else {
      setCounter(1)
    }
+ }
+
+ const semManual = () => {
+   Alert.alert(
+            "Manual indisponível",
+            "Não possuímos material desse item ainda.\nPara saber mais entre em contato pelo nosso WhatsApp.",
+     
+          )
  }
 
   return (
@@ -250,7 +260,9 @@ export function Produto() {
       />
 
         </S.Video>
-        <S.Hyperlink>Confira o manual desse item clicando aqui! ↗</S.Hyperlink>
+        <S.Hyperlink
+        onPress= { productInfo[6] ? () => Linking.openURL(`${productInfo[6]}`) : ()=> semManual()}
+        >Confira o manual desse item clicando aqui! ↗</S.Hyperlink>
 
         <S.CardContainer>
       <S.ScrollHorizontal
