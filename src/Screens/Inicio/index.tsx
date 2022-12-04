@@ -47,16 +47,19 @@ export function Inicio() {
   const [showLoading, setShowLoading] = useState(false);
   const [haveInternet, setHaveInternet] = useState(true);
   const [imgArr, setImgArr] = useState([]);
-  useEffect(() => {
+
+
+  // useEffect(() => {
     async function getStoreData() {
+      console.log("lmao")
       // const onAcre = await (await Network.getNetworkStateAsync()).isConnected
       // console.log(onAcre)
 
-      setShowLoading(true);
+      // setShowLoading(true);
       if (title.length!=0) {
         setShowLoading(false);
       }
-      
+
       // await api.get("/getProdutos", {timeout: 10}).then(function (response) {
       await api.get("/getProdutos").then(function (response) {
         // console.log('lmao1')
@@ -123,8 +126,8 @@ export function Inicio() {
 
 
 
-    getStoreData();
-  }, []);
+    // getStoreData();
+  // }, [showLoading]);
 
   
 
@@ -149,7 +152,9 @@ export function Inicio() {
 
         {/* <Slider images={imgArr}/> */}
 
-        <S.Carrosel>
+        <S.Carrosel
+        // onPress={() => getStoreData}
+        >
           <View style={{width, height}}>
           <ScrollView 
           pagingEnabled 
@@ -187,7 +192,9 @@ export function Inicio() {
             data={title}
             ListHeaderComponent={
               <>
-                <S.TitleHistoric>Produtos</S.TitleHistoric>
+                <S.TitleHistoric
+                onPress={getStoreData}
+                >Produtos</S.TitleHistoric>
               </>
               }
 

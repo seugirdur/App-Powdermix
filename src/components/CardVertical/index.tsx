@@ -38,11 +38,9 @@ export function CardVertical({ data, ...rest }: Props) {
   const produtoPreco = data[3];
   const produtoImg1 = imagesArr[0];
 
-  const [update, setUpdate] = useState(false);
 
-
-  const handleStore = useCallback(async () => {
-  // async function handleStore() {
+  // const handleStore = useCallback(async () => {
+  async function handleStore() {
     try {
       const theProduct = {
         id,
@@ -54,7 +52,6 @@ export function CardVertical({ data, ...rest }: Props) {
       };
 
 
-      setUpdate(true);
 
       const oldProducts = await getItem();
       const previousData = oldProducts ? JSON.parse(oldProducts) : [];
@@ -70,7 +67,7 @@ export function CardVertical({ data, ...rest }: Props) {
     } catch (error) {
       console.log(error);
     }
-  }, [])
+  }
 
   return (
     <S.CardVertical type={data} {...rest}>
