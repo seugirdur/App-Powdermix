@@ -8,12 +8,16 @@ export const Container = styled.View`
 
 `;
 
+
+
 export const StatusBar = styled.View`
   width: 100%;
   top: 35px;
   height: 56px;
   position: absolute;
+  /* background: blue; */
   justify-content: space-between;
+  /* align-items:center; */
   flex-direction: row;
 `;
 
@@ -24,13 +28,15 @@ export const Hamburguer = styled.TouchableOpacity`
 
 export const Logo = styled.Image`
   justify-content: center;
-  width: 200px;
-  height: 55px;
+  width: 60%;
+  height: 100%;
+  /* background: yellow; */
   margin-left: 64px;
+  resize-mode: contain ;
 `;
 
 export const SquareRound = styled.TouchableOpacity`
-  width: 80px;
+  width: 18%;
   right: -10px;
   justify-content: center;
   align-items: center;
@@ -39,13 +45,13 @@ export const SquareRound = styled.TouchableOpacity`
 `;
 
 export const Carrinho = styled.Image`
-  width: 40px;
+  width: 18%;
   background-color: red;
 `;
 
 export const RoundCount = styled.View`
-width:30px;
-height:30px;
+width:40%;
+height:50%;
 border-radius:15px;
 position: absolute;
 top:-6px;
@@ -59,6 +65,13 @@ export const CarCount = styled.Text`
 color:white;
 font-family:${theme.fonts.title};
 `;
+
+
+
+
+
+
+
 
 export const Carrosel = styled.View`
   margin-left: auto;
