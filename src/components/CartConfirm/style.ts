@@ -5,10 +5,11 @@ import theme from "../../global/styles/theme";
 
 
 export const Container = styled.View`
-height: 35%;
+/* height: 35%; */
     background-color: #EEEEEE;
     padding-left: 24px;
     padding-right: 24px;
+    margin-top:50px;
 `
 
 
@@ -328,7 +329,7 @@ export const TitleName = styled.Text`
 /* background:green; */
 width:33%;
 text-transform:uppercase;
-font-family:${theme.fonts.subTitle}
+font-family:${theme.fonts.subTitle};
 `
 export const TitleQuantity = styled.Text`
 /* background:green; */
@@ -336,7 +337,7 @@ width:33%;
 text-align:center;
 align-self:center;
 text-transform:uppercase;
-font-family:${theme.fonts.subTitle}
+font-family:${theme.fonts.subTitle};
 `
 export const TitlePrice = styled.Text`
 /* background:green; */
@@ -344,7 +345,7 @@ width:33%;
 text-align:center;
 align-self:center;
 text-transform:uppercase;
-font-family:${theme.fonts.subTitle}
+font-family:${theme.fonts.subTitle};
 `
 
 

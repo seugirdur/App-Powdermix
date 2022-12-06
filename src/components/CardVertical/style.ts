@@ -39,6 +39,8 @@ export const ProdutoImage = styled.Image`
 export const ContainerText = styled.View`
 height:90%;
 width:40%;
+padding-left:4px;
+/* padding-left:6px; */
 /* background: blue; */
 
 `;
@@ -59,8 +61,10 @@ export const Desc = styled.Text`
 color: ${theme.colors.subtitle};
 font-family:${theme.fonts.subTitle};
 font-size: 10px;
+margin-left:2px;
 /* background: pink; */
 flex: 1;
+
 white-space: nowrap;
 /* overflow: hidden; */
 text-overflow: ellipsis;

@@ -26,7 +26,6 @@ export type SalesProps = {
 export function Enviar() {
   const [showLoading, setShowLoading] = useState(false);
 
-
   const Error = () => {
     function addHours(date: Date, hours: number) {
       date.setHours(date.getHours() + hours);
@@ -89,7 +88,6 @@ export function Enviar() {
 
   function openScreen() {
     navigation.goBack();
-
   }
 
   async function postTrello() {
@@ -112,8 +110,6 @@ export function Enviar() {
     let produtos = "";
 
     let precoTotal = 0;
-
-  
 
     for (let i = 0; i < cartItems.length; i++) {
       produtos +=
@@ -242,8 +238,8 @@ export function Enviar() {
   }
 
   return (
-    <>
-   
+    // <>
+    <S.Container>
       <InfoConfirm />
       <CartConfirm />
       <S.TextWarning>
@@ -253,8 +249,8 @@ export function Enviar() {
       <S.ButtonEnviar onPress={ConfirmAlert}>
         <S.EnviarText>Enviar pedido</S.EnviarText>
       </S.ButtonEnviar>
-    {showLoading ? <LoadingPage/> : null}
-    
-    </>
+      {showLoading ? <LoadingPage /> : null}
+    </S.Container>
+    // </>
   );
 }

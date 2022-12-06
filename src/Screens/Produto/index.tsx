@@ -53,6 +53,7 @@ export function Produto() {
   // }, []);
 
   const [title, setTitle] = useState<Sheets[]>([]);
+  // const [qtdCart, setQtdCart] = useState<number>(0);
   useEffect(() => {
     async function getStoreData() {
       await api.get('/getProdutos').then(function (response) {
@@ -103,6 +104,7 @@ export function Produto() {
       const previousData = oldProducts ? JSON.parse(oldProducts) : [];
 
       const allProducts = [...previousData, theProduct]
+      // setQtdCart(allProducts.length);
 
       await setItem(JSON.stringify(allProducts))
 
@@ -112,6 +114,10 @@ export function Produto() {
           text1: 'Item adicionado!',
           text2: 'Cheque o seu carrinho ou adicione mais produtos!'
         });
+
+        // setQtdCart(qtdCart+1);
+
+
       
     
     } catch (error) {
@@ -159,7 +165,9 @@ export function Produto() {
   return (
 
     <S.Container>
-      <StatusBar />
+      <StatusBar
+      //  qtdCart={qtdCart}
+       />
 
       <S.ScrollContainer>
 
@@ -196,7 +204,7 @@ export function Produto() {
 
         <S.Prices>
           <S.OriginalPrice>
-            {formatNumber(produtoPreco)}
+            {formatNumber(produtoPreco*1.15)}
             </S.OriginalPrice>
           <S.PromocionalPrice>
             {formatNumber(produtoPreco)}

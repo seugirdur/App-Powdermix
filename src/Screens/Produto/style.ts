@@ -121,7 +121,7 @@ export const TextButton = styled.Text`
 text-transform: uppercase;
 color: ${theme.colors.textWhite};
 font-family: ${theme.fonts.title};
-font-size:18px;
+font-size:16px;
 width:30px;
 margin-left:16px;
 margin-right:40px;

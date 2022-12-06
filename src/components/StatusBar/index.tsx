@@ -1,5 +1,5 @@
 import * as S from "./style";
-import { Alert, FlatList } from "react-native";
+import { Alert, FlatList, TouchableOpacityProps } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import { CartProps } from "../CardVertical";
 import { QuantityBox } from "../QuantityBox";
@@ -10,6 +10,10 @@ import { Feather, EvilIcons } from "@expo/vector-icons";
 import { useNavigation, DrawerActions } from "@react-navigation/native";
 import AsyncStorage, { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
+
+type Props = {
+  qtdCart: number;
+} & TouchableOpacityProps;
 
 
 export const formatNumber = (price: number, qtd?: number) => {
@@ -29,11 +33,14 @@ return "R$ " + replaced1
 
 
 
-export function StatusBar() {
+export function StatusBar(
+  // { qtdCart, ...rest }: Props
+  ) {
   const navigation = useNavigation();
   const [cart, setCart] = useState<CartProps[]>([]);
   const [isModalVisible, setModalVisible] = useState(false);
   const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
+  const [qtdCartStatus, setQtdCartStatus] = useState<number>(0)
 
   console.log("im brother re render")
 
@@ -43,6 +50,11 @@ export function StatusBar() {
   function openDrawer() {
     navigation.dispatch(DrawerActions.openDrawer());
   }
+
+  // useEffect(() => {
+  //   setQtdCartStatus(qtdCart);
+  //   console.log("lmaozin")
+  // }, [qtdCart])
 
   
   async function openScreen() {
@@ -80,6 +92,7 @@ export function StatusBar() {
     const response = await getItem();
     const data = response ? JSON.parse(response) : [];
     setCart([...data]);
+    // setQtdCartStatus(qtdCart);
     sumThePrice();
     // console.log(cart);
     if (!isModalVisible) {
@@ -95,6 +108,7 @@ export function StatusBar() {
     const data = previousData.filter((item: CartProps) => item.id !== id);
     const completeData = JSON.stringify(data);
     setItem(completeData);
+    // setQtdCartStatus(qtdCart-2)
     handleSeeCart();
   }
 
@@ -140,7 +154,8 @@ export function StatusBar() {
               <FlatList
                 ListHeaderComponent={
                   <>
-                    <S.TitleCart> Carrinho de Compras </S.TitleCart>
+                    <S.TitleCart
+                    > Carrinho de Compras </S.TitleCart>
                   </>
                 }
                 extraData={cart}
@@ -157,7 +172,9 @@ export function StatusBar() {
                         </S.ContainerImage>
 
                         <S.ContainerText>
-                          <S.Titulo>{item.produtoNome}</S.Titulo>
+                          <S.Titulo
+                            adjustsFontSizeToFit
+                          >{item.produtoNome}</S.Titulo>
                           <S.Qtd>{item.counter}x { item.counter > 1 ? "unidades": "unidade" }</S.Qtd>
                         </S.ContainerText>
 
@@ -167,7 +184,9 @@ export function StatusBar() {
 
 
                         <S.ContainerTextPrice>
-                          <S.Price>
+                          <S.Price
+                          adjustsFontSizeToFit
+                          >
                             
                             {formatNumber(item.produtoPreco, item.counter )}
                             
@@ -202,8 +221,12 @@ export function StatusBar() {
             </S.LogoContainer>
 
             <S.ValueContainer>
-              <S.TextValue>VALOR TOTAL:</S.TextValue>
-                <S.ValueCalc>{fullPriceShow}</S.ValueCalc>
+              <S.TextValue
+              adjustsFontSizeToFit
+              >VALOR TOTAL:</S.TextValue>
+                <S.ValueCalc
+                adjustsFontSizeToFit
+                >{fullPriceShow}</S.ValueCalc>
             </S.ValueContainer>
 
             <S.Row>
@@ -229,9 +252,9 @@ export function StatusBar() {
       <S.Logo source={logo}></S.Logo>
       <S.SquareRound onPress={handleSeeCart}>
         <Feather name="shopping-cart" size={40} color="white" />
-      <S.RoundCount>
-        <S.CarCount>{cart.length}</S.CarCount>
-      </S.RoundCount>
+      {/* <S.RoundCount>
+        <S.CarCount>{qtdCartStatus}</S.CarCount>
+      </S.RoundCount> */}
       </S.SquareRound>
       
     </S.StatusBar>

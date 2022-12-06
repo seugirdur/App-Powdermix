@@ -50,7 +50,6 @@ height:40px;
 margin: 1px;
 text-align: left;
 margin-left:4px;
-
 `;
 
 export const Desc = styled.Text`
@@ -60,6 +59,8 @@ font-size: 10px;
 /* background: pink; */
 flex: 1;
 white-space: nowrap;
+margin-left:5px;
+margin-right:3px;
 /* overflow: hidden; */
 text-overflow: ellipsis;
 height:100%;
