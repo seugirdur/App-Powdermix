@@ -129,6 +129,21 @@ export function Enviar() {
       timeZone: "America/Sao_Paulo",
     });
 
+
+    function padTo2Digits(num: number) {
+      return num.toString().padStart(2, "0");
+    }
+
+    function formatDate(date: Date) {
+      return [
+        padTo2Digits(date.getDate()),
+        padTo2Digits(date.getMonth() + 1),
+        date.getFullYear(),
+      ].join("/");
+    }
+
+    const dataCompra = formatDate(new Date());
+
     // console.log(precoTotal);
 
     //   function dataAtualFormatada(){
@@ -162,9 +177,12 @@ export function Enviar() {
         "Pedido: \n" +
         produtos +
         "\n\n" +
-        "Hora do Pedido: \n" +
+        "Data e Hora do Pedido: \n" +
         myBrazilianDate +
-        "\n",
+        "\n" +
+        dataCompra +
+        "\n"
+        ,
       //   + personalInfo.name + "\n"
       //   + personalInfo.name + "\n",
       idList: "637ca9c85c09a903cffd99eb",

@@ -8,6 +8,8 @@ export const Container = styled.TouchableOpacity`
   justify-content: center;
   background-color: ${theme.colors.red};
   margin-bottom: 24px;
+  /* position:absolute;
+  top:0px; */
   margin-top: 24px;
 `;
 

@@ -4,8 +4,10 @@ import theme from "../../global/styles/theme";
 
 
 export const Container = styled.ScrollView`
-    flex: 1;
-    background-color: #F4F5F6;
+    /* flex: 1; */
+    /* background-color: #F4F5F6; */
+    /* background-color: blue; */
+    height:100%;
     padding: 24px;
 
 

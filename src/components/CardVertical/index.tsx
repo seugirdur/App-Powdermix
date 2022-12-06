@@ -32,7 +32,7 @@ export function CardVertical({ data, ...rest }: Props) {
 
   let imagesArr = data[4].split(',');
 
-  const id = v4();
+  
   const produtoNome = data[1];
   const produtoDesc = data[2];
   const produtoPreco = data[3];
@@ -42,6 +42,8 @@ export function CardVertical({ data, ...rest }: Props) {
   // const handleStore = useCallback(async () => {
   async function handleStore() {
     try {
+
+      const id = v4();
       const theProduct = {
         id,
         produtoNome,

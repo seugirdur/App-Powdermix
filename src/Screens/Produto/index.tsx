@@ -87,7 +87,7 @@ export function Produto() {
   async function handleStore() {
     try {
       // console.log("4");
-      const id = v4()
+      const id = v4();
 
       const theProduct = {
         id,

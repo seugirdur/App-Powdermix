@@ -12,7 +12,7 @@ export function Formulario() {
 
         <S.Container>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <KeyboardAvoidingView behavior="position" enabled>
+        <KeyboardAvoidingView behavior="padding" enabled>
           <>
             <Header />
             <Form />
