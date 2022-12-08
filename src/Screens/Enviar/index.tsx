@@ -23,6 +23,7 @@ export type SalesProps = {
   precoTotal: number;
 };
 
+//Tela de envio para o trello
 export function Enviar() {
   const [showLoading, setShowLoading] = useState(false);
 
@@ -72,7 +73,7 @@ export function Enviar() {
   function openScreen() {
     navigation.goBack();
   }
-
+  //funcao de envio para o trello
   async function postTrello() {
     setShowLoading(true);
     const getInfo = await AsyncStorage.getItem("@saveinfo:personalinfo");

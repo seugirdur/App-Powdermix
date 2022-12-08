@@ -35,7 +35,7 @@ const schema = yup.object({
     .min(8, "Número de telefone inválido")
     .required("Informe o telefone"),
 });
-
+//formulario para preenchimento de informações
 export function Form() {
   const {
     control,
@@ -53,7 +53,7 @@ export function Form() {
     navigation.goBack();
     navigation.navigate("Enviar");
   }
-
+  //armazenando informações do cliente
   async function handleFormInfo(personalInfo: InfoProps) {
     try {
       await setItem(JSON.stringify(personalInfo));

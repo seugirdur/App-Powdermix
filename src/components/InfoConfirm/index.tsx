@@ -20,7 +20,7 @@ export function InfoConfirm() {
   const [email, setEmail] = useState<string>("lmao");
   const [cep, setCep] = useState<string>("lmao");
   const [smartphone, setSmartphone] = useState<string>("lmao");
-
+  //componente de confirmação das informações inseridas
   async function seeInfo() {
     const response = await getItem();
     const personalInfo = response ? JSON.parse(response) : [];

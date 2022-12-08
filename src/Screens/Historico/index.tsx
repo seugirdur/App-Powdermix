@@ -20,6 +20,7 @@ import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
 const { getItem, setItem } = useAsyncStorage("@savesales:sale");
 
+//funcao para carregar o historico de compras
 export function Historico() {
   const [historic, setHistoric] = useState<SalesProps[]>([]);
   

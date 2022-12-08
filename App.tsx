@@ -11,12 +11,12 @@ import { Routes } from "./src/Routes";
 import AppLoading from "expo-app-loading";
 import * as SplashScreen from "expo-splash-screen";
 import { realUseFonts } from "./src/hooks/useFonts";
-import React, { useCallback, useEffect, useState } from "react";
-import { Toast } from "react-native-toast-message/lib/src/Toast";
 import {
   TapGestureHandler,
   RotationGestureHandler,
 } from "react-native-gesture-handler";
+import React, { useCallback, useEffect, useState } from "react";
+import { Toast } from "react-native-toast-message/lib/src/Toast";
 
 SplashScreen.preventAutoHideAsync();
 

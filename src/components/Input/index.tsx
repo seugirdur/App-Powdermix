@@ -8,7 +8,7 @@ export type InputProps = TextInputProps & {
   icon: React.ComponentProps<typeof Feather>['name'];
   value?: string;
 }
-
+//efeito de não preenchido
 export function Input({ icon, value, ...rest }: InputProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);

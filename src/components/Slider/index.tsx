@@ -13,7 +13,7 @@ import {
 
 const { width } = Dimensions.get("window");
 const height = (width * 100) / 60;
-
+//funcao que cria os sliders 
 export function Slider({ images }: any) {
   const [active, setActive] = useState(0);
 

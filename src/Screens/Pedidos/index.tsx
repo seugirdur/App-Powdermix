@@ -23,6 +23,7 @@ import { EmailProps } from "../../components/FormEmail";
 
 const { getItem, setItem } = useAsyncStorage("@savesales:sale");
 
+//tela de pedidos
 export function Pedidos() {
   const [pedidos, setPedidos] = useState<SalesProps[]>([]);
 
@@ -38,13 +39,13 @@ export function Pedidos() {
   function openScreen() {
     navigation.navigate("Enviar");
   }
-
+  //funcao de refazer pedido
   const HandleRedoCheckout = async (redoCartItems: CartProps[]) => {
     const redoString = JSON.stringify(redoCartItems);
     await AsyncStorage.setItem("@saveproducts:cart", redoString);
     openScreen();
   };
-
+  //funcao de enviar email
   const SendEmail = (venda: SalesProps) => {
 
     let produtos = "";

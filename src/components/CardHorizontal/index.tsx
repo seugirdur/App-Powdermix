@@ -18,6 +18,7 @@ export function CardHorizontal({ data, ...rest }: any) {
   const produtoPreco = data[3];
   const produtoImg1 = imagesArr[0];
 
+  //função que guarda no carrinho o item clicado
   async function handleStore() {
     try {
       const theProduct = {

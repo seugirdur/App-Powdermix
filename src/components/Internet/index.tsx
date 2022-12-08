@@ -5,7 +5,7 @@ import * as S from './style'
 
 export function Internet() {
   return (
-   
+    //tela sem acesso a internet
     <S.Container>
         <S.TitleOpsContainer>
             <S.TitleOps>Ops! Parece que você está sem internet!</S.TitleOps>

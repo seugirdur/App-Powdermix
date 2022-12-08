@@ -29,7 +29,7 @@ export const formatNumber = (price: number, qtd?: number) => {
 
   return "R$ " + replaced1;
 };
-
+//status bar
 export function StatusBar() {
   const navigation = useNavigation();
   const [cart, setCart] = useState<CartProps[]>([]);
@@ -43,7 +43,7 @@ export function StatusBar() {
   function openDrawer() {
     navigation.dispatch(DrawerActions.openDrawer());
   }
-
+  //funcao de abrir a tela de envio ou a de formulario
   async function openScreen() {
     const getCart = await getItem();
     const data = getCart ? JSON.parse(getCart) : [];
@@ -61,7 +61,7 @@ export function StatusBar() {
       );
     }
   }
-
+  //função de ver o carrinho
   const handleSeeCart = async () => {
     const response = await getItem();
     const data = response ? JSON.parse(response) : [];
@@ -73,7 +73,7 @@ export function StatusBar() {
   };
 
   const [counter, setCounter] = useState<number>();
-
+  //função de retirar item do carrinho
   async function handleRemove(id: string) {
     const response = await getItem();
     const previousData = response ? JSON.parse(response) : [];
@@ -82,7 +82,7 @@ export function StatusBar() {
     setItem(completeData);
     handleSeeCart();
   }
-
+  //função para somar o total gasto
   async function sumThePrice() {
     const response = await getItem();
     const previousData = response ? JSON.parse(response) : [];

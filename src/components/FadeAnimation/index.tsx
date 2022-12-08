@@ -11,7 +11,7 @@ import * as S from "./styles";
 type FadeAnimationProps = {
   children: React.ReactNode;
 } & ViewProps;
-
+//animação de fade
 export function FadeAnimation({ children, ...rest }: FadeAnimationProps) {
   const { width: displayWidth } = useWindowDimensions();
   const cardOpacity = useSharedValue(0);

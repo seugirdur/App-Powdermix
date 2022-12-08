@@ -33,7 +33,7 @@ const theFaq = {
   descricao: string,
 }
 
-
+//tela de faq
 export function FAQ() {
   const [showLoading, setShowLoading] = useState(false);
   const [faq, setFaq] = useState<FaqProps[]>([])

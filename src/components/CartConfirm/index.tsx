@@ -9,6 +9,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
+//tela para confirmar os itens comprados
 export function CartConfirm() {
   const navigation = useNavigation();
   const [cart, setCart] = useState<CartProps[]>([]);
@@ -23,7 +24,7 @@ export function CartConfirm() {
     setCart([...data]);
     return [...data];
   }, []);
-
+  //função para somar todo o valor
   const sumEverything = useCallback(async () => {
     let precofinal = 0;
     const myarray = await seeCart();

@@ -6,6 +6,8 @@ import { FormEmail } from "../../components/FormEmail";
 import { HeaderContato } from "../../components/HeaderContato";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback } from 'react-native';
+
+//tela de contato
 export function Contato() {
     const navigation = useNavigation();
     const route = useRoute();

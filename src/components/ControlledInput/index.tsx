@@ -9,7 +9,7 @@ type Props = InputProps & {
 };
 
 import { Error } from "./styles";
-
+//gerador dos campos de formulario
 export function ControlledInput({ control, name, error, ...rest }: Props) {
   return (
     <>

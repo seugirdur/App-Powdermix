@@ -44,6 +44,7 @@ export type Sheets = {
 
 const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
 
+//tela de inicio
 export function Inicio() {
   async function handleStore(
     produtoNome: string,

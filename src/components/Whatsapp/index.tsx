@@ -4,6 +4,7 @@ import { View } from "react-native";
 import * as Linking from "expo-linking";
 import { Fontisto, Entypo } from "@expo/vector-icons";
 
+//componente do whatsapp para contato
 export function Whatsapp() {
   return (
     <S.Container>
