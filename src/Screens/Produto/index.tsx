@@ -23,6 +23,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { Slider } from "../../components/Slider";
 import { Linking } from "react-native";
+import { FadeAnimation } from "../../components/FadeAnimation";
 
 type RouteParams = {
   item: Sheets;
@@ -250,7 +251,9 @@ export function Produto() {
             data={title}
             keyExtractor={(item: Sheets) => item[0].toString()}
             renderItem={({ item }: { item: Sheets }) => (
+              <FadeAnimation>
               <CardHorizontal data={item} onPress={() => openScreen(item)} />
+              </FadeAnimation>
             )}
           ></S.ScrollHorizontal>
         </S.CardContainer>

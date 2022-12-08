@@ -27,6 +27,7 @@ import { useNavigation } from "@react-navigation/native";
 import { CardVertical } from "../../components/CardVertical";
 import { LoadingPage } from "../../components/LoadingPage";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
+import { FadeAnimation } from "../../components/FadeAnimation";
 
 const { width } = Dimensions.get("window");
 const height = (width * 100) / 160;
@@ -186,7 +187,9 @@ export function Inicio() {
             }
             keyExtractor={(item) => item[0].toString()}
             renderItem={({ item }) => (
+              <FadeAnimation>
               <CardVertical data={item} onPress={() => openScreen(item)} />
+              </FadeAnimation>
             )}
           />
         </S.CardContainer>
