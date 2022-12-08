@@ -1,15 +1,9 @@
+import { v4 } from "uuid";
 import React from "react";
 import * as S from "./style";
-import AppLoading from "expo-app-loading";
-import { Sheets } from "../../Screens/Inicio";
-import { Alert, TouchableOpacityProps } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import theme from "../../global/styles/theme";
 import Toast from "react-native-toast-message";
-
-import { useNavigation, DrawerActions } from "@react-navigation/native";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import { v4 } from "uuid";
 
 
 const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
@@ -66,7 +60,6 @@ export function CardHorizontal({ data, ...rest }: any) {
       <S.ContainerText>
         <S.Titulo>{produtoNome}</S.Titulo>
         <S.Desc>{produtoDesc}</S.Desc>
-        {/* <S.Price>R${produtoPreco}</S.Price> */}
       </S.ContainerText>
       <S.ContainerButton>
         <S.BuyButton onPress={handleStore}>

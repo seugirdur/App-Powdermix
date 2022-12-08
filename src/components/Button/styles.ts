@@ -8,14 +8,11 @@ export const Container = styled.TouchableOpacity`
   justify-content: center;
   background-color: ${theme.colors.red};
   margin-bottom: 24px;
-  /* position:absolute;
-  top:0px; */
   margin-top: 24px;
 `;
 
 export const Title = styled.Text`
   font-size: 16px;
   font-family:${theme.fonts.title};
-
   color: #FFFFFF;
 `;

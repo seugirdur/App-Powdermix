@@ -108,7 +108,7 @@ justify-content:center;
 
 export const ButtonRight = styled.TouchableOpacity`
 position:absolute;
-left:90%
+left:90%;
 `
 
 export const ThreeDots = styled.TouchableOpacity`
@@ -122,9 +122,9 @@ justify-content:center
 
 export const Flatlist = styled.TouchableOpacity`
 position:relative;
-left:90%
+left:90%;
 `
 
 export const Button = styled.TouchableOpacity`
 width:200px;
-background-color:blue`
+background-color:blue;`

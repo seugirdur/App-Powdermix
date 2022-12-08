@@ -66,7 +66,6 @@ export function FormEmail() {
 
   async function handleFormInfo(wholeEmail: EmailProps) {
     try {
-      // const id = v4();
 
       
 
@@ -89,14 +88,12 @@ export function FormEmail() {
 
     function addHours(date: Date, hours: number) {
       date.setHours(date.getHours() + hours);
-      const makeitworkgoddamn = date.toUTCString();
+      const legalDate = date.toUTCString();
 
-      return makeitworkgoddamn;
+      return legalDate;
     }
-    // Date(Date.UTC()
     const someDate = new Date();
-    // .toLocaleTimeString("pt-BR", {timeZone: "America/Sao_Paulo"})
-    // .getTimezoneOffset()
+
 
     const dataCompleta = addHours(someDate, -3);
 
@@ -121,7 +118,6 @@ export function FormEmail() {
         control={control}
         icon="file-text"
         placeholder="Ponha aqui a descrição que irá para o e-mail da Powdermix"
-        // style={{textAlignVertical:'top'}}
         error={errors.desc}
         multiline={true}
         numberOfLines={8}

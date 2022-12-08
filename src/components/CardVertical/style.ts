@@ -40,18 +40,17 @@ export const ContainerText = styled.View`
 height:90%;
 width:40%;
 padding-left:4px;
-/* padding-left:6px; */
-/* background: blue; */
+
 
 `;
 
 export const Titulo = styled.Text`
 color: ${theme.colors.Cards.darkRed};
 font-family:${theme.fonts.title};
-/* font-size: 15px; */
+
 white-space: nowrap;
 text-overflow: ellipsis;
-/* background: yellow; */
+
 overflow: hidden;
 margin: 1px;
 
@@ -62,11 +61,11 @@ color: ${theme.colors.subtitle};
 font-family:${theme.fonts.subTitle};
 font-size: 10px;
 margin-left:2px;
-/* background: pink; */
+
 flex: 1;
 
 white-space: nowrap;
-/* overflow: hidden; */
+
 text-overflow: ellipsis;
 height:100%;
 `;

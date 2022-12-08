@@ -15,9 +15,7 @@ export const StatusBar = styled.View`
   top: 40px;
   height: 56px;
   position: absolute;
-  /* background: blue; */
   justify-content: space-between;
-  /* align-items:center; */
   flex-direction: row;
 `;
 
@@ -30,7 +28,6 @@ export const Logo = styled.Image`
   justify-content: center;
   width: 60%;
   height: 100%;
-  /* background: yellow; */
   margin-left: 64px;
   resize-mode: contain ;
 `;
@@ -77,7 +74,6 @@ export const Carrosel = styled.View`
   margin-left: auto;
   margin-right: auto;
   width: 95%;
-  /* top: 140px; */
   height: 200px;
   justify-content: center;
   background-color: red;
@@ -106,7 +102,6 @@ export const ThreeDots = styled.TouchableOpacity`
   width: 100%;
   height: 40px;
   position: relative;
-  /* top: 150px; */
   flex-direction: row;
   justify-content: center;
 `;
@@ -122,14 +117,11 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const ModalContainer = styled.Modal`
-
-/* margin-top:51px; */
 `;
 
 export const OffClick = styled.TouchableOpacity`
   width: 100%;
   height: 80%;
-  /* position:absolute; */
   background-color: "rgba(0,0,0,0.5)";
   align-items: center;
   justify-content: center;
@@ -292,8 +284,6 @@ justify-content:center;
 export const ContainerText = styled.View`
 height:100%;
 width:45%;
-/* justify-content:center; */
-/* background:yellow; */
 margin-top:6%;
 margin-left:2%;
 margin-right:2%;
@@ -304,7 +294,6 @@ color: ${theme.colors.cinzapowdermixescuro};
 font-family:${theme.fonts.subTitle};
 font-size: 14px;
 white-space: nowrap;
-/* background: blue; */
 text-overflow: ellipsis;
 overflow: hidden;
 margin: 1px;
@@ -313,7 +302,6 @@ margin: 1px;
 export const Price = styled.Text`
 color: ${theme.colors.Cards.black};
 font-family:${theme.fonts.minusTitle};
-/* font-size: 14px; */
 white-space: nowrap;
 text-overflow: ellipsis;
 overflow: hidden;
@@ -325,10 +313,8 @@ font-align:center;
 export const Titulo = styled.Text`
 color: ${theme.colors.Cards.darkRed};
 font-family:${theme.fonts.title};
-/* font-size: 14px; */
 height:44%;
 margin: 1px;
-/* background: yellow; */
 `;
 
 

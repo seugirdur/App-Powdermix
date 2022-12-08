@@ -15,7 +15,6 @@ export function InfoConfirm() {
     navigation.navigate("Formulario");
   }
 
-  // const [info, setInfo] = useState([]);
   const [name, setName] = useState<string>("lmao");
   const [cpf, setCpf] = useState<string>("lmao");
   const [email, setEmail] = useState<string>("lmao");
@@ -53,11 +52,7 @@ export function InfoConfirm() {
           <S.TextAtualizarinfo>Atualizar Info</S.TextAtualizarinfo>
         </S.AtualizarInfo>
       </S.ContainerButton>
-      {/* <Button
-            title="lmao"
-            onPress={seeInfo}
-            
-            /> */}
+  
     </S.Container>
   );
 }

@@ -10,16 +10,13 @@ import { StatusBar } from "../../components/StatusBar";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-
 import { Feather } from "@expo/vector-icons";
-
 import * as S from "./style";
 import logo from "../../assets/onlyname.png";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { SalesProps } from "../Enviar";
 import { LoadingPage } from "../../components/LoadingPage";
-//yarn add @types/react -D
-// import { styles } from './styles';
+
 
 const { getItem, setItem } = useAsyncStorage("@savesales:sale");
 
@@ -36,17 +33,9 @@ export function Historico() {
   };
   const navigation = useNavigation();
 
-  // const navigation = useNavigation();
-  // const route = useRoute();
-
-  // useFocusEffect(() => {
-  //   loadHistoric();
-  //   console.log("lmao")
-  // })
   useFocusEffect(
     useCallback(() => {
       loadHistoric();
-      // console.log("lmao")
     }, [])
   );
 
@@ -71,7 +60,6 @@ export function Historico() {
               <S.TitleHistoric>Histórico</S.TitleHistoric>
             </>
           }
-          //  extraData={}
           data={historic}
           extraData={historic}
           showsHorizontalScrollIndicator={false}

@@ -38,30 +38,20 @@ export function Produto() {
     }
   
   const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
-  // const [playing, setPlaying] = useState(false);
   const [counter, setCounter] = useState<number>(1);
 
   const route = useRoute();
   const { item } = route.params as RouteParams
   const productInfo = item;
 
-  // const onStateChange = useCallback((state: string) => {
-  //   if (state === "ended") {
-  //     setPlaying(false);
-  //     Alert.alert("video has finished playing!");
-  //   }
-  // }, []);
 
   const [title, setTitle] = useState<Sheets[]>([]);
-  // const [qtdCart, setQtdCart] = useState<number>(0);
   useEffect(() => {
     async function getStoreData() {
       await api.get('/getProdutos').then(function (response) {
         setTitle(response.data); 
-        // console.log("1");
       })    
     }
-    // console.log("2");
     getStoreData();
   }, []);
 
@@ -70,7 +60,6 @@ export function Produto() {
   function openScreen(item: Sheets) {
     navigation.goBack();
     navigation.navigate('Produto', { item });
-    // console.log("3");
   }
 
   const produtoNome = productInfo[1]
@@ -86,7 +75,6 @@ export function Produto() {
 
   async function handleStore() {
     try {
-      // console.log("4");
       const id = v4();
 
       const theProduct = {
@@ -98,13 +86,11 @@ export function Produto() {
         counter
       }
 
-      // console.log(theProduct.produtoPreco);
 
       const oldProducts = await getItem();
       const previousData = oldProducts ? JSON.parse(oldProducts) : [];
 
       const allProducts = [...previousData, theProduct]
-      // setQtdCart(allProducts.length);
 
       await setItem(JSON.stringify(allProducts))
 
@@ -115,7 +101,6 @@ export function Produto() {
           text2: 'Cheque o seu carrinho ou adicione mais produtos!'
         });
 
-        // setQtdCart(qtdCart+1);
 
 
       
@@ -127,7 +112,6 @@ export function Produto() {
 
 
   const formatNumber = (price: number) => {
-    // console.log("5");
 
     let priceWithDot = price.toFixed(2)
   
@@ -139,13 +123,11 @@ export function Produto() {
   
 
   function plusQuantity(counting: number){
-    // console.log("6");
     counting++
       setCounter(counting);
  }
  
  function minusQuantity(counting: number){
-  // console.log("7");
    if(counting > 1) {
     counting--
      setCounter(counting)
@@ -166,7 +148,6 @@ export function Produto() {
 
     <S.Container>
       <StatusBar
-      //  qtdCart={qtdCart}
        />
 
       <S.ScrollContainer>

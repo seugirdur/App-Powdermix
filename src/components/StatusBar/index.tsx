@@ -34,7 +34,6 @@ return "R$ " + replaced1
 
 
 export function StatusBar(
-  // { qtdCart, ...rest }: Props
   ) {
   const navigation = useNavigation();
   const [cart, setCart] = useState<CartProps[]>([]);
@@ -51,10 +50,6 @@ export function StatusBar(
     navigation.dispatch(DrawerActions.openDrawer());
   }
 
-  // useEffect(() => {
-  //   setQtdCartStatus(qtdCart);
-  //   console.log("lmaozin")
-  // }, [qtdCart])
 
   
   async function openScreen() {
@@ -65,7 +60,6 @@ export function StatusBar(
     const data = getCart ? JSON.parse(getCart) : [];
 
     if(fullPriceShow!="R$ 0,00") {
-      // console.log(fullPriceShow)
       const getInfo = await AsyncStorage.getItem("@saveinfo:personalinfo");
       getInfo ? navigation.navigate("Enviar") : navigation.navigate("Formulario");
       setModalVisible(false);
@@ -92,9 +86,7 @@ export function StatusBar(
     const response = await getItem();
     const data = response ? JSON.parse(response) : [];
     setCart([...data]);
-    // setQtdCartStatus(qtdCart);
     sumThePrice();
-    // console.log(cart);
     if (!isModalVisible) {
       setModalVisible(true);
     }
@@ -108,7 +100,6 @@ export function StatusBar(
     const data = previousData.filter((item: CartProps) => item.id !== id);
     const completeData = JSON.stringify(data);
     setItem(completeData);
-    // setQtdCartStatus(qtdCart-2)
     handleSeeCart();
   }
 
@@ -116,14 +107,11 @@ export function StatusBar(
   async function sumThePrice() {
     const response = await getItem();
     const previousData = response ? JSON.parse(response) : [];
-    // const price = previousData.filter((item: CartProps) => )
 
     let ans= 0;
 
-    // const lmao = previousData.map((item: CartProps) => item.produtoPreco > 1);
     var sum = previousData.map((item: CartProps) => {
       ans+= item.produtoPreco * item.counter
-      // console.log(ans)
     });
 
     let formatedAnswer = formatNumber(ans)
@@ -252,9 +240,7 @@ export function StatusBar(
       <S.Logo source={logo}></S.Logo>
       <S.SquareRound onPress={handleSeeCart}>
         <Feather name="shopping-cart" size={40} color="white" />
-      {/* <S.RoundCount>
-        <S.CarCount>{qtdCartStatus}</S.CarCount>
-      </S.RoundCount> */}
+
       </S.SquareRound>
       
     </S.StatusBar>

@@ -100,7 +100,6 @@ export function Pedidos() {
   useFocusEffect(
     useCallback(() => {
       loadPedidos();
-      // console.log("lmao")
     }, [])
   );
 
@@ -116,7 +115,6 @@ export function Pedidos() {
                 <S.TitleHistoric>Pedidos</S.TitleHistoric>
               </>
             }
-            //  extraData={}
             data={pedidos}
             extraData={pedidos}
             showsHorizontalScrollIndicator={false}

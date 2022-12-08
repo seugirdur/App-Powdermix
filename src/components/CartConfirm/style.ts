@@ -2,10 +2,7 @@ import styled from "styled-components/native";
 import theme from "../../global/styles/theme";
 
 
-
-
 export const Container = styled.View`
-/* height: 35%; */
     background-color: #EEEEEE;
     padding-left: 24px;
     padding-right: 24px;
@@ -180,7 +177,6 @@ height:20%;
 background-color:white;
 border-bottom-right-radius: 25px;
 border-top-right-radius: 25px;
-
 `;
 
 export const LogoImage = styled.Image`
@@ -204,7 +200,6 @@ font-size:20px;
 export const ValueCalc = styled.Text`
 color: ${theme.colors.white};
 font-family:${theme.fonts.minusTitle};
-
 font-size:20px;
 `;
 
@@ -321,76 +316,61 @@ align-items:center;
 export const TitlesContainer = styled.View`
 flex-direction:row;
 justify-content:space-evenly;
-/* background: yellow; */
 margin-bottom:12px;
 `;
 
 export const TitleName = styled.Text`
-/* background:green; */
 width:33%;
 text-transform:uppercase;
 font-family:${theme.fonts.subTitle};
 `
 export const TitleQuantity = styled.Text`
-/* background:green; */
 width:33%;
 text-align:center;
 align-self:center;
 text-transform:uppercase;
 font-family:${theme.fonts.subTitle};
 `
+
 export const TitlePrice = styled.Text`
-/* background:green; */
 width:33%;
 text-align:center;
 align-self:center;
 text-transform:uppercase;
 font-family:${theme.fonts.subTitle};
 `
-
-
-
 
 export const ContainerCartList = styled.View`
-/* background:blue; */
 flex-direction:row;
 justify-content:space-evenly
 margin:2%;
 `;
 
 export const ProductNameContainer = styled.View`
-/* background:green; */
 width:33%;
-
 `
+
 export const ProductName = styled.Text`
-/* background:yellow */
 font-size:12px;
 font-family:${theme.fonts.text};
 `;
 
-
-
 export const QuantityContainer = styled.View`
-/* background:green; */
 width:33%;
 font-size:12px;
 align-items:center;
 justify-content:center;
 `
 export const Quantity = styled.Text`
-/* background:yellow */
 font-family:${theme.fonts.text};
 `;
 
 export const PrecoContainer = styled.View`
-/* background:green; */
 width:33%;
 align-items:center;
 justify-content:center;
 `
 export const Preco = styled.Text`
-/* background:yellow */
 font-family:${theme.fonts.text};
 font-size:12px;
 `;
@@ -399,11 +379,9 @@ export const Line = styled.View`
 background: black;
 width:91%;
 height:1px;
-
 `;
 
 export const FinalPriceContainer = styled.View`
-/* background:yellow; */
 flex-direction:row;
 justify-content: flex-end;
 margin-left:12px;
@@ -413,24 +391,21 @@ margin-top:16px;
 
 
 export const FinalPriceTitle = styled.Text`
-/* background:green; */
+
 color:${theme.colors.red};
 font-family:${theme.fonts.minusTitle};
 `;
 
 export const ContainerValues = styled.View`
-
 `;
 
 export const FinalPriceValue = styled.Text`
-/* background:green; */
 margin-left:20px;
 margin-right:20px;
 font-family:${theme.fonts.subTitle};
 `;
 
 export const FinalPriceFrete = styled.Text`
-/* background:green; */
 margin-left:20px;
 margin-right:20px;
 font-family:${theme.fonts.subTitle};

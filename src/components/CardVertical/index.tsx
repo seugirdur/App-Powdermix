@@ -39,7 +39,6 @@ export function CardVertical({ data, ...rest }: Props) {
   const produtoImg1 = imagesArr[0];
 
 
-  // const handleStore = useCallback(async () => {
   async function handleStore() {
     try {
 
@@ -85,14 +84,7 @@ export function CardVertical({ data, ...rest }: Props) {
         <S.Desc>{produtoDesc}</S.Desc>
       </S.ContainerText>
 
-      {/* <S.ContainerVideo>
-        <S.Video source={{ uri: produtoImg1 }} />
-        <S.OverFlowVideo />
-
-        <S.VideoIcon>
-          <Feather name="play" size={24} color="white" />
-        </S.VideoIcon>
-      </S.ContainerVideo> */}
+    
 
       <S.ContainerButton>
         <S.BuyButton onPress={handleStore}>

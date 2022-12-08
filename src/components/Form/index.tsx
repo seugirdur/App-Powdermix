@@ -120,7 +120,7 @@ export function Form() {
 
 
       <Button
-        title="Continuar com o pedido"
+        title="Continuar com o orçamento"
         onPress={handleSubmit(handleFormInfo)}
       />
     </Container>

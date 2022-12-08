@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components/native';
 import theme from '../../global/styles/theme';
 
-
 type Video = {
   type: string
 }
@@ -23,7 +22,6 @@ width:100%;
 justify-content:center;
 align-items: center;
 border-radius:8px;
-
 `;
 
 export const ProdutoImage = styled.Image`
@@ -31,7 +29,6 @@ export const ProdutoImage = styled.Image`
   height: 80px;
   justify-content:center;
   border-radius:8px;
-
 `;
 
 
@@ -39,7 +36,6 @@ export const ProdutoImage = styled.Image`
 export const ContainerText = styled.View`
 height:70px;
 width:100%;
-
 `;
 
 export const Titulo = styled.Text`
@@ -56,12 +52,10 @@ export const Desc = styled.Text`
 color: ${theme.colors.subtitle};
 font-family:${theme.fonts.subTitle};
 font-size: 10px;
-/* background: pink; */
 flex: 1;
 white-space: nowrap;
 margin-left:5px;
 margin-right:3px;
-/* overflow: hidden; */
 text-overflow: ellipsis;
 height:100%;
 `;
@@ -82,9 +76,8 @@ export const ButtonCard = styled.TouchableOpacity`
 margin-top:4px;
 background-color:red;
 border-radius: 15px;
-
-
 `;
+
 export const ContainerButton = styled.View`
 margin-top:4px;
 

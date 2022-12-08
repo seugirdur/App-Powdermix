@@ -4,7 +4,7 @@ import theme from '../../global/styles/theme';
 
 export const Container = styled.View`
     flex:1
-    background-color: #EEEEEE
+    background-color: #EEEEEE;
 `
 
 export const StatusBar = styled.View`
@@ -18,30 +18,23 @@ flex-direction: row;
 
 export const WholeScreen = styled.View`
 flex:1;
-/* background: green; */
 `
 
 export const ContentContainer = styled.View`
-/* background:pink; */
-/* border-color: red green blue pink;margin-top:50px; */
 border-radius:25px;
 border: 1px solid ${theme.colors.cinzapowdermixclaro};
 position:absolute;
 width:100%;
 height:85%;
-
-/* align-items:center; */
 justify-content:center;
 bottom:-12px;
 `;
 
 export const FlatlistContainer = styled.View`
-/* background:yellow; */
 justify-content:center;
 align-items:center;
 margin-bottom:16px;
 width:100%;
-/* height:400px; */
 `;
 
 export const TitleHistoric = styled.Text`
@@ -60,20 +53,15 @@ background:white;
 width:93%;
 padding:10px;
 padding-left:16px;
-
-
-/* height:400px; */
 margin-bottom:10px;
 `;
 
 export const TopRow = styled.View`
-/* background:green; */
 margin:4px;
 flex-direction:row;
 `;
 
 export const TitleRow = styled.View`
-/* background:gray; */
 margin:4px;
 width:50%;
 flex-direction:row;
@@ -97,11 +85,8 @@ font-size:16px;
 `;
 
 export const IconRow = styled.View`
-/* background:blue; */
 width:50%;
-/* margin:4px; */
 flex-direction:row;
-/* align-items:flex-end; */
 justify-content:flex-end;
 `;
 
@@ -127,7 +112,6 @@ border-radius:20px;
 
 
 export const TableTitle = styled.View`
-/* background:purple; */
 flex-direction:row;
 justify-content:space-evenly;
 margin:4px;
@@ -135,7 +119,6 @@ align-items:center;
 `;
 
 export const EmptyImage = styled.View`
-/* background:pink; */
 
 `;
  
@@ -164,16 +147,13 @@ text-align:center;
 
 
 export const NestedFlatlistContainer = styled.View`
-/* background:yellow; */
 width: 100%;
-/* height:200px; */
 
 `;
 
 
 export const NestedContentContainer = styled.View`
 width:95%;
-/* background:red; */
 margin:10px;
 flex-direction:row;
 justify-content:space-between
@@ -200,14 +180,12 @@ padding:4px;
 
 export const ProdutoNome = styled.Text`
 font-size:14px;
-/* background:white; */
 color:${theme.colors.red};
 font-family:${theme.fonts.subTitle};
 `;
 
 export const QuantidadeProdutoContainer = styled.View`
 width:30%;
-/* background:brown; */
 justify-content:center;
 
 `;
@@ -242,7 +220,6 @@ export const ContainerTotal = styled.View`
 align-items:center;
 justify-content:center;
 width:100%;
-/* height:30%; */
 bottom:0px;
 padding: 12px;
 `;
@@ -251,8 +228,6 @@ export const Total = styled.View`
 background:${theme.colors.red};
 border-radius:16px;
 width:95%;
-/* top:100px; */
-/* height:55%; */
 margin-left:12px;
 margin-right:12px;
 margin-bottom:12px;
@@ -264,16 +239,12 @@ flex-direction:row;
 padding-left:10px;
 padding-right:10px;
 justify-content:space-between;
-/* height:75%; */
 `;
 
 
 export const TotalLabelContainer = styled.View`
-/* background: black; */
-/* height:100%; */
 margin:10px;
 justify-content:center;
-/* top:-2px; */
 `;
 
 
@@ -302,7 +273,6 @@ font-family:${theme.fonts.title};
 `;
 
 export const ContainerLine = styled.View`
-/* height:25%; */
 align-items:center;
 justify-content:center;
 `;
@@ -317,10 +287,7 @@ background: white;
 
 export const RefazerContainer = styled.TouchableOpacity`
 width:100%;
-/* height:30%; */
 align-items:center;
-/* margin-bottom:4px; */
-/* background: green; */
 justify-content:center;
 `;
 
@@ -330,16 +297,3 @@ font-size:20px;
 font-family:${theme.fonts.subTitle};
 
 `;
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -5,18 +5,13 @@ import theme from "../../global/styles/theme";
 
 export const Container = styled.View`
 background: ${theme.colors.red};
- /* background: red; */
 width:100%;
 height:100%;
 position:absolute;
-/* top:15%; */
 align-self: center;
-/* border_radius:12px; */
 align-items: center;
 justify-content: space-evenly;
 `;
-
-// export center 
 
 
 export const TitleOpsContainer = styled.View`

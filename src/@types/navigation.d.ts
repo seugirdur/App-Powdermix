@@ -1,5 +1,4 @@
-
-
+//criação da tipagem das telas para uso da library do React Navigation
 export declare global {
     declare module '*.png';
     namespace ReactNavigation {

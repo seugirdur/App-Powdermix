@@ -5,7 +5,6 @@ import theme from "../../global/styles/theme";
 export const Container = styled.ScrollView`
 flex:1;
 height:100%;
-/* background:yellow; */
 `;
 
 
@@ -13,7 +12,6 @@ export const TextWarning = styled.Text`
 font-family:${theme.fonts.description};
 color:${theme.colors.gray900};
 font-size:9px;
-/* position:absolute; */
 bottom:0px;
 margin-top:5%;
 text-align:center;
@@ -23,12 +21,10 @@ text-align:center;
 
 
 export const ButtonEnviar = styled.TouchableOpacity`
-/* height:10%; */
 background-color:${theme.colors.red};
 width:100%;
 align-items:center;
 justify-content:center;
-/* position:absolute; */
 bottom:0px;
 
 `;

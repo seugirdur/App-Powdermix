@@ -1,25 +1,22 @@
 import * as React from 'react'
-import { Button, FlatList, Text, View } from 'react-native';
-import { useNavigation, DrawerActions, useRoute } from '@react-navigation/native'
 import { FontAwesome5 } 
 from '@expo/vector-icons';
+import { string } from 'yup';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import {  } from '@expo/vector-icons'; 
-
 import {
-   Feather,
-   Entypo,  
+  Feather,
+  Entypo,  
 } from '@expo/vector-icons'; 
-
 import * as S from './style'
 import logo from '../../assets/onlyname.png'
 import { api } from '../../../services/api';
 import { useEffect, useState } from 'react';
 import { StatusBar } from '../../components/StatusBar';
 import { LoadingPage } from '../../components/LoadingPage';
-import { string } from 'yup';
-//yarn add @types/react -D
-// import { styles } from './styles';
+import { Button, FlatList, Text, View } from 'react-native';
+import { useNavigation, DrawerActions, useRoute } from '@react-navigation/native'
+
 
 type ParamsProps = {
   name: string;

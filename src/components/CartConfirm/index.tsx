@@ -19,11 +19,7 @@ export function CartConfirm() {
   const seeCart = useCallback(async () => {
     const response = await getItem();
     const data = response ? JSON.parse(response) : [];
-    // const lmao = data;
-    // console.log(lmao)
-    // lmao.forEach(element => {
-    //   console.log(element.produtoPreco * element.counter);
-    // });
+
     setCart([...data]);
     return [...data];
   }, []);
@@ -33,7 +29,6 @@ export function CartConfirm() {
     const myarray = await seeCart();
     myarray.forEach((element) => {
       precofinal += element.produtoPreco * element.counter;
-      // console.log(precofinal);
     });
     setPrice(precofinal);
   }, []);
@@ -51,14 +46,12 @@ export function CartConfirm() {
 
     useFocusEffect(() => {
       sumEverything();
-      // console.log("lmao")
     });
   }
 
   
   
 
-  // sumEverything();
   return (
     <S.Container>
       <HeaderEnviarCart title="Seu pedido" />
@@ -69,45 +62,13 @@ export function CartConfirm() {
         <S.TitlePrice>Preço Final</S.TitlePrice>
       </S.TitlesContainer>
 
-      {/* {cart.forEach(element => {
-        <Text style={{fontSize:48}}>{element.produtoDesc}</Text>
-      })} */}
-
+    
       <FlatList
         extraData={cart}
         data={cart}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => {
           return (
-            // <S.CardCartBorder>
-            //   <S.CardCart type={cart}>
-            //     <S.ContainerImage>
-            //       <S.ProdutoImage source={{ uri: item.produtoImg1 }} />
-            //     </S.ContainerImage>
-
-            //     <S.ContainerText>
-            //       <S.Qtd>
-            //         {item.counter}x {item.counter > 1 ? "unidades" : "unidade"}
-            //       </S.Qtd>
-            //       <S.Titulo> {item.produtoNome} </S.Titulo>
-            //     </S.ContainerText>
-
-            //     <S.ContainerTextPrice>
-            //       <S.Price>
-            //         {formatNumber(item.produtoPreco, item.counter)}
-            //       </S.Price>
-            //     </S.ContainerTextPrice>
-
-            //     <S.CircleClose>
-            //       <EvilIcons
-            //         name="close"
-            //         size={24}
-            //         color={theme.colors.gray700}
-            //       />
-            //     </S.CircleClose>
-            //   </S.CardCart>
-            // </S.CardCartBorder>
-
             <S.FlatlistContainer>
               <S.ContainerCartList>
                 <S.ProductNameContainer>

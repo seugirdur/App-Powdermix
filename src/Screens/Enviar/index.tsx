@@ -38,13 +38,13 @@ export function Enviar() {
 
     Toast.show({
       type: "error",
-      text1: "Pedido Cancelado",
+      text1: "Orçamento Cancelado",
     });
   };
 
   const ConfirmAlert = () => {
     Alert.alert(
-      "Enviar Pedido?",
+      "Enviar orçamento?",
       "",
       [
         {
@@ -156,7 +156,7 @@ export function Enviar() {
 
     Toast.show({
       type: "success",
-      text1: "Pedido enviado!",
+      text1: "Orçamento enviado!",
       text2: "Nossa equipe entrará em contato com você!",
     });
 
@@ -205,7 +205,7 @@ export function Enviar() {
 
       const oldSales = await AsyncStorage.getItem("@savesales:sale");
       const previousSales = oldSales ? JSON.parse(oldSales) : [];
-      const allSales: SalesProps[] = [...previousSales, Sales];
+      const allSales: SalesProps[] = [Sales, ...previousSales];
       await AsyncStorage.setItem("@savesales:sale", JSON.stringify(allSales));
 
 
@@ -229,7 +229,7 @@ export function Enviar() {
         frete
       </S.TextWarning>
       <S.ButtonEnviar onPress={ConfirmAlert}>
-        <S.EnviarText>Enviar pedido</S.EnviarText>
+        <S.EnviarText>Enviar orçamento</S.EnviarText>
       </S.ButtonEnviar>
       {showLoading ? <LoadingPage /> : null}
     </S.Container>

@@ -4,7 +4,7 @@ import theme from '../../global/styles/theme';
 
 export const Container = styled.View`
     flex:1
-    background-color: #EEEEEE
+    background-color: #EEEEEE;
 `
 
 export const StatusBar = styled.View`
@@ -17,21 +17,18 @@ flex-direction: row;
 `;
 
 export const ContentContainer = styled.View`
-/* background:pink; */
-/* border-color: red green blue pink;margin-top:50px; */
+
 border-radius:25px;
 border: 1px solid ${theme.colors.cinzapowdermixclaro};
 position:absolute;
 width:100%;
 height:85%;
 padding-bottom:24px;
-/* align-items:center; */
 justify-content:center;
 bottom:-16px;
 `;
 
 export const FlatlistContainer = styled.View`
-/* background:yellow; */
 justify-content:center;
 align-items:center;
 
@@ -54,12 +51,10 @@ background:white;
 width:85%;
 padding:10px;
 padding-left:16px;
-/* height:100px; */
 margin:10px;
 `;
 
 export const TitleRow = styled.View`
-/* background:green; */
 margin:4px;
 flex-direction:row;
 `;
@@ -82,7 +77,6 @@ font-size:16px;
 `;
 
 export const ValueRow = styled.View`
-/* background:purple; */
 flex-direction:row;
 margin:4px;
 
@@ -103,7 +97,6 @@ font-size:12px;
 `;
 
 export const HourRow = styled.View`
-/* background:orange; */
 margin:4px;
 
 flex-direction:row;
