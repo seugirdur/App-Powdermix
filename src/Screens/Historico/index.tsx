@@ -1,21 +1,21 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Button, FlatList, Text, View } from "react-native";
+import * as S from "./style";
 import {
   useRoute,
   DrawerActions,
   useNavigation,
   useFocusEffect,
 } from "@react-navigation/native";
-import { StatusBar } from "../../components/StatusBar";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
-import * as S from "./style";
 import logo from "../../assets/onlyname.png";
-import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { SalesProps } from "../Enviar";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
+import { StatusBar } from "../../components/StatusBar";
 import { LoadingPage } from "../../components/LoadingPage";
+import { Button, FlatList, Text, View } from "react-native";
+import React, { useCallback, useEffect, useState } from "react";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
 
 const { getItem, setItem } = useAsyncStorage("@savesales:sale");

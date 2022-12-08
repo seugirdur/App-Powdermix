@@ -1,8 +1,8 @@
 import React from "react";
-import { View } from "react-native";
-import { Fontisto, Entypo } from "@expo/vector-icons";
 import * as S from "./style";
+import { View } from "react-native";
 import * as Linking from "expo-linking";
+import { Fontisto, Entypo } from "@expo/vector-icons";
 
 export function Whatsapp() {
   return (

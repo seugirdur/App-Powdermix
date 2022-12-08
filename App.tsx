@@ -1,19 +1,22 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { TapGestureHandler, RotationGestureHandler } from 'react-native-gesture-handler';
-import AppLoading from 'expo-app-loading';
 import {
-    useFonts,
-    Nunito_400Regular,
-    Nunito_600SemiBold,
-    Nunito_200ExtraLight,
-    Nunito_900Black,
-    Nunito_700Bold
-  } from '@expo-google-fonts/nunito';
-  import * as SplashScreen from 'expo-splash-screen';
-  import * as Font from "expo-font";
-import { realUseFonts } from './src/hooks/useFonts'
-import { Routes } from './src/Routes'
-import { Toast } from 'react-native-toast-message/lib/src/Toast';
+  useFonts,
+  Nunito_400Regular,
+  Nunito_600SemiBold,
+  Nunito_200ExtraLight,
+  Nunito_900Black,
+  Nunito_700Bold,
+} from "@expo-google-fonts/nunito";
+import * as Font from "expo-font";
+import { Routes } from "./src/Routes";
+import AppLoading from "expo-app-loading";
+import * as SplashScreen from "expo-splash-screen";
+import { realUseFonts } from "./src/hooks/useFonts";
+import React, { useCallback, useEffect, useState } from "react";
+import { Toast } from "react-native-toast-message/lib/src/Toast";
+import {
+  TapGestureHandler,
+  RotationGestureHandler,
+} from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -41,17 +44,10 @@ export default function App() {
   }, [appIsReady]);
 
   if (!appIsReady) {
-   return null;
+    return null;
   }
 
   onLayoutRootView();
 
-
-
-
-  return (
-    <Routes
-    />
-    
-  );
+  return <Routes />;
 }

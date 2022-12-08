@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+
 const { Screen, Navigator, Group } = createBottomTabNavigator();
 
 import { Inicio } from '../Screens/Inicio';

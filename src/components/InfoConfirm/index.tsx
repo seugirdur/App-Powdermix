@@ -1,10 +1,10 @@
+import * as S from "./style";
+import { Button } from "react-native";
+import { CartProps } from "../CardVertical";
 import React, { useEffect, useState } from "react";
 import { HeaderEnviarInfo } from "../HeaderEnviarInfo";
-import * as S from "./style";
-import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import { CartProps } from "../CardVertical";
-import { Button } from "react-native";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
 const { getItem } = useAsyncStorage("@saveinfo:personalinfo");
 
@@ -35,10 +35,9 @@ export function InfoConfirm() {
     seeInfo();
   });
 
-
   return (
     <S.Container>
-      <HeaderEnviarInfo title="Informações de Contato"/>
+      <HeaderEnviarInfo title="Informações de Contato" />
       <S.ContainerInfo>
         <S.Nome>Nome: {name}</S.Nome>
         <S.CPF>CNPJ: {cpf}</S.CPF>
@@ -52,7 +51,6 @@ export function InfoConfirm() {
           <S.TextAtualizarinfo>Atualizar Info</S.TextAtualizarinfo>
         </S.AtualizarInfo>
       </S.ContainerButton>
-  
     </S.Container>
   );
 }

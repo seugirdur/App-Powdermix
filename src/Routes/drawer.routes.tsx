@@ -1,15 +1,15 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { MaterialIcons } from "@expo/vector-icons";
 import { Button, Text, View } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const { Screen, Navigator, Group } = createDrawerNavigator();
 
-import { Inicio } from "../Screens/Inicio";
-import { TabRoutes } from "./tab.routes";
-import { Historico } from "../Screens/Historico";
 import { FAQ } from "../Screens/FAQ";
+import { TabRoutes } from "./tab.routes";
+import { Inicio } from "../Screens/Inicio";
 import theme from "../global/styles/theme";
+import { Historico } from "../Screens/Historico";
 import { CustomDrawer } from "../components/CustomDrawer";
 
 export function DrawerRoutes() {

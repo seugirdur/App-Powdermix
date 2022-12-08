@@ -10,10 +10,8 @@ import { StatusBar } from "../../components/StatusBar";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Fontisto, Entypo } from "@expo/vector-icons";
-
 import { Feather } from "@expo/vector-icons";
 import * as MailComposer from "expo-mail-composer";
-
 import * as S from "./style";
 import logo from "../../assets/onlyname.png";
 import AsyncStorage, {
@@ -22,8 +20,6 @@ import AsyncStorage, {
 import { SalesProps } from "../Enviar";
 import { CartProps } from "../../components/CardVertical";
 import { EmailProps } from "../../components/FormEmail";
-//yarn add @types/react -D
-// import { styles } from './styles';
 
 const { getItem, setItem } = useAsyncStorage("@savesales:sale");
 
@@ -40,16 +36,8 @@ export function Pedidos() {
   const navigation = useNavigation();
 
   function openScreen() {
-    // navigation.goBack();
     navigation.navigate("Enviar");
   }
-
-  // const navigation = useNavigation();
-  // const route = useRoute();
-
-  // useEffect(() => {
-
-  // }, []);
 
   const HandleRedoCheckout = async (redoCartItems: CartProps[]) => {
     const redoString = JSON.stringify(redoCartItems);

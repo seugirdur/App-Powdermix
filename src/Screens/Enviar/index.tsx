@@ -1,17 +1,17 @@
+import { v4 } from "uuid";
+import * as S from "./style";
+import { Alert } from "react-native";
 import React, { useState } from "react";
-import { FlatList } from "react-native-gesture-handler";
-import Toast from "react-native-toast-message";
 import { api2 } from "../../../services/api";
+import Toast from "react-native-toast-message";
+import { InfoProps } from "../../components/Form";
+import { FlatList } from "react-native-gesture-handler";
 import { CartProps } from "../../components/CardVertical";
 import { CartConfirm } from "../../components/CartConfirm";
-import { HeaderEnviarCart } from "../../components/HeaderEnviarCart";
 import { InfoConfirm } from "../../components/InfoConfirm";
-import * as S from "./style";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Alert } from "react-native";
-import { v4 } from "uuid";
-import { InfoProps } from "../../components/Form";
 import { LoadingPage } from "../../components/LoadingPage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { HeaderEnviarCart } from "../../components/HeaderEnviarCart";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 export type SalesProps = {
@@ -34,7 +34,6 @@ export function Enviar() {
 
       return makeitworkgoddamn;
     }
-   
 
     Toast.show({
       type: "error",
@@ -79,10 +78,8 @@ export function Enviar() {
     const getInfo = await AsyncStorage.getItem("@saveinfo:personalinfo");
     const getCart = await AsyncStorage.getItem("@saveproducts:cart");
     const personalInfo: InfoProps = getInfo ? JSON.parse(getInfo) : [];
-   
 
     const cartItems: CartProps[] = getCart ? JSON.parse(getCart) : [];
-
 
     let produtos = "";
 
@@ -106,7 +103,6 @@ export function Enviar() {
       timeZone: "America/Sao_Paulo",
     });
 
-
     function padTo2Digits(num: number) {
       return num.toString().padStart(2, "0");
     }
@@ -120,7 +116,6 @@ export function Enviar() {
     }
 
     const dataCompra = formatDate(new Date());
-
 
     await api2.post("", {
       name: personalInfo.name,
@@ -148,9 +143,7 @@ export function Enviar() {
         myBrazilianDate +
         "\n" +
         dataCompra +
-        "\n"
-        ,
-
+        "\n",
       idList: "637ca9c85c09a903cffd99eb",
     });
 
@@ -190,9 +183,7 @@ export function Enviar() {
       }
       const someDate = new Date();
 
-
       const dataCompleta = addHours(someDate, -3);
-
 
       const Sales: SalesProps = {
         id,
@@ -208,7 +199,6 @@ export function Enviar() {
       const allSales: SalesProps[] = [Sales, ...previousSales];
       await AsyncStorage.setItem("@savesales:sale", JSON.stringify(allSales));
 
-
       setShowLoading(false);
 
       openScreen();
@@ -217,10 +207,7 @@ export function Enviar() {
     }
   }
 
- 
-
   return (
-  
     <S.Container>
       <InfoConfirm />
       <CartConfirm />
@@ -233,6 +220,5 @@ export function Enviar() {
       </S.ButtonEnviar>
       {showLoading ? <LoadingPage /> : null}
     </S.Container>
-
   );
 }

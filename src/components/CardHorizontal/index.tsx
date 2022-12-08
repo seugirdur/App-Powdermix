@@ -5,23 +5,18 @@ import { Feather } from "@expo/vector-icons";
 import Toast from "react-native-toast-message";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
-
 const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
 
-
 let counter = 1;
-
+//cards no final da tela de produto
 export function CardHorizontal({ data, ...rest }: any) {
-
-  let imagesArr = data[5].split(',');
+  let imagesArr = data[5].split(",");
 
   const id = v4();
   const produtoNome = data[1];
   const produtoDesc = data[2];
   const produtoPreco = data[3];
   const produtoImg1 = imagesArr[0];
-
-  
 
   async function handleStore() {
     try {
@@ -40,16 +35,14 @@ export function CardHorizontal({ data, ...rest }: any) {
       await setItem(JSON.stringify(allProducts));
 
       Toast.show({
-        type: 'success',
-        text1: 'Item adicionado!',
-        text2: 'Cheque o seu carrinho ou adicione mais produtos!'
+        type: "success",
+        text1: "Item adicionado!",
+        text2: "Cheque o seu carrinho ou adicione mais produtos!",
       });
-
     } catch (error) {
       console.log(error);
     }
   }
-
 
   return (
     <S.CardHorizontal type={data} {...rest}>

@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useState } from "react";
+import * as S from "./style";
+import { CartProps } from "../CardVertical";
+import { formatNumber } from "../StatusBar";
 import { FlatList, Text } from "react-native";
 import theme from "../../global/styles/theme";
 import { HeaderEnviarCart } from "../HeaderEnviarCart";
-import { formatNumber } from "../StatusBar";
-import * as S from "./style";
-import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import { CartProps } from "../CardVertical";
 import { Feather, EvilIcons } from "@expo/vector-icons";
+import React, { useCallback, useEffect, useState } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
 export function CartConfirm() {
   const navigation = useNavigation();
@@ -38,18 +38,14 @@ export function CartConfirm() {
   useEffect(() => {
     seeCart();
     sumEverything();
-    num ++;
+    num++;
   }, []);
 
-  if(num=2) {
-
+  if ((num = 2)) {
     useFocusEffect(() => {
       sumEverything();
     });
   }
-
-  
-  
 
   return (
     <S.Container>
@@ -61,7 +57,6 @@ export function CartConfirm() {
         <S.TitlePrice>Preço Final</S.TitlePrice>
       </S.TitlesContainer>
 
-    
       <FlatList
         extraData={cart}
         data={cart}

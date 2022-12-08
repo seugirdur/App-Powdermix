@@ -17,15 +17,15 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
+import * as Network from "expo-network";
+import Toast from "react-native-toast-message";
 import { SearchBar } from "react-native-screens";
+import { Slider } from "../../components/Slider";
 import { MaterialIcons } from "@expo/vector-icons";
 import { StatusBar } from "../../components/StatusBar";
 import { useNavigation } from "@react-navigation/native";
 import { CardVertical } from "../../components/CardVertical";
 import { LoadingPage } from "../../components/LoadingPage";
-import { Slider } from "../../components/Slider";
-import * as Network from "expo-network";
-import Toast from "react-native-toast-message";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 
 const { width } = Dimensions.get("window");
@@ -45,7 +45,6 @@ export type Sheets = {
 const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
 
 export function Inicio() {
-
   async function handleStore(
     produtoNome: string,
     produtoDesc: string,
@@ -98,15 +97,12 @@ export function Inicio() {
 
   useEffect(() => {
     async function getStoreData() {
-
-
       setShowLoading(true);
 
       if (title.length != 0) {
         setShowLoading(false);
       }
 
-     
       await api
         .get("/getProdutos")
         .then(function (response) {
@@ -121,7 +117,6 @@ export function Inicio() {
               "Lamentamos o incidente, tente novamente mais tarde"
             );
           }
-         
         });
 
       await api.get("/getSlider").then((response) => {
@@ -134,24 +129,18 @@ export function Inicio() {
     getStoreData();
   }, [showLoading]);
 
-
-
   const navigation = useNavigation();
 
   function openScreen(item: Sheets) {
     navigation.navigate("Produto", { item });
   }
 
-
   return (
     <>
       <S.Container>
-        <StatusBar
-        />
+        <StatusBar />
 
-
-        <S.Carrosel
-        >
+        <S.Carrosel>
           <View style={{ width, height }}>
             <ScrollView
               pagingEnabled
@@ -186,7 +175,6 @@ export function Inicio() {
           ))}
         </S.ThreeDots>
 
-
         <S.CardContainer>
           <FlatList
             data={title}
@@ -198,7 +186,6 @@ export function Inicio() {
             keyExtractor={(item) => item[0].toString()}
             renderItem={({ item }) => (
               <CardVertical data={item} onPress={() => openScreen(item)} />
-
             )}
           />
         </S.CardContainer>
