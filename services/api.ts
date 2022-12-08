@@ -14,14 +14,6 @@ export const api = axios.create({
   //api da aws
   // baseURL: 'http://100.26.195.168:8080',
 });
-//teste
-
-
-
-
-
-
-
 export const api2 = axios.create({
   baseURL: 'https://api.trello.com/1/cards/?key=c5c6912adfa9c89103843ce121e48fad&token=fb60825518dc1ad6a67822b5be5146b33c8a7e533d743c89c3bff495bea8c565',
 });
