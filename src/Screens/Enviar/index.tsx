@@ -118,9 +118,14 @@ export function Enviar() {
 
     const dataCompra = formatDate(new Date());
 
+    const id = v4();
+
     await api2.post("", {
       name: personalInfo.name,
       desc:
+        "Pedido nº" +
+         id.substring(0,4) +
+         "\n" +
         "Nome: " +
         personalInfo.name +
         "\n" +
@@ -137,7 +142,7 @@ export function Enviar() {
         personalInfo.smartphone +
         "\n" +
         "\n" +
-        "Pedido: \n" +
+        "Produtos: \n" +
         produtos +
         "\n\n" +
         "Data e Hora do Pedido: \n" +
@@ -160,7 +165,7 @@ export function Enviar() {
     await AsyncStorage.setItem("@saveproducts:cart", nothingbutinstring);
 
     try {
-      const id = v4();
+      
 
       function padTo2Digits(num: number) {
         return num.toString().padStart(2, "0");
