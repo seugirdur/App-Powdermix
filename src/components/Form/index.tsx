@@ -26,10 +26,10 @@ const { getItem, setItem } = useAsyncStorage("@saveinfo:personalinfo");
 const schema = yup.object({
   name: yup.string().required("Informe o seu nome"),
   // cpf: yup.string().min(11, "Escreva o CPF/CNPJ completo").required("Informe o seu CPF/CNPJ"),
-  cpf: yup.string().test(
+  cpf: yup.string().required("Informe o CNPJ").test(
     'test-invalid-cpf',
     'CNPJ inválido',
-    (cnpj1) =>  cpf.isValid(cnpj1)), 
+    (cnpj1) =>  cnpj.isValid(cnpj1)), 
   email: yup.string().email("E-mail inválido").required("Informe o e-mail"),
   cep: yup.string().required("Informe o CEP"),
   smartphone: yup.string().min(8, "Número de telefone inválido").required("Informe o telefone"),

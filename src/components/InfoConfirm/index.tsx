@@ -42,7 +42,7 @@ export function InfoConfirm() {
       <HeaderEnviarInfo title="Informações de Contato"/>
       <S.ContainerInfo>
         <S.Nome>Nome: {name}</S.Nome>
-        <S.CPF>CPF/CNPJ: {cpf}</S.CPF>
+        <S.CPF>CNPJ: {cpf}</S.CPF>
         <S.Email>E-mail: {email}</S.Email>
         <S.CEP>CEP: {cep}</S.CEP>
         <S.Telefone>Telefone: {smartphone}</S.Telefone>
