@@ -30,7 +30,6 @@ export function InfoConfirm() {
     setEmail(personalInfo.email);
     setCep(personalInfo.cep);
     setSmartphone(personalInfo.smartphone);
-    // console.log(personalInfo)
   }
 
   useFocusEffect(() => {

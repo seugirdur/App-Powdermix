@@ -24,6 +24,7 @@
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/native-stack": "^6.9.0",
     "axios": "^1.1.3",
+    "cpf-cnpj-validator": "^1.0.3",
     "expo": "~46.0.16",
     "expo-app-loading": "~2.1.0",
     "expo-cli": "^6.0.8",

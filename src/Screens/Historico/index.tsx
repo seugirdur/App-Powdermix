@@ -34,6 +34,7 @@ export function Historico() {
 
     setHistoric(Historic);
   };
+  const navigation = useNavigation();
 
   // const navigation = useNavigation();
   // const route = useRoute();
@@ -48,6 +49,15 @@ export function Historico() {
       // console.log("lmao")
     }, [])
   );
+
+  
+
+  function openScreen() {
+    console.log("lmao")
+    navigation.goBack();
+    navigation.navigate('Pedidos')
+
+  }
 
   return (
     <>
@@ -69,11 +79,16 @@ export function Historico() {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
             return (
-              <S.FlatlistContainer>
-                <S.CardHistoric>
+              <S.FlatlistContainer
+
+              >
+                <S.CardHistoric
+                              onPress={openScreen}
+
+                >
                   <S.TitleRow>
                     <S.TitleCard>Compra - </S.TitleCard>
-                    <S.DateTitle>{item.dataCompra}</S.DateTitle>
+                    <S.DateTitle>{item.dataCompra} | nº{item.id.substring(0,4)}</S.DateTitle>
                   </S.TitleRow>
                   <S.ValueRow>
                     <S.ValueLabel>Valor: </S.ValueLabel>

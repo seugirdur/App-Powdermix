@@ -5,8 +5,8 @@ export const api = axios.create({
   // baseURL: 'http://192.168.1.103:8080',
   // baseURL: 'http://192.168.175.42:8080',
   // baseURL: 'https://powdermixfly.fly.dev',
-  // baseURL: 'https://steady-sidewalk-production.up.railway.app',
-  baseURL: 'http://100.26.195.168:8080',
+  baseURL: 'https://steady-sidewalk-production.up.railway.app',
+  // baseURL: 'http://100.26.195.168:8080',
 });
 
 export const api2 = axios.create({

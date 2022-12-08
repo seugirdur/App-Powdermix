@@ -49,7 +49,7 @@ margin:10px;
 `;
 
 
-export const CardHistoric = styled.View`
+export const CardHistoric = styled.TouchableOpacity`
 background:white;
 width:85%;
 padding:10px;

@@ -85,21 +85,9 @@ export function Pedidos() {
 
       precoTotal += venda.cartItems[i].produtoPreco * venda.cartItems[i].counter;
     }
-    // function addHours(date: Date, hours: number) {
-    //   date.setHours(date.getHours() + hours);
-    //   const makeitworkgoddamn = date.toUTCString();
-
-    //   return makeitworkgoddamn;
-    // }
-    // // Date(Date.UTC()
-    // const someDate = new Date();
-    // // .toLocaleTimeString("pt-BR", {timeZone: "America/Sao_Paulo"})
-    // // .getTimezoneOffset()
-
-    // const dataCompleta = addHours(someDate, -3);
 
     MailComposer.composeAsync({
-      subject: "Pedido dia - " + venda.dataCompleta,
+      subject: "Olá, queria informações sobre o pedido nº"+ venda.id.substring(0,4) + " Dia - " + venda.dataCompleta,
       body: "Nome - " + venda.personalInfo.name + '\n' +
             "CPF/CNPJ - " + venda.personalInfo.cpf + '\n' +
             "CEP - " + venda.personalInfo.cep + '\n' +
@@ -141,13 +129,13 @@ export function Pedidos() {
                     <S.TopRow>
                       <S.TitleRow>
                         <S.TitleCard>Compra - </S.TitleCard>
-                        <S.DateTitle>{item.dataCompra}</S.DateTitle>
+                        <S.DateTitle>{item.dataCompra} | nº {item.id.substring(0,4)}</S.DateTitle>
                       </S.TitleRow>
                       <S.IconRow>
                         <S.CircleZap
                           onPress={() =>
                             Linking.openURL(
-                              "https://api.whatsapp.com/send?phone=5511991745936&text=Pedido+referente+a+"+item.dataCompleta.replace(" ","+")+"+do+"+item.personalInfo.name.replace(" ","+")
+                              "https://api.whatsapp.com/send?phone=5511991745936&text=Quero+tirar+duvidas+referente+ao+meu+pedido+nº+"+item.id.substring(0,4)+" do dia "+item.dataCompleta.replace(" ","+")+"+ em nome do +"+item.personalInfo.name.replace(" ","+")
                             )
                           }
                         >

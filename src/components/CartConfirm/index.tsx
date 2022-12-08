@@ -5,7 +5,7 @@ import { HeaderEnviarCart } from "../HeaderEnviarCart";
 import { formatNumber } from "../StatusBar";
 import * as S from "./style";
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { CartProps } from "../CardVertical";
 import { Feather, EvilIcons } from "@expo/vector-icons";
 
@@ -38,10 +38,25 @@ export function CartConfirm() {
     setPrice(precofinal);
   }, []);
 
+  let num = 0;
+
   useEffect(() => {
     seeCart();
     sumEverything();
+    num ++;
+    console.log(num)
   }, []);
+
+  if(num=2) {
+
+    useFocusEffect(() => {
+      sumEverything();
+      // console.log("lmao")
+    });
+  }
+
+  
+  
 
   // sumEverything();
   return (

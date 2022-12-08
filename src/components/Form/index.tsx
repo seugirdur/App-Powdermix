@@ -9,6 +9,8 @@ import { v4 } from 'uuid';
 import { useAsyncStorage } from "@react-native-async-storage/async-storage";
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { cpf, cnpj } from 'cpf-cnpj-validator'; 
+
 
 export type InfoProps = {
   name: string;
@@ -23,7 +25,11 @@ const { getItem, setItem } = useAsyncStorage("@saveinfo:personalinfo");
 
 const schema = yup.object({
   name: yup.string().required("Informe o seu nome"),
-  cpf: yup.string().min(11, "Escreva o CPF/CNPJ completo").required("Informe o seu CPF/CNPJ"),
+  // cpf: yup.string().min(11, "Escreva o CPF/CNPJ completo").required("Informe o seu CPF/CNPJ"),
+  cpf: yup.string().test(
+    'test-invalid-cpf',
+    'CNPJ inválido',
+    (cnpj1) =>  cpf.isValid(cnpj1)), 
   email: yup.string().email("E-mail inválido").required("Informe o e-mail"),
   cep: yup.string().required("Informe o CEP"),
   smartphone: yup.string().min(8, "Número de telefone inválido").required("Informe o telefone"),
@@ -52,8 +58,6 @@ export function Form() {
 
   async function handleFormInfo(personalInfo: InfoProps) {
     try {
-      // const id = v4();
-
       
 
 
@@ -84,9 +88,10 @@ export function Form() {
         name="cpf"
         control={control}
         icon="file-text"
-        placeholder="CPF/CNPJ"
+        placeholder="CNPJ"
         error={errors.cpf}
       />
+      
       <ControlledInput
         name="email"
         control={control}

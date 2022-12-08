@@ -12,7 +12,7 @@ import { Alert } from "react-native";
 import { v4 } from "uuid";
 import { InfoProps } from "../../components/Form";
 import { LoadingPage } from "../../components/LoadingPage";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 export type SalesProps = {
   id: string;
@@ -34,27 +34,11 @@ export function Enviar() {
 
       return makeitworkgoddamn;
     }
-    // Date(Date.UTC()
-    // const someDate = (new Date())
-    // // .toLocaleTimeString("pt-BR", {timeZone: "America/Sao_Paulo"})
-    // // .getTimezoneOffset()
-
-    // const dataCompleta = addHours(someDate, -3);
-
-    // console.log(dataCompleta);
-
-    // .toLocaleTimeString("pt-BR", {timeZone: "America/Bahia"})
-
-    // const today = new Date(); // Thu Feb 18 2021 12:55:04 GMT-0300 (Brasilia Standard Time)
-
-    // console.log(new Intl.DateTimeFormat('pt-BR', { day: 'numeric', month: 'long', year: 'numeric'} ).format(today));
-
-    // console.log(myBrazilianDate)
+   
 
     Toast.show({
       type: "error",
       text1: "Pedido Cancelado",
-      // text2: 'Nossa equipe entrará em contato com você!'
     });
   };
 
@@ -94,18 +78,11 @@ export function Enviar() {
     setShowLoading(true);
     const getInfo = await AsyncStorage.getItem("@saveinfo:personalinfo");
     const getCart = await AsyncStorage.getItem("@saveproducts:cart");
-    // const response = await getInfo;
     const personalInfo: InfoProps = getInfo ? JSON.parse(getInfo) : [];
-    // setName(personalInfo.name)
-    // setCpf(personalInfo.cpf)
-    // setEmail(personalInfo.email)
-    // setCep(personalInfo.cep)
-    // setSmartphone(personalInfo.smartphone)
-    // console.log(personalInfo)
+   
 
     const cartItems: CartProps[] = getCart ? JSON.parse(getCart) : [];
-    // console.log(cartItems);
-    // console.log(cartItems[1].produtoNome)
+
 
     let produtos = "";
 
@@ -144,16 +121,6 @@ export function Enviar() {
 
     const dataCompra = formatDate(new Date());
 
-    // console.log(precoTotal);
-
-    //   function dataAtualFormatada(){
-    //     var data = new Date(),
-    //         dia  = data.getDate().toString().padStart(2, '0'),
-    //         mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
-    //         ano  = data.getFullYear();
-    //     return dia+"/"+mes+"/"+ano;
-    // }
-    // const date = new Date().toLocaleTimeString();
 
     await api2.post("", {
       name: personalInfo.name,
@@ -183,8 +150,7 @@ export function Enviar() {
         dataCompra +
         "\n"
         ,
-      //   + personalInfo.name + "\n"
-      //   + personalInfo.name + "\n",
+
       idList: "637ca9c85c09a903cffd99eb",
     });
 
@@ -222,14 +188,11 @@ export function Enviar() {
 
         return makeitworkgoddamn;
       }
-      // Date(Date.UTC()
       const someDate = new Date();
-      // .toLocaleTimeString("pt-BR", {timeZone: "America/Sao_Paulo"})
-      // .getTimezoneOffset()
+
 
       const dataCompleta = addHours(someDate, -3);
 
-      // console.log(dataCompleta);
 
       const Sales: SalesProps = {
         id,
@@ -245,7 +208,6 @@ export function Enviar() {
       const allSales: SalesProps[] = [...previousSales, Sales];
       await AsyncStorage.setItem("@savesales:sale", JSON.stringify(allSales));
 
-      // console.log(allSales[1].cartItems[1]);
 
       setShowLoading(false);
 
@@ -255,8 +217,10 @@ export function Enviar() {
     }
   }
 
+ 
+
   return (
-    // <>
+  
     <S.Container>
       <InfoConfirm />
       <CartConfirm />
@@ -269,6 +233,6 @@ export function Enviar() {
       </S.ButtonEnviar>
       {showLoading ? <LoadingPage /> : null}
     </S.Container>
-    // </>
+
   );
 }
