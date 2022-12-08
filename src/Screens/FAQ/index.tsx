@@ -44,18 +44,11 @@ export function FAQ() {
 
     await api.get("/getFaq").then(function (response) {
       setFaq(response.data)
-      console.log(response.data);
-
-
-
-     
       setShowLoading(false);
     });
 
 
   }
-  console.log("lmao");
-
 
   getStoreData();
 }, []);

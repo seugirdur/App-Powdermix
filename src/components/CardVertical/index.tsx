@@ -30,11 +30,12 @@ export function CardVertical({ data, ...rest }: Props) {
 
 
 
-  let imagesArr = data[4].split(',');
+  let imagesArr = data[5].split(',');
 
   
   const produtoNome = data[1];
   const produtoDesc = data[2];
+  const produtoPrecoOriginal = data[3];
   const produtoPreco = data[3];
   const produtoImg1 = imagesArr[0];
 

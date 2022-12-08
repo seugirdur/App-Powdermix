@@ -50,7 +50,7 @@ export function FormEmail() {
 
 
   function handleUserRegister(data: FormData) {
-    console.log(data);
+
   }
 
   const navigation = useNavigation();
@@ -73,7 +73,7 @@ export function FormEmail() {
       await setItem(JSON.stringify(wholeEmail))
 
       const response = await getItem();
-      console.log(response)
+    
 
        
       openScreen();

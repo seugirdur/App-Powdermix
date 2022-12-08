@@ -39,7 +39,6 @@ export function CartConfirm() {
     seeCart();
     sumEverything();
     num ++;
-    console.log(num)
   }, []);
 
   if(num=2) {

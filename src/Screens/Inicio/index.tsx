@@ -36,9 +36,10 @@ export type Sheets = {
   [1]: string;
   [2]: string;
   [3]: number;
-  [4]: string;
+  [4]: number;
   [5]: string;
   [6]: string;
+  [7]: string;
 };
 
 const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
@@ -78,8 +79,6 @@ export function Inicio() {
       console.log(error);
     }
   }
-
-  console.log("im dad rerender");
 
   const [active, setActive] = useState(0);
 
@@ -128,7 +127,6 @@ export function Inicio() {
       await api.get("/getSlider").then((response) => {
         let imagestogether = response.data[0][0];
         let imagesArr = imagestogether.split(",");
-        console.log(imagesArr);
         setImgArr(imagesArr);
       });
     }

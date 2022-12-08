@@ -46,13 +46,12 @@ const toastConfig = {
 export function Routes() {
   const [hasInternet, setHasInternet] = useState<boolean | undefined>(true);
 
-  const lmao = async () => {
-    const lmao2 = (await Network.getNetworkStateAsync()).isConnected;
-    setHasInternet(lmao2);
-    console.log(lmao2)
+  const checkInternet = async () => {
+    const boolInternet = (await Network.getNetworkStateAsync()).isConnected;
+    setHasInternet(boolInternet);
   }
 
-  lmao();
+  checkInternet();
 
 return (
   <>

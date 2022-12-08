@@ -42,7 +42,7 @@ export function Form() {
   });
 
   function handleUserRegister(data: FormData) {
-    console.log(data);
+    
   }
 
   const navigation = useNavigation();
@@ -64,7 +64,6 @@ export function Form() {
       await setItem(JSON.stringify(personalInfo))
 
       const response = await getItem();
-      console.log(response)
 
        
       openScreen();
@@ -106,7 +105,6 @@ export function Form() {
         control={control}
         icon="home"
         placeholder="CEP"
-        
         error={errors.cep}
       />
       <ControlledInput

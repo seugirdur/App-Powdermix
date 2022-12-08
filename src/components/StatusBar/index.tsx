@@ -41,8 +41,6 @@ export function StatusBar(
   const { getItem, setItem } = useAsyncStorage("@saveproducts:cart");
   const [qtdCartStatus, setQtdCartStatus] = useState<number>(0)
 
-  console.log("im brother re render")
-
   const [fullPrice, setFullPrice] = useState<number>();
   const [fullPriceShow, setFullPriceShow] = useState<string>();
 

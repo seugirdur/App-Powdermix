@@ -23,7 +23,6 @@ export function QuantityBox({ quantity }: QuantityProps) {
       setCounter(1);
     }
   }
-  // console.log(counter)
 
   return (
     <S.QuantityBox>

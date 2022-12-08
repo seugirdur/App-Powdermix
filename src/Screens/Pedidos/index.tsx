@@ -34,7 +34,6 @@ export function Pedidos() {
     const getPedidos = await getItem();
 
     const allPedidos: SalesProps[] = getPedidos ? JSON.parse(getPedidos) : [];
-    // console.log(allPedidos[0].cartItems[1].produtoNome);
     setPedidos(allPedidos);
   };
 
@@ -53,13 +52,8 @@ export function Pedidos() {
   // }, []);
 
   const HandleRedoCheckout = async (redoCartItems: CartProps[]) => {
-    console.log(redoCartItems);
-
     const redoString = JSON.stringify(redoCartItems);
-
     await AsyncStorage.setItem("@saveproducts:cart", redoString);
-    // console.log(redoString);
-
     openScreen();
   };
 

@@ -64,14 +64,15 @@ export function Produto() {
 
   const produtoNome = productInfo[1]
   const produtoDesc = productInfo[2]
-  const produtoPreco = productInfo[3]
-  const imagesArr = productInfo[4].split(',');
+  const produtoPrecoOriginal = productInfo[3]
+  const produtoPreco = productInfo[4]
+  const imagesArr = productInfo[5].split(',');
   const imagemsolo = imagesArr[0];
-  const linkManual = productInfo[6];
+  const linkManual = productInfo[7];
 
 
   const produtoImg1 = imagemsolo;
-  const produtoVideo = productInfo[5]
+  const produtoVideo = productInfo[6]
 
   async function handleStore() {
     try {
@@ -185,7 +186,7 @@ export function Produto() {
 
         <S.Prices>
           <S.OriginalPrice>
-            {formatNumber(produtoPreco*1.15)}
+            {formatNumber(produtoPrecoOriginal)}
             </S.OriginalPrice>
           <S.PromocionalPrice>
             {formatNumber(produtoPreco)}

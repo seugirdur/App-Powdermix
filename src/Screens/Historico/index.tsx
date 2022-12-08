@@ -42,7 +42,6 @@ export function Historico() {
   
 
   function openScreen() {
-    console.log("lmao")
     navigation.goBack();
     navigation.navigate('Pedidos')
 

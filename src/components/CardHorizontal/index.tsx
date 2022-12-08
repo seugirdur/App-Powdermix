@@ -13,7 +13,7 @@ let counter = 1;
 
 export function CardHorizontal({ data, ...rest }: any) {
 
-  let imagesArr = data[4].split(',');
+  let imagesArr = data[5].split(',');
 
   const id = v4();
   const produtoNome = data[1];
