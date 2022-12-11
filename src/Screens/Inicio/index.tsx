@@ -101,12 +101,18 @@ export function Inicio() {
     async function getStoreData() {
       setShowLoading(true);
 
+      const config = {
+        headers:{
+          credentialhash: "0uhu6hbxnr31pvxrvw3lryel22?",
+        }
+      };
+
       if (title.length != 0) {
         setShowLoading(false);
       }
 
       await api
-        .get("/getProdutos")
+        .get("/getProdutos", config)
         .then(function (response) {
           setTitle(response.data);
 
@@ -121,7 +127,7 @@ export function Inicio() {
           }
         });
 
-      await api.get("/getSlider").then((response) => {
+      await api.get("/getSlider", config).then((response) => {
         let imagestogether = response.data[0][0];
         let imagesArr = imagestogether.split(",");
         setImgArr(imagesArr);

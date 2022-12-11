@@ -53,8 +53,15 @@ export function Produto() {
 
   const [title, setTitle] = useState<Sheets[]>([]);
   useEffect(() => {
+
+    const config = {
+      headers:{
+        credentialhash: "0uhu6hbxnr31pvxrvw3lryel22?",
+      }
+    };
+
     async function getStoreData() {
-      await api.get("/getProdutos").then(function (response) {
+      await api.get("/getProdutos", config).then(function (response) {
         setTitle(response.data);
       });
     }

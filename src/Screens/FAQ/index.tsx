@@ -39,10 +39,17 @@ export function FAQ() {
   const [faq, setFaq] = useState<FaqProps[]>([])
 
   useEffect(() => {
+
+    const config = {
+      headers:{
+        credentialhash: "0uhu6hbxnr31pvxrvw3lryel22?",
+      }
+    };
+
   async function getStoreData() {
     setShowLoading(true);
 
-    await api.get("/getFaq").then(function (response) {
+    await api.get("/getFaq", config).then(function (response) {
       setFaq(response.data)
       setShowLoading(false);
     });
